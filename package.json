@@ -1,6 +1,6 @@
 {
-  "name": "dapper",
-  "version": "0.2.0",
+  "name": "doges-on-trial",
+  "version": "0.0.1",
   "description": "A boilerplate for Ethereum dapps.",
   "keywords": [
     "blockchain",
@@ -9,7 +9,7 @@
     "boilerplate",
     "frontend"
   ],
-  "repository": "https://github.com/kleros/dapper",
+  "repository": "https://github.com/kleros/doges-on-trial",
   "author": "Kleros",
   "license": "MIT",
   "private": true,
