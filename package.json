@@ -1,13 +1,13 @@
 {
   "name": "doges-on-trial",
   "version": "0.0.1",
-  "description": "A boilerplate for Ethereum dapps.",
+  "description": "Kleros' first curated list experiment.",
   "keywords": [
     "blockchain",
     "ethereum",
     "dapp",
-    "boilerplate",
-    "frontend"
+    "token-curated-list",
+    "doge"
   ],
   "repository": "https://github.com/kleros/doges-on-trial",
   "author": "Kleros",

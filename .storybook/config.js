@@ -10,7 +10,7 @@ import '../src/bootstrap/app.css'
 // Storybook Host
 addDecorator(
   host({
-    title: 'Dapp Front Boilerplate UI-Kit',
+    title: 'Doges on Trial UI-Kit',
     align: 'center middle'
   })
 )
