@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react'
 import { withState } from '@dump247/storybook-state'
 
 import TextInput from '../src/components/text-input'
-import { POINT_CONVERSION_UNCOMPRESSED } from 'constants'
 
 const render = store => (
   <TextInput
