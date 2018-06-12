@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { withState } from '@dump247/storybook-state'
 
 import TextInput from '../src/components/text-input'
+import { POINT_CONVERSION_UNCOMPRESSED } from 'constants'
 
 const render = store => (
   <TextInput
@@ -11,7 +12,11 @@ const render = store => (
       ...store.state.input,
       onChange: event =>
         store.set({
-          input: { value: event.currentTarget.value, onChange: null }
+          input: {
+            value: event.currentTarget.value,
+            onBlur: null,
+            onChange: null
+          }
         })
     }}
   />
@@ -22,7 +27,7 @@ storiesOf('Text Input', module)
     'default',
     withState(
       {
-        input: { value: '', onChange: null },
+        input: { value: '', onBlur: null, onChange: null },
         meta: { valid: undefined, touched: undefined, error: undefined },
         placeholder: 'EMAIL'
       },
@@ -33,7 +38,7 @@ storiesOf('Text Input', module)
     'touched',
     withState(
       {
-        input: { value: '', onChange: null },
+        input: { value: '', onBlur: null, onChange: null },
         meta: { valid: undefined, touched: true, error: undefined },
         placeholder: 'EMAIL'
       },
@@ -44,7 +49,7 @@ storiesOf('Text Input', module)
     'valid',
     withState(
       {
-        input: { value: '', onChange: null },
+        input: { value: '', onBlur: null, onChange: null },
         meta: { valid: true, touched: undefined, error: undefined },
         placeholder: 'EMAIL'
       },
@@ -55,10 +60,10 @@ storiesOf('Text Input', module)
     'error',
     withState(
       {
-        input: { value: '', onChange: null },
+        input: { value: '', onBlur: null, onChange: null },
         meta: {
           valid: undefined,
-          touched: undefined,
+          touched: true,
           error: 'Please enter a valid email.'
         },
         placeholder: 'EMAIL'

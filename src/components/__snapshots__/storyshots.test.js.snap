@@ -1954,7 +1954,9 @@ exports[`Storyshots Text Input default 1`] = `
           >
             <input
               className="TextInput-input"
+              onBlur={null}
               onChange={[Function]}
+              step={undefined}
               type="text"
               value=""
             />
@@ -2224,12 +2226,14 @@ exports[`Storyshots Text Input error 1`] = `
           >
             <input
               className="TextInput-input"
+              onBlur={null}
               onChange={[Function]}
+              step={undefined}
               type="text"
               value=""
             />
             <div
-              className="TextInput-placeholder"
+              className="TextInput-placeholder is-touched"
             >
               EMAIL
             </div>
@@ -2499,7 +2503,9 @@ exports[`Storyshots Text Input touched 1`] = `
           >
             <input
               className="TextInput-input"
+              onBlur={null}
               onChange={[Function]}
+              step={undefined}
               type="text"
               value=""
             />
@@ -2769,7 +2775,9 @@ exports[`Storyshots Text Input valid 1`] = `
           >
             <input
               className="TextInput-input"
+              onBlur={null}
               onChange={[Function]}
+              step={undefined}
               type="text"
               value=""
             />
