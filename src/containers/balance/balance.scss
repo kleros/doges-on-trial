@@ -1,6 +1,8 @@
+@import '../../styles/_colors.scss';
+
 /* @define Balance */
 .Balance {
-  background: #273142;
+  background: $background;
   height: 100%;
 
   &-message {
@@ -14,7 +16,7 @@
     }
 
     &-link {
-      color: #999;
+      color: $blue;
       text-decoration: none;
     }
   }

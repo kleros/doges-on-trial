@@ -1,4 +1,5 @@
 import './button'
+import './colors'
 import './identicon'
 import './page-not-found'
 import './requires-meta-mask'

@@ -3,15 +3,13 @@
 /* @define Button */
 .Button {
   // stylelint-disable-next-line declaration-colon-newline-after
-  background: linear-gradient(
-    0deg,
-    $buttonGradientStart 0%,
-    $buttonGradientEnd 100%
-  );
+  background: linear-gradient(0deg, $info 0%, $info 100%);
   border-radius: 4px;
-  box-shadow: 0 1px 0 0 $buttonBoxShadow;
+  box-shadow: 0 1px 0 0 $info;
+  color: $invertedText;
   cursor: pointer;
   height: 50px;
+  line-height: 50px;
   min-width: 200px;
   padding: 0 20px;
   text-align: center;
@@ -23,8 +21,6 @@
   }
 
   &-label {
-    color: $buttonText;
-    line-height: 50px;
     margin: 0;
   }
 }

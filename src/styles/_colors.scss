@@ -1,30 +1,133 @@
 // Bases
-$light: #fff;
-$light2: #e6eaee;
-$light3: rgba(216, 216, 216, 0.38);
-$dark: #3d464d;
-$dark2: #47525d;
-$dark3: #a3a2a5;
+$absoluteBlack: #000;
+$grey: #3d464d;
+$darkGrey: #47525d;
+$lightGrey: #a3a2a5;
+$mint: #f5f8fa;
+$green: #47cf73;
+$red: #ff364f;
+$orange: #ffbe61;
+$blue: #0059ab;
+$white: #fff;
+$darkText: #1a1b23;
 
 // States
-$disabled: #77909d;
-$info: #337ab7;
-$warning: #f0ad4e;
-$success: #8dc572;
-$error: #be6464;
+$disabled: $darkGrey;
+$info: $blue;
+$warning: $orange;
+$success: $green;
+$error: $red;
 
 // Typography
-$heading: $dark;
-$text: $dark2;
+$heading: $darkText;
+$text: $grey;
+$lightText: $lightGrey;
+$invertedText: $white;
 
 // Backgrounds
-$background: #ededed;
-$darkBackground: $dark;
+$background: $white;
 
-/* Specifics */
+/* @define ColorsStory */
+.ColorsStory {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
-// Button
-$buttonGradientStart: #0059ab;
-$buttonGradientEnd: #0468c4;
-$buttonBoxShadow: #024e95;
-$buttonText: $light;
+  .ColorsStory-block {
+    border: 2px solid $mint;
+    border-radius: 5px;
+    height: 80px;
+    margin: 40px;
+    position: relative;
+    width: 80px;
+
+    &-label {
+      position: absolute;
+      top: 110%;
+
+      &-hexCode {
+        color: $lightText;
+      }
+    }
+
+    &--absoluteBlack {
+      background: $absoluteBlack;
+    }
+
+    &--grey {
+      background: $grey;
+    }
+
+    &--darkGrey {
+      background: $darkGrey;
+    }
+
+    &--lightGrey {
+      background: $lightGrey;
+    }
+
+    &--mint {
+      background: $mint;
+    }
+
+    &--green {
+      background: $green;
+    }
+
+    &--red {
+      background: $red;
+    }
+
+    &--orange {
+      background: $orange;
+    }
+
+    &--blue {
+      background: $blue;
+    }
+
+    &--white {
+      background: $white;
+    }
+
+    &--darkText {
+      background: $darkText;
+    }
+
+    &--disabled {
+      background: $disabled;
+    }
+
+    &--info {
+      background: $info;
+    }
+
+    &--warning {
+      background: $warning;
+    }
+
+    &--success {
+      background: $success;
+    }
+
+    &--error {
+      background: $error;
+    }
+
+    &--heading {
+      background: $heading;
+    }
+
+    &--text {
+      background: $text;
+    }
+
+    &--invertedText {
+      background: $invertedText;
+    }
+
+    &--background {
+      background: $background;
+    }
+  }
+}

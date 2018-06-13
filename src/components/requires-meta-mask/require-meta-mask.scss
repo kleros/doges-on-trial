@@ -1,6 +1,8 @@
+@import '../../styles/_colors.scss';
+
 /* @define RequiresMetaMask */
 .RequiresMetaMask {
-  background: #273142;
+  background: $background;
   height: 100%;
 
   &-message {
@@ -10,7 +12,7 @@
     text-align: center;
 
     &-link {
-      color: #999;
+      color: $info;
       text-decoration: none;
     }
   }
