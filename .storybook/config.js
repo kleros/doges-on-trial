@@ -1,7 +1,7 @@
 import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
 import { host } from 'storybook-host'
-import { combineReducers, applyMiddleware, createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom'
 
@@ -16,17 +16,11 @@ addDecorator(
 )
 
 // Integration Wrapper
-const store = createStore(
-  combineReducers({}),
-  applyMiddleware(store => next => action => {
-    console.log(action)
-    return next(action)
-  })
-)
+const store = createStore(combineReducers({}))
 addDecorator(story => (
   <Provider store={store}>
     <div>
-      {console.log(store.getState())}
+      {console.info(store.getState())}
       <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
     </div>
   </Provider>
