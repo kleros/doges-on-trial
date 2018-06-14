@@ -3099,7 +3099,14 @@ exports[`Storyshots Requires MetaMask not found 1`] = `
                   <h2
                     className="Button-label "
                   >
-                    Install MetaMask
+                    <a
+                      className="Button-label-link"
+                      href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      Install MetaMask
+                    </a>
                   </h2>
                 </div>
               </div>

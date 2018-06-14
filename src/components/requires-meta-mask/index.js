@@ -28,7 +28,9 @@ const RequiresMetaMask = ({ needsUnlock }) => (
       {!needsUnlock && (
         <div>
           <br />
-          <Button>Install MetaMask</Button>
+          <Button to="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">
+            Install MetaMask
+          </Button>
         </div>
       )}
     </div>

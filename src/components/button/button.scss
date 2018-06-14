@@ -25,5 +25,10 @@
 
   &-label {
     color: $invertedText;
+
+    &-link {
+      color: $invertedText;
+      text-decoration: none;
+    }
   }
 }
