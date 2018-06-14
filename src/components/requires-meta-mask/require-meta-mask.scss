@@ -2,18 +2,16 @@
 
 /* @define RequiresMetaMask */
 .RequiresMetaMask {
-  background: $background;
-  height: 100%;
+  background: $mint;
+  display: flex;
+  padding: 42px 60px 52px 73px;
 
-  &-message {
-    color: white;
-    font-size: 40px;
-    padding: 70px 50px;
-    text-align: center;
+  &-logo {
+    height: 105px;
+    width: 100px;
+  }
 
-    &-link {
-      color: $info;
-      text-decoration: none;
-    }
+  &-content {
+    margin-left: 56px;
   }
 }

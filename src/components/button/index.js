@@ -12,21 +12,20 @@ const Button = ({
   ...rest
 }) => (
   <div
+    onClick={disabled ? null : onClick}
     className={`Button ${disabled ? 'is-disabled' : ''} ${className}`}
-    onClick={onClick}
     {...rest}
   >
-    <h5 className={`Button-label ${labelClassName}`}>{children}</h5>
+    <h2 className={`Button-label ${labelClassName}`}>{children}</h2>
   </div>
 )
 
 Button.propTypes = {
   // State
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-    .isRequired,
+  children: PropTypes.node.isRequired,
 
   // Handlers
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 
   // Modifiers
   disabled: PropTypes.bool,
@@ -35,6 +34,9 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+  // Handlers
+  onClick: null,
+
   // Modifiers
   disabled: false,
   className: '',

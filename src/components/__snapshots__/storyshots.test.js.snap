@@ -86,13 +86,13 @@ exports[`Storyshots Button disabled 1`] = `
         >
           <div
             className="Button is-disabled "
-            onClick={[Function]}
+            onClick={null}
           >
-            <h5
+            <h2
               className="Button-label "
             >
               CLICK ME
-            </h5>
+            </h2>
           </div>
           <div
             data-radium={true}
@@ -353,11 +353,11 @@ exports[`Storyshots Button primary 1`] = `
             className="Button  "
             onClick={[Function]}
           >
-            <h5
+            <h2
               className="Button-label "
             >
               CLICK ME
-            </h5>
+            </h2>
           </div>
           <div
             data-radium={true}
@@ -618,11 +618,11 @@ exports[`Storyshots Button with lots of text 1`] = `
             className="Button  "
             onClick={[Function]}
           >
-            <h5
+            <h2
               className="Button-label "
             >
               CLICK ME, CLICK ME, CLICK ME
-            </h5>
+            </h2>
           </div>
           <div
             data-radium={true}
@@ -2801,20 +2801,20 @@ exports[`Storyshots Requires MetaMask needs unlock 1`] = `
           <div
             className="RequiresMetaMask"
           >
+            <img
+              alt="MetaMask Logo"
+              className="RequiresMetaMask-logo"
+              src="meta-mask-logo.png"
+            />
             <div
-              className="RequiresMetaMask-message"
+              className="RequiresMetaMask-content"
             >
-              <span>
-                This is a decentralized application. In order to use this site please
-                 
-              </span>
-              unlock 
-              <a
-                className="RequiresMetaMask-message-link"
-                href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
-              >
-                MetaMask
-              </a>
+              <h1>
+                You need to unlock your Web3 browser wallet to run this dapp.
+              </h1>
+              <small>
+                This also serves as your login so you won't need to keep track of another account and password.
+              </small>
             </div>
           </div>
           <div
@@ -3075,20 +3075,34 @@ exports[`Storyshots Requires MetaMask not found 1`] = `
           <div
             className="RequiresMetaMask"
           >
+            <img
+              alt="MetaMask Logo"
+              className="RequiresMetaMask-logo"
+              src="meta-mask-logo.png"
+            />
             <div
-              className="RequiresMetaMask-message"
+              className="RequiresMetaMask-content"
             >
-              <span>
-                This is a decentralized application. In order to use this site please
-                 
-              </span>
-              download 
-              <a
-                className="RequiresMetaMask-message-link"
-                href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
-              >
-                MetaMask
-              </a>
+              <h1>
+                You need a Web3 enabled browser to run this dapp.
+              </h1>
+              <small>
+                We recommend using Chrome with the MetaMask extension. 
+                This also serves as your login so you won't need to keep track of another account and password.
+              </small>
+              <div>
+                <br />
+                <div
+                  className="Button  "
+                  onClick={null}
+                >
+                  <h2
+                    className="Button-label "
+                  >
+                    Install MetaMask
+                  </h2>
+                </div>
+              </div>
             </div>
           </div>
           <div
