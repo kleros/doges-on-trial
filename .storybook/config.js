@@ -20,7 +20,6 @@ const store = createStore(combineReducers({}))
 addDecorator(story => (
   <Provider store={store}>
     <div>
-      {console.info(store.getState())}
       <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
     </div>
   </Provider>

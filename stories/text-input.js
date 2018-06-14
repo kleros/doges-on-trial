@@ -9,6 +9,7 @@ const render = store => (
     {...store.state}
     input={{
       ...store.state.input,
+      onBlur: event => console.info('TextInput onBlur event fired.', event),
       onChange: event =>
         store.set({
           input: {

@@ -78,9 +78,11 @@
     "timezone-mock": "^0.0.7"
   },
   "dependencies": {
+    "bricks.js": "^1.8.0",
     "create-redux-form": "^0.1.2",
     "history": "^4.7.2",
     "lessdux": "^0.7.3",
+    "memoize-one": "^3.1.1",
     "normalize.css": "^8.0.0",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",

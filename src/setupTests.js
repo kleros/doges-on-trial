@@ -11,6 +11,8 @@ configure({ adapter: new Adapter() })
 // Mock Modules
 jest.mock('./components/identicon', () => () => <div>[Identicon]</div>)
 
+// Mock Globals
+Date.now = jest.fn(() => 1516916214006)
+
 // Mock Time
 timezoneMock.register('UTC')
-Date.now = jest.fn(() => 1516916214006)

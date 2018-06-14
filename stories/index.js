@@ -1,6 +1,7 @@
 import './button'
 import './colors'
 import './identicon'
+import './masonry-grid'
 import './page-not-found'
 import './requires-meta-mask'
 import './text-input'
