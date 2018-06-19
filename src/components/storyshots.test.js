@@ -1,3 +1,12 @@
-import initStoryshots from '@storybook/addon-storyshots'
+import initStoryshots, {
+  snapshotWithOptions
+} from '@storybook/addon-storyshots'
 
-initStoryshots()
+initStoryshots({
+  test: snapshotWithOptions({
+    createNodeMock: element =>
+      element.type === 'input' && element.props.type === 'file'
+        ? document.createElement('input')
+        : null
+  })
+})

@@ -7,6 +7,8 @@ const Button = ({
   children,
   to,
   onClick,
+  type,
+  size,
   disabled,
   className,
   labelClassName,
@@ -14,7 +16,9 @@ const Button = ({
 }) => (
   <div
     onClick={disabled ? null : onClick}
-    className={`Button ${disabled ? 'is-disabled' : ''} ${className}`}
+    className={`Button Button--${type} Button--${size} ${
+      disabled ? 'is-disabled' : ''
+    } ${className}`}
     {...rest}
   >
     <h2 className={`Button-label ${labelClassName}`}>
@@ -43,6 +47,8 @@ Button.propTypes = {
   onClick: PropTypes.func,
 
   // Modifiers
+  type: PropTypes.oneOf(['primary', 'secondary', 'ternary']),
+  size: PropTypes.oneOf(['small', 'normal', 'large']),
   disabled: PropTypes.bool,
   className: PropTypes.string,
   labelClassName: PropTypes.string
@@ -56,6 +62,8 @@ Button.defaultProps = {
   onClick: null,
 
   // Modifiers
+  type: 'primary',
+  size: 'normal',
   disabled: false,
   className: '',
   labelClassName: ''

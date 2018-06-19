@@ -4,8 +4,26 @@ import { action } from '@storybook/addon-actions'
 
 import Button from '../src/components/button'
 
+const createRenderButtons = type => () => (
+  <div>
+    <Button onClick={action('onClick')} type={type} size="small">
+      CLICK ME
+    </Button>
+    &nbsp;&nbsp;&nbsp;
+    <Button onClick={action('onClick')} type={type} size="normal">
+      CLICK ME
+    </Button>
+    &nbsp;&nbsp;&nbsp;
+    <Button onClick={action('onClick')} type={type} size="large">
+      CLICK ME
+    </Button>
+  </div>
+)
+
 storiesOf('Button', module)
-  .add('primary', () => <Button onClick={action('onClick')}>CLICK ME</Button>)
+  .add('primary', createRenderButtons('primary'))
+  .add('secondary', createRenderButtons('secondary'))
+  .add('ternary', createRenderButtons('ternary'))
   .add('disabled', () => (
     <Button onClick={action('onClick')} disabled>
       CLICK ME

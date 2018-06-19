@@ -1,34 +1,64 @@
 @import '../../styles/_colors.scss';
 
+@mixin buttonType($type, $background, $text) {
+  &--#{$type} {
+    background: $background;
+
+    &:hover {
+      background: darken($background, 5%);
+    }
+
+    &:active {
+      background: darken($background, 10%);
+    }
+
+    .Button-label {
+      color: $text;
+
+      &-link {
+        color: $text;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
 /* @define Button */
 .Button {
   align-items: center;
-  background: $info;
   border-radius: 5px;
-  box-shadow: 0 2px 0 0 $info;
+  box-shadow: 0 2px 0 0 $mint;
   display: inline-flex;
-  height: 60px;
   padding: 0 30px;
   user-select: none;
 
-  &:hover {
-    background: darken($info, 5%);
+  @include buttonType('primary', $info, $invertedText);
+  @include buttonType('secondary', lighten($info, 20%), $invertedText);
+  @include buttonType('ternary', $mint, $darkText);
+
+  &--small {
+    height: 45px;
+
+    // stylelint-disable-next-line plugin/selector-bem-pattern
+    .Button-label {
+      font-size: 0.8rem;
+    }
   }
 
-  &:active {
-    background: darken($info, 10%);
+  &--normal {
+    height: 60px;
+  }
+
+  &--large {
+    height: 75px;
+
+    // stylelint-disable-next-line plugin/selector-bem-pattern
+    .Button-label {
+      font-size: 1.7rem;
+    }
   }
 
   &.is-disabled {
     background: $disabled;
-  }
-
-  &-label {
-    color: $invertedText;
-
-    &-link {
-      color: $invertedText;
-      text-decoration: none;
-    }
   }
 }
