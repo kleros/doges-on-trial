@@ -8,7 +8,7 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(woff|woff2|png)$/,
+        test: /\.(woff|woff2|png|jpe?g)$/,
         use: ['url-loader']
       }
     ]

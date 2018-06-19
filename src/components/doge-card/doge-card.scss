@@ -1,0 +1,82 @@
+@import '../../styles/_colors.scss';
+
+/* @define DogeCard */
+.DogeCard {
+  border: 1px solid $lightGrey;
+  border-radius: 4px;
+  box-shadow: 0 0 6px 0 $lightGrey, 0 0 1px 0 $lightGrey, 0 1px 0 0 $lightGrey;
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+
+  &-image {
+    display: block;
+    width: 100%;
+  }
+
+  &-tag {
+    border-radius: 7.5px;
+    height: 15px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 15px;
+
+    &--pending {
+      background: $info;
+    }
+
+    &--challenged {
+      background: $warning;
+    }
+
+    &--accepted {
+      background: $success;
+    }
+
+    &--rejected {
+      background: $error;
+    }
+  }
+
+  &-label {
+    border-radius: 5px;
+    bottom: 10px;
+    color: $invertedText;
+    font-weight: 500;
+    height: 60px;
+    left: 50%;
+    line-height: 60px;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    transform: translateX(-50%);
+    transition: opacity 0.25s;
+    user-select: none;
+    width: calc(100% - 20px);
+
+    .DogeCard:hover & {
+      opacity: 0.8;
+    }
+
+    &--pending {
+      background: $info;
+      box-shadow: 0 2px 0 0 $info;
+    }
+
+    &--challenged {
+      background: $warning;
+      box-shadow: 0 2px 0 0 $warning;
+    }
+
+    &--accepted {
+      background: $success;
+      box-shadow: 0 2px 0 0 $success;
+    }
+
+    &--rejected {
+      background: $error;
+      box-shadow: 0 2px 0 0 $error;
+    }
+  }
+}

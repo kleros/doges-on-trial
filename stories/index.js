@@ -1,5 +1,6 @@
 import './button'
 import './colors'
+import './doge-card'
 import './identicon'
 import './masonry-grid'
 import './page-not-found'
