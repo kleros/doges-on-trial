@@ -9,6 +9,7 @@ import Balance from '../containers/balance'
 import PageNotFound from '../components/page-not-found'
 
 import Initializer from './initializer'
+import './fontawesome'
 
 import './app.css'
 

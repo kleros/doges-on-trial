@@ -3280,6 +3280,587 @@ exports[`Storyshots Doge Card rejected 1`] = `
 </div>
 `;
 
+exports[`Storyshots Dropdown checkbox 1`] = `
+<div>
+  <div
+    data-radium={true}
+    style={
+      Object {
+        "background": "rgb(255, 255, 255)",
+        "bottom": 0,
+        "display": "flex",
+        "flexDirection": "column",
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <div
+      data-radium={true}
+      style={
+        Object {
+          "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+          "marginLeft": 15,
+          "marginRight": 15,
+          "marginTop": 15,
+          "paddingBottom": 15,
+          "paddingTop": 2,
+        }
+      }
+    >
+      <h2
+        data-radium={true}
+        style={
+          Object {
+            "color": "rgba(0, 0, 0, 0.6)",
+            "fontSize": 20,
+            "fontWeight": 200,
+            "margin": 0,
+            "padding": 0,
+          }
+        }
+      >
+        Doges on Trial UI-Kit
+      </h2>
+    </div>
+    <div
+      data-radium={true}
+      style={
+        Object {
+          "boxSizing": "border-box",
+          "flex": 1,
+          "margin": 50,
+          "position": "relative",
+        }
+      }
+    >
+      <div
+        data-radium={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "bottom": 0,
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <div
+          data-radium={true}
+          style={
+            Object {
+              "border": "solid 1px rgba(0, 0, 0, 0.0)",
+              "boxSizing": "border-box",
+              "height": "auto",
+              "position": "relative",
+              "width": "auto",
+            }
+          }
+        >
+          <div
+            className="Dropdown "
+          >
+            <div
+              className="Dropdown-box"
+              onClick={[Function]}
+            >
+              <span>
+                <svg
+                  aria-hidden="true"
+                  className="svg-inline--fa fa-sliders-h fa-w-16 "
+                  data-icon="sliders-h"
+                  data-prefix="fas"
+                  role="img"
+                  style={Object {}}
+                  viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M496 384H160v-16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v16H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h80v16c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-16h336c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm0-160h-80v-16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v16H16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h336v16c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-16h80c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm0-160H288V48c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v16H16C7.2 64 0 71.2 0 80v32c0 8.8 7.2 16 16 16h208v16c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-16h208c8.8 0 16-7.2 16-16V80c0-8.8-7.2-16-16-16z"
+                    fill="currentColor"
+                    style={Object {}}
+                  />
+                </svg>
+                    
+                Filter
+              </span>
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-caret-down fa-w-10 Dropdown-box-caret"
+                data-icon="caret-down"
+                data-prefix="fas"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 320 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": "auto",
+                "height": 20,
+                "left": -19,
+                "position": "absolute",
+                "right": "auto",
+                "top": -19,
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 5,
+                  "top": undefined,
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 5,
+                  "left": "auto",
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            />
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": "auto",
+                "height": 20,
+                "left": "auto",
+                "position": "absolute",
+                "right": -19,
+                "top": -19,
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": 5,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": "auto",
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 5,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": "auto",
+                  "top": 0,
+                }
+              }
+            />
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": -19,
+                "height": 20,
+                "left": -19,
+                "position": "absolute",
+                "right": "auto",
+                "top": "auto",
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": "auto",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 5,
+                  "top": 0,
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": "auto",
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 5,
+                }
+              }
+            />
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": -19,
+                "height": 20,
+                "left": "auto",
+                "position": "absolute",
+                "right": -19,
+                "top": undefined,
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": "auto",
+                  "left": 5,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": "auto",
+                  "top": 5,
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Dropdown radio 1`] = `
+<div>
+  <div
+    data-radium={true}
+    style={
+      Object {
+        "background": "rgb(255, 255, 255)",
+        "bottom": 0,
+        "display": "flex",
+        "flexDirection": "column",
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <div
+      data-radium={true}
+      style={
+        Object {
+          "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+          "marginLeft": 15,
+          "marginRight": 15,
+          "marginTop": 15,
+          "paddingBottom": 15,
+          "paddingTop": 2,
+        }
+      }
+    >
+      <h2
+        data-radium={true}
+        style={
+          Object {
+            "color": "rgba(0, 0, 0, 0.6)",
+            "fontSize": 20,
+            "fontWeight": 200,
+            "margin": 0,
+            "padding": 0,
+          }
+        }
+      >
+        Doges on Trial UI-Kit
+      </h2>
+    </div>
+    <div
+      data-radium={true}
+      style={
+        Object {
+          "boxSizing": "border-box",
+          "flex": 1,
+          "margin": 50,
+          "position": "relative",
+        }
+      }
+    >
+      <div
+        data-radium={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "bottom": 0,
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <div
+          data-radium={true}
+          style={
+            Object {
+              "border": "solid 1px rgba(0, 0, 0, 0.0)",
+              "boxSizing": "border-box",
+              "height": "auto",
+              "position": "relative",
+              "width": "auto",
+            }
+          }
+        >
+          <div
+            className="Dropdown "
+          >
+            <div
+              className="Dropdown-box"
+              onClick={[Function]}
+            >
+              Newest
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-caret-down fa-w-10 Dropdown-box-caret"
+                data-icon="caret-down"
+                data-prefix="fas"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 320 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": "auto",
+                "height": 20,
+                "left": -19,
+                "position": "absolute",
+                "right": "auto",
+                "top": -19,
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 5,
+                  "top": undefined,
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 5,
+                  "left": "auto",
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            />
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": "auto",
+                "height": 20,
+                "left": "auto",
+                "position": "absolute",
+                "right": -19,
+                "top": -19,
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": 5,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": "auto",
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 5,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": "auto",
+                  "top": 0,
+                }
+              }
+            />
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": -19,
+                "height": 20,
+                "left": -19,
+                "position": "absolute",
+                "right": "auto",
+                "top": "auto",
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": "auto",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 5,
+                  "top": 0,
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": "auto",
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 5,
+                }
+              }
+            />
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": -19,
+                "height": 20,
+                "left": "auto",
+                "position": "absolute",
+                "right": -19,
+                "top": undefined,
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": "auto",
+                  "left": 5,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": "auto",
+                  "top": 5,
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots Identicon with placeholder seed 1`] = `
 <div>
   <div

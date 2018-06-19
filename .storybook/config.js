@@ -5,6 +5,8 @@ import { combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom'
 
+import '../src/bootstrap/fontawesome'
+
 import '../src/bootstrap/app.css'
 
 // Storybook Host
