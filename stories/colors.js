@@ -4,7 +4,10 @@ import { storiesOf } from '@storybook/react'
 const createRenderColorStory = colors => () => (
   <div className="ColorsStory">
     {colors.map(c => (
-      <div className={`ColorsStory-block ColorsStory-block--${c.variableName}`}>
+      <div
+        key={c.variableName}
+        className={`ColorsStory-block ColorsStory-block--${c.variableName}`}
+      >
         <div className="ColorsStory-block-label">
           {c.name}{' '}
           <div className="ColorsStory-block-label-hexCode">{c.hexCode}</div>

@@ -37,7 +37,7 @@ class Initializer extends PureComponent {
         resource={accounts}
         loading="Loading..."
         done={children}
-        failedLoading={<RequiresMetaMask needsUnlock={web3.eth} />}
+        failedLoading={<RequiresMetaMask needsUnlock={Boolean(web3.eth)} />}
         extraValues={[accounts.data && accounts.data[0]]}
         extraFailedValues={[!web3.eth]}
       />
