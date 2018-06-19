@@ -16,28 +16,21 @@ const bricks = [...new Array(100)].map((_, i) => (
     BRICK {i}
   </div>
 ))
+const createRenderMasonryGridStory = ({ filter, sort } = {}) => () => (
+  <MasonryGrid filter={filter} sort={sort} className="MasonryGridStory">
+    {bricks}
+  </MasonryGrid>
+)
 
 storiesOf('Masonry Grid', module)
-  .add('default', () => (
-    <MasonryGrid className="MasonryGridStory">{bricks}</MasonryGrid>
-  ))
-  .add('filter odds', () => (
-    <MasonryGrid filter={['even']} className="MasonryGridStory">
-      {bricks}
-    </MasonryGrid>
-  ))
-  .add('filter evens', () => (
-    <MasonryGrid filter={['odd']} className="MasonryGridStory">
-      {bricks}
-    </MasonryGrid>
-  ))
-  .add('sort ascending', () => (
-    <MasonryGrid sort={{ index: 'ascending' }} className="MasonryGridStory">
-      {bricks}
-    </MasonryGrid>
-  ))
-  .add('sort descending', () => (
-    <MasonryGrid sort={{ index: 'descending' }} className="MasonryGridStory">
-      {bricks}
-    </MasonryGrid>
-  ))
+  .add('default', createRenderMasonryGridStory())
+  .add('filter odds', createRenderMasonryGridStory({ filter: ['even'] }))
+  .add('filter evens', createRenderMasonryGridStory({ filter: ['odd'] }))
+  .add(
+    'sort ascending',
+    createRenderMasonryGridStory({ sort: { index: 'ascending' } })
+  )
+  .add(
+    'sort descending',
+    createRenderMasonryGridStory({ sort: { index: 'descending' } })
+  )

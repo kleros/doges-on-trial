@@ -16616,7 +16616,7 @@ exports[`Storyshots Text Input error 1`] = `
               value=""
             />
             <div
-              className="TextInput-placeholder is-touched"
+              className="TextInput-placeholder"
             >
               EMAIL
             </div>

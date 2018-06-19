@@ -13,7 +13,7 @@ const TextInput = ({
 }) => (
   <div
     className={`TextInput ${
-      touched && error ? 'is-error' : valid ? 'is-valid' : ''
+      error ? 'is-error' : valid ? 'is-valid' : ''
     } ${className}`}
   >
     <input
@@ -35,7 +35,7 @@ const TextInput = ({
         {placeholder}
       </div>
     )}
-    {touched && error && <div className="TextInput-error">{error}</div>}
+    {error && <div className="TextInput-error">{error}</div>}
   </div>
 )
 
