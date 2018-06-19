@@ -2886,6 +2886,8 @@ exports[`Storyshots Doge Card accepted 1`] = `
         >
           <div
             className="DogeCard"
+            id={1}
+            onClick={[Function]}
           >
             <img
               alt="Doge List Submission #1"
@@ -3158,6 +3160,8 @@ exports[`Storyshots Doge Card challenged 1`] = `
         >
           <div
             className="DogeCard"
+            id={1}
+            onClick={[Function]}
           >
             <img
               alt="Doge List Submission #1"
@@ -3430,6 +3434,8 @@ exports[`Storyshots Doge Card pending 1`] = `
         >
           <div
             className="DogeCard"
+            id={1}
+            onClick={[Function]}
           >
             <img
               alt="Doge List Submission #1"
@@ -3702,6 +3708,8 @@ exports[`Storyshots Doge Card rejected 1`] = `
         >
           <div
             className="DogeCard"
+            id={1}
+            onClick={[Function]}
           >
             <img
               alt="Doge List Submission #1"
