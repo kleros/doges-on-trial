@@ -6137,6 +6137,400 @@ exports[`Storyshots Dropdown radio 1`] = `
 </div>
 `;
 
+exports[`Storyshots FAQ Group default 1`] = `
+<div>
+  <div
+    data-radium={true}
+    style={
+      Object {
+        "background": "rgb(255, 255, 255)",
+        "bottom": 0,
+        "display": "flex",
+        "flexDirection": "column",
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <div
+      data-radium={true}
+      style={
+        Object {
+          "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+          "marginLeft": 15,
+          "marginRight": 15,
+          "marginTop": 15,
+          "paddingBottom": 15,
+          "paddingTop": 2,
+        }
+      }
+    >
+      <h2
+        data-radium={true}
+        style={
+          Object {
+            "color": "rgba(0, 0, 0, 0.6)",
+            "fontSize": 20,
+            "fontWeight": 200,
+            "margin": 0,
+            "padding": 0,
+          }
+        }
+      >
+        Doges on Trial UI-Kit
+      </h2>
+    </div>
+    <div
+      data-radium={true}
+      style={
+        Object {
+          "boxSizing": "border-box",
+          "flex": 1,
+          "margin": 50,
+          "position": "relative",
+        }
+      }
+    >
+      <div
+        data-radium={true}
+        style={
+          Object {
+            "alignItems": "center",
+            "bottom": 0,
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          }
+        }
+      >
+        <div
+          data-radium={true}
+          style={
+            Object {
+              "border": "solid 1px rgba(0, 0, 0, 0.0)",
+              "boxSizing": "border-box",
+              "height": "auto",
+              "position": "relative",
+              "width": "auto",
+            }
+          }
+        >
+          <div
+            className="FAQGroup"
+          >
+            <div
+              className="FAQGroup-questionGroup "
+              id={0}
+              onClick={[Function]}
+            >
+              <div
+                className="FAQGroup-questionGroup-question"
+              >
+                Who are the direct users of Kleros?
+              </div>
+              <div
+                className="FAQGroup-questionGroup-answer"
+              >
+                In Kleros, we have two sides to the party. The arbitrators that rule on disputes and the arbitrable parties (we like this word) that create the disputes in the first place.
+              </div>
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-caret-down fa-w-10 FAQGroup-questionGroup-caret"
+                data-icon="caret-down"
+                data-prefix="fas"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 320 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+            <div
+              className="FAQGroup-questionGroup "
+              id={1}
+              onClick={[Function]}
+            >
+              <div
+                className="FAQGroup-questionGroup-question"
+              >
+                Who are the direct users of Kleros?
+              </div>
+              <div
+                className="FAQGroup-questionGroup-answer"
+              >
+                In Kleros, we have two sides to the party. The arbitrators that rule on disputes and the arbitrable parties (we like this word) that create the disputes in the first place.
+              </div>
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-caret-down fa-w-10 FAQGroup-questionGroup-caret"
+                data-icon="caret-down"
+                data-prefix="fas"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 320 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+            <div
+              className="FAQGroup-questionGroup "
+              id={2}
+              onClick={[Function]}
+            >
+              <div
+                className="FAQGroup-questionGroup-question"
+              >
+                Who are the direct users of Kleros?
+              </div>
+              <div
+                className="FAQGroup-questionGroup-answer"
+              >
+                In Kleros, we have two sides to the party. The arbitrators that rule on disputes and the arbitrable parties (we like this word) that create the disputes in the first place.
+              </div>
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-caret-down fa-w-10 FAQGroup-questionGroup-caret"
+                data-icon="caret-down"
+                data-prefix="fas"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 320 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+            <div
+              className="FAQGroup-questionGroup "
+              id={3}
+              onClick={[Function]}
+            >
+              <div
+                className="FAQGroup-questionGroup-question"
+              >
+                Who are the direct users of Kleros?
+              </div>
+              <div
+                className="FAQGroup-questionGroup-answer"
+              >
+                In Kleros, we have two sides to the party. The arbitrators that rule on disputes and the arbitrable parties (we like this word) that create the disputes in the first place.
+              </div>
+              <svg
+                aria-hidden="true"
+                className="svg-inline--fa fa-caret-down fa-w-10 FAQGroup-questionGroup-caret"
+                data-icon="caret-down"
+                data-prefix="fas"
+                role="img"
+                style={Object {}}
+                viewBox="0 0 320 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"
+                  fill="currentColor"
+                  style={Object {}}
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": "auto",
+                "height": 20,
+                "left": -19,
+                "position": "absolute",
+                "right": "auto",
+                "top": -19,
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 5,
+                  "top": undefined,
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 5,
+                  "left": "auto",
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            />
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": "auto",
+                "height": 20,
+                "left": "auto",
+                "position": "absolute",
+                "right": -19,
+                "top": -19,
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": 5,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": "auto",
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 5,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": "auto",
+                  "top": 0,
+                }
+              }
+            />
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": -19,
+                "height": 20,
+                "left": -19,
+                "position": "absolute",
+                "right": "auto",
+                "top": "auto",
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": "auto",
+                  "left": 0,
+                  "position": "absolute",
+                  "right": 5,
+                  "top": 0,
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": "auto",
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 5,
+                }
+              }
+            />
+          </div>
+          <div
+            data-radium={true}
+            style={
+              Object {
+                "bottom": -19,
+                "height": 20,
+                "left": "auto",
+                "position": "absolute",
+                "right": -19,
+                "top": undefined,
+                "width": 20,
+              }
+            }
+          >
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderBottom": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": "auto",
+                  "left": 5,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                }
+              }
+            />
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "borderRight": "solid 1px rgba(0, 0, 0, 0.1)",
+                  "bottom": 0,
+                  "left": 0,
+                  "position": "absolute",
+                  "right": "auto",
+                  "top": 5,
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className="__react_component_tooltip place-top type-dark "
+      data-id="tooltip"
+      id={undefined}
+    />
+  </div>
+</div>
+`;
+
 exports[`Storyshots File Picker default 1`] = `
 <div>
   <div

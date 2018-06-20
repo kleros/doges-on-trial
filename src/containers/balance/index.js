@@ -28,9 +28,7 @@ class Balance extends PureComponent {
 
     return (
       <div className="Balance">
-        <div className="Balance-message">
-          <b>Hello CryptoWorld</b>
-        </div>
+        <div className="Balance-message">Hello CryptoWorld</div>
         <br />
         <br />
         <div className="Balance-message">
