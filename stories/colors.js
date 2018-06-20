@@ -2,15 +2,34 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 const createRenderColorStory = colors => () => (
-  <div className="ColorsStory">
+  <div
+    style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'center'
+    }}
+  >
     {colors.map(c => (
       <div
         key={c.variableName}
-        className={`ColorsStory-block ColorsStory-block--${c.variableName}`}
+        style={{
+          background: c.hexCode,
+          border: '2px solid $mint',
+          borderRadius: '5px',
+          height: '80px',
+          margin: '40px',
+          position: 'relative',
+          width: '80px'
+        }}
       >
-        <div className="ColorsStory-block-label">
-          {c.name}{' '}
-          <div className="ColorsStory-block-label-hexCode">{c.hexCode}</div>
+        <div
+          style={{
+            position: 'absolute',
+            top: '110%'
+          }}
+        >
+          {c.name}
+          <div style={{ color: '#a3a2a5' }}>{c.hexCode}</div>
         </div>
       </div>
     ))}

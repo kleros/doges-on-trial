@@ -2,20 +2,5 @@
 
 /* @define MasonryGrid */
 .MasonryGrid {
-  overflow-y: scroll;
-}
-
-/* @define MasonryGridStory */
-.MasonryGridStory {
-  color: $invertedText;
-  height: 400px !important;
-
-  &-brick {
-    align-items: center;
-    background: $grey;
-    border: 2px solid $mint;
-    display: flex;
-    justify-content: center;
-    width: 200px;
-  }
+  background: $mint;
 }

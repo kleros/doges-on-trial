@@ -22,7 +22,8 @@ export default class MasonryGrid extends PureComponent {
         gutter: PropTypes.number.isRequired
       }).isRequired
     ),
-    className: PropTypes.string
+    className: PropTypes.string,
+    style: PropTypes.shape({})
   }
 
   static defaultProps = {
@@ -36,7 +37,8 @@ export default class MasonryGrid extends PureComponent {
       { mq: '768px', columns: 3, gutter: 25 },
       { mq: '1024px', columns: 4, gutter: 50 }
     ],
-    className: ''
+    className: '',
+    style: undefined
   }
 
   ref = React.createRef()
@@ -108,9 +110,9 @@ export default class MasonryGrid extends PureComponent {
   })
 
   render() {
-    const { children, filter, sort, className } = this.props
+    const { children, filter, sort, className, style } = this.props
     return (
-      <div ref={this.ref} className={`MasonryGrid ${className}`}>
+      <div ref={this.ref} className={`MasonryGrid ${className}`} style={style}>
         {this.updatePacking(this.sort(this.filter(children, filter), sort))}
       </div>
     )
