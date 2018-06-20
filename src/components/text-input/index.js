@@ -16,14 +16,23 @@ const TextInput = ({
       error ? 'is-error' : valid ? 'is-valid' : ''
     } ${className}`}
   >
-    <input
-      value={value}
-      onBlur={onBlur}
-      onChange={onChange}
-      type={type}
-      step={step}
-      className="TextInput-input"
-    />
+    {type === 'textarea' ? (
+      <textarea
+        value={value}
+        onBlur={onBlur}
+        onChange={onChange}
+        className="TextInput-input"
+      />
+    ) : (
+      <input
+        value={value}
+        onBlur={onBlur}
+        onChange={onChange}
+        type={type}
+        step={step}
+        className="TextInput-input"
+      />
+    )}
     {placeholder && (
       <div
         className={`TextInput-placeholder${

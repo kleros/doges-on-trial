@@ -6,6 +6,9 @@ import { action } from '@storybook/addon-actions'
 import TextInput from '../src/components/text-input'
 
 const onBlur = action('onBlur')
+const renderTextInput = (state, onChange, type) => (
+  <TextInput {...state} input={{ ...state.input, onChange }} type={type} />
+)
 const createRenderTextInputStory = ({ valid, touched, error } = {}) =>
   withState(
     {
@@ -13,22 +16,23 @@ const createRenderTextInputStory = ({ valid, touched, error } = {}) =>
       meta: { valid, touched, error },
       placeholder: 'EMAIL'
     },
-    store => (
-      <TextInput
-        {...store.state}
-        input={{
-          ...store.state.input,
-          onChange: event =>
-            store.set({
-              input: {
-                value: event.currentTarget.value,
-                onBlur: null,
-                onChange: null
-              }
-            })
-        }}
-      />
-    )
+    store => {
+      const onChange = event =>
+        store.set({
+          input: {
+            value: event.currentTarget.value,
+            onBlur: null,
+            onChange: null
+          }
+        })
+
+      return (
+        <div>
+          {renderTextInput(store.state, onChange)}
+          {renderTextInput(store.state, onChange, 'textarea')}
+        </div>
+      )
+    }
   )
 
 storiesOf('Text Input', module)

@@ -17436,21 +17436,38 @@ exports[`Storyshots Text Input default 1`] = `
             }
           }
         >
-          <div
-            className="TextInput  "
-          >
-            <input
-              className="TextInput-input"
-              onBlur={[Function]}
-              onChange={[Function]}
-              step={undefined}
-              type="text"
-              value=""
-            />
+          <div>
             <div
-              className="TextInput-placeholder"
+              className="TextInput  "
             >
-              EMAIL
+              <input
+                className="TextInput-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                step={undefined}
+                type="text"
+                value=""
+              />
+              <div
+                className="TextInput-placeholder"
+              >
+                EMAIL
+              </div>
+            </div>
+            <div
+              className="TextInput  "
+            >
+              <textarea
+                className="TextInput-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                value=""
+              />
+              <div
+                className="TextInput-placeholder"
+              >
+                EMAIL
+              </div>
             </div>
           </div>
           <div
@@ -17708,26 +17725,48 @@ exports[`Storyshots Text Input error 1`] = `
             }
           }
         >
-          <div
-            className="TextInput is-error "
-          >
-            <input
-              className="TextInput-input"
-              onBlur={[Function]}
-              onChange={[Function]}
-              step={undefined}
-              type="text"
-              value=""
-            />
+          <div>
             <div
-              className="TextInput-placeholder"
+              className="TextInput is-error "
             >
-              EMAIL
+              <input
+                className="TextInput-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                step={undefined}
+                type="text"
+                value=""
+              />
+              <div
+                className="TextInput-placeholder"
+              >
+                EMAIL
+              </div>
+              <div
+                className="TextInput-error"
+              >
+                Please enter a valid email.
+              </div>
             </div>
             <div
-              className="TextInput-error"
+              className="TextInput is-error "
             >
-              Please enter a valid email.
+              <textarea
+                className="TextInput-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                value=""
+              />
+              <div
+                className="TextInput-placeholder"
+              >
+                EMAIL
+              </div>
+              <div
+                className="TextInput-error"
+              >
+                Please enter a valid email.
+              </div>
             </div>
           </div>
           <div
@@ -17985,21 +18024,38 @@ exports[`Storyshots Text Input touched 1`] = `
             }
           }
         >
-          <div
-            className="TextInput  "
-          >
-            <input
-              className="TextInput-input"
-              onBlur={[Function]}
-              onChange={[Function]}
-              step={undefined}
-              type="text"
-              value=""
-            />
+          <div>
             <div
-              className="TextInput-placeholder is-touched"
+              className="TextInput  "
             >
-              EMAIL
+              <input
+                className="TextInput-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                step={undefined}
+                type="text"
+                value=""
+              />
+              <div
+                className="TextInput-placeholder is-touched"
+              >
+                EMAIL
+              </div>
+            </div>
+            <div
+              className="TextInput  "
+            >
+              <textarea
+                className="TextInput-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                value=""
+              />
+              <div
+                className="TextInput-placeholder is-touched"
+              >
+                EMAIL
+              </div>
             </div>
           </div>
           <div
@@ -18257,21 +18313,38 @@ exports[`Storyshots Text Input valid 1`] = `
             }
           }
         >
-          <div
-            className="TextInput is-valid "
-          >
-            <input
-              className="TextInput-input"
-              onBlur={[Function]}
-              onChange={[Function]}
-              step={undefined}
-              type="text"
-              value=""
-            />
+          <div>
             <div
-              className="TextInput-placeholder"
+              className="TextInput is-valid "
             >
-              EMAIL
+              <input
+                className="TextInput-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                step={undefined}
+                type="text"
+                value=""
+              />
+              <div
+                className="TextInput-placeholder"
+              >
+                EMAIL
+              </div>
+            </div>
+            <div
+              className="TextInput is-valid "
+            >
+              <textarea
+                className="TextInput-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                value=""
+              />
+              <div
+                className="TextInput-placeholder"
+              >
+                EMAIL
+              </div>
             </div>
           </div>
           <div
