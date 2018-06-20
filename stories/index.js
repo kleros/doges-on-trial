@@ -1,4 +1,5 @@
 import './button'
+import './card'
 import './colors'
 import './doge-card'
 import './doge-image'

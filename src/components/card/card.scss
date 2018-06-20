@@ -1,0 +1,9 @@
+@import '../../styles/_colors.scss';
+
+/* @define Card */
+.Card {
+  border: 1px solid $mint;
+  border-radius: 4px;
+  box-shadow: 0 2px 1px 0 $lightGrey;
+  padding: 45px 45px 60px;
+}
