@@ -1,6 +1,7 @@
 import './button'
 import './colors'
 import './doge-card'
+import './doge-image'
 import './dropdown'
 import './file-picker'
 import './identicon'

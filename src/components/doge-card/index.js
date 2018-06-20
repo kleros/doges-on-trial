@@ -7,7 +7,7 @@ const DogeCard = ({ id, status, imageSrc, onClick }) => (
   <div id={id} onClick={onClick} className="DogeCard">
     <img
       src={imageSrc}
-      alt={`Doge List Submission #${id}`}
+      alt={`Doge List Submission`}
       className="DogeCard-image"
     />
     <div className={`DogeCard-tag DogeCard-tag--${status}`} />
