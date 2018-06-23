@@ -10,7 +10,7 @@ const NavBar = ({ routes, extras }) => (
   <div className="NavBar">
     <img src={logo} alt="Logo" className="NavBar-logo" />
     {routes.map(r => (
-      <div className="NavBar-route">
+      <div key={r.title} className="NavBar-route">
         {r.isExternal ? (
           <a
             href={r.to}
@@ -32,17 +32,23 @@ const NavBar = ({ routes, extras }) => (
         )}
       </div>
     ))}
-    {extras.map(e => <div className="NavBar-extra">{e}</div>)}
+    {extras.map(e => (
+      <div key={e.key} className="NavBar-extra">
+        {e}
+      </div>
+    ))}
   </div>
 )
 
 NavBar.propTypes = {
   // State
-  routes: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    to: PropTypes.string.isRequired,
-    isExternal: PropTypes.bool
-  }).isRequired,
+  routes: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      to: PropTypes.string.isRequired,
+      isExternal: PropTypes.bool
+    }).isRequired
+  ).isRequired,
   extras: PropTypes.arrayOf(PropTypes.node.isRequired).isRequired
 }
 

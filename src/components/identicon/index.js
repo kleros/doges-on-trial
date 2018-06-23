@@ -23,7 +23,7 @@ const Identicon = ({ size, scale, address, round, ...rest }) => {
 
 Identicon.propTypes = {
   // React Blockies
-  ...Blockies.propTypes,
+  ...{ ...Blockies.propTypes, seed: PropTypes.string },
   size: PropTypes.number,
   scale: PropTypes.number,
 
