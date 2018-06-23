@@ -20494,7 +20494,7 @@ exports[`Storyshots Nav Bar default 1`] = `
             data-radium={true}
             style={
               Object {
-                "width": "700px",
+                "width": "900px",
               }
             }
           >
@@ -20575,14 +20575,18 @@ exports[`Storyshots Nav Bar default 1`] = `
                 className="NavBar-extra"
               >
                 <div
-                  className="Button Button--ternary Button--small  "
-                  onClick={null}
+                  className="NotificationBadge"
                 >
-                  <h2
-                    className="Button-label "
+                  <div>
+                    [Identicon]
+                  </div>
+                  <div
+                    className="NotificationBadge-badge"
+                    onMouseEnter={[Function]}
+                    onMouseLeave={[Function]}
                   >
-                    Identicon
-                  </h2>
+                    5
+                  </div>
                 </div>
               </div>
             </div>
