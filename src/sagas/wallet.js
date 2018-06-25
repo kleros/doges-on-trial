@@ -2,8 +2,8 @@ import { takeLatest, select, call } from 'redux-saga/effects'
 
 import * as walletSelectors from '../reducers/wallet'
 import * as walletActions from '../actions/wallet'
-import { web3 } from '../bootstrap/dapp-api'
 import { lessduxSaga } from '../utils/saga'
+import { web3 } from '../bootstrap/dapp-api'
 import * as errorConstants from '../constants/error'
 
 /**

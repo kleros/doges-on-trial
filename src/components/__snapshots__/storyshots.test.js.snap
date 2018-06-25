@@ -20558,7 +20558,7 @@ exports[`Storyshots Nav Bar default 1`] = `
                 </a>
               </div>
               <div
-                className="NavBar-extra"
+                className="NavBar-extra NavBar-extra--first"
               >
                 <div
                   className="Button Button--ternary Button--small  "
@@ -20572,7 +20572,7 @@ exports[`Storyshots Nav Bar default 1`] = `
                 </div>
               </div>
               <div
-                className="NavBar-extra"
+                className="NavBar-extra "
               >
                 <div
                   className="NotificationBadge"

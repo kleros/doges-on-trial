@@ -56,18 +56,20 @@ export default class NotificationBadge extends PureComponent {
       onShowAll
     } = this.props
     const { isOpen } = this.state
-    const useMaxShown = maxShown && notifications.length > maxShown
 
+    const useMaxShown = maxShown && notifications.length > maxShown
     return (
       <div className="NotificationBadge">
         {children}
-        <div
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-          className="NotificationBadge-badge"
-        >
-          {notifications.length}
-        </div>
+        {notifications.length > 0 && (
+          <div
+            onMouseEnter={this.handleMouseEnter}
+            onMouseLeave={this.handleMouseLeave}
+            className="NotificationBadge-badge"
+          >
+            {notifications.length}
+          </div>
+        )}
         {isOpen && (
           <div
             onMouseEnter={this.handleMouseEnter}

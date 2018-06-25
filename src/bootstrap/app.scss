@@ -31,6 +31,11 @@ body,
   width: 100%;
 }
 
+// Router Root
+#router-root {
+  padding-top: 70px;
+}
+
 // Scroll Root
 #scroll-root {
   background: $background;
@@ -45,4 +50,9 @@ body,
 // Horizontal Rule
 hr {
   border: 1px solid $white;
+}
+
+// Image
+img {
+  font-size: 6px;
 }

@@ -31,7 +31,6 @@ class Initializer extends PureComponent {
 
   render() {
     const { accounts, children } = this.props
-
     return (
       <RenderIf
         resource={accounts}

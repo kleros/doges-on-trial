@@ -32,8 +32,11 @@ const NavBar = ({ routes, extras }) => (
         )}
       </div>
     ))}
-    {extras.map(e => (
-      <div key={e.key} className="NavBar-extra">
+    {extras.map((e, i) => (
+      <div
+        key={e.key}
+        className={`NavBar-extra ${i === 0 ? 'NavBar-extra--first' : ''}`}
+      >
         {e}
       </div>
     ))}
