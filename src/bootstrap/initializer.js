@@ -5,7 +5,7 @@ import { RenderIf } from 'lessdux'
 
 import * as walletSelectors from '../reducers/wallet'
 import * as walletActions from '../actions/wallet'
-import RequiresMetaMask from '../components/requires-meta-mask'
+import RequiresMetaMaskPage from '../containers/requires-meta-mask-page'
 
 import { web3 } from './dapp-api'
 
@@ -36,7 +36,7 @@ class Initializer extends PureComponent {
         resource={accounts}
         loading="Loading..."
         done={children}
-        failedLoading={<RequiresMetaMask needsUnlock={Boolean(web3.eth)} />}
+        failedLoading={<RequiresMetaMaskPage needsUnlock={Boolean(web3.eth)} />}
         extraValues={[accounts.data && accounts.data[0]]}
         extraFailedValues={[!web3.eth]}
       />

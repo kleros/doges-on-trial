@@ -1523,7 +1523,7 @@ exports[`Storyshots Card default 1`] = `
           }
         >
           <div
-            className="Card"
+            className="Card "
           >
             This is a card.
           </div>
@@ -21977,23 +21977,23 @@ exports[`Storyshots Requires MetaMask not found 1`] = `
               </small>
               <div>
                 <br />
-                <div
-                  className="Button Button--primary Button--normal  "
-                  onClick={null}
+                <a
+                  className="Button--link"
+                  href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
-                  <h2
-                    className="Button-label "
+                  <div
+                    className="Button Button--primary Button--normal  "
+                    onClick={null}
                   >
-                    <a
-                      className="Button-label-link"
-                      href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en"
-                      rel="noopener noreferrer"
-                      target="_blank"
+                    <h2
+                      className="Button-label "
                     >
                       Install MetaMask
-                    </a>
-                  </h2>
-                </div>
+                    </h2>
+                  </div>
+                </a>
               </div>
             </div>
           </div>

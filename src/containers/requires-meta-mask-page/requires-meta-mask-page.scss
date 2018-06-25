@@ -1,0 +1,16 @@
+/* @define RequiresMetaMaskPage */
+.RequiresMetaMaskPage {
+  // stylelint-disable-next-line plugin/selector-bem-pattern
+  &-FAQ {
+    padding: 40px 20%;
+  }
+
+  &-card {
+    margin: 100px -20%;
+    text-align: center;
+
+    &-button {
+      margin: 8px;
+    }
+  }
+}

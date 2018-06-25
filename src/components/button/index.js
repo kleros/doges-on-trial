@@ -13,30 +13,31 @@ const Button = ({
   className,
   labelClassName,
   ...rest
-}) => (
-  <div
-    onClick={disabled ? null : onClick}
-    className={`Button Button--${type} Button--${size} ${
-      disabled ? 'is-disabled' : ''
-    } ${className}`}
-    {...rest}
-  >
-    <h2 className={`Button-label ${labelClassName}`}>
-      {to ? (
-        <a
-          href={to}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="Button-label-link"
-        >
-          {children}
-        </a>
-      ) : (
-        children
-      )}
-    </h2>
-  </div>
-)
+}) => {
+  const button = (
+    <div
+      onClick={disabled ? null : onClick}
+      className={`Button Button--${type} Button--${size} ${
+        disabled ? 'is-disabled' : ''
+      } ${className}`}
+      {...rest}
+    >
+      <h2 className={`Button-label ${labelClassName}`}>{children}</h2>
+    </div>
+  )
+  return to ? (
+    <a
+      href={to}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="Button--link"
+    >
+      {button}
+    </a>
+  ) : (
+    button
+  )
+}
 
 Button.propTypes = {
   // State

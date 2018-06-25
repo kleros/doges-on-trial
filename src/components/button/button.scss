@@ -14,12 +14,6 @@
 
     .Button-label {
       color: $text;
-      white-space: nowrap;
-
-      &-link {
-        color: $text;
-        text-decoration: none;
-      }
     }
   }
 }
@@ -30,12 +24,23 @@
   border-radius: 5px;
   box-shadow: 0 2px 0 0 $mint;
   display: inline-flex;
+  max-width: 100%;
   padding: 0 30px;
   user-select: none;
 
   @include buttonType('primary', $info, $invertedText);
   @include buttonType('secondary', lighten($info, 20%), $invertedText);
   @include buttonType('ternary', $mint, $darkText);
+
+  &--link {
+    text-decoration: none;
+  }
+
+  &-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 
   &--small {
     height: 45px;
