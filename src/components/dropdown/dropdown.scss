@@ -5,6 +5,11 @@
   color: $grey;
   position: relative;
   user-select: none;
+  width: 230px;
+
+  &--checkbox {
+    width: initial;
+  }
 
   &-box {
     border: 1px solid $mint;
@@ -13,7 +18,15 @@
     height: 50px;
     line-height: 50px;
     padding-left: 29px;
-    width: 230px;
+
+    .Dropdown--checkbox & {
+      padding-right: 39px;
+    }
+
+    .Dropdown--inverted & {
+      background: $disabled;
+      color: $invertedText;
+    }
 
     &-caret {
       position: absolute;
@@ -34,8 +47,9 @@
     color: $lightText;
     font-size: 14px;
     position: absolute;
+    right: -1px;
     top: 56px;
-    width: 231px;
+    width: 232px;
 
     &-option {
       padding: 15px 29px;

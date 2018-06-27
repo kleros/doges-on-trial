@@ -46,6 +46,7 @@ export default class FAQGroup extends PureComponent {
       <div className="FAQGroup">
         {questions.map((q, i) => (
           <div
+            key={i}
             id={i}
             onClick={this.handleCaretClick}
             className={`FAQGroup-questionGroup ${

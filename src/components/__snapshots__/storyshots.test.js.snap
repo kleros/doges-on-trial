@@ -5894,7 +5894,7 @@ exports[`Storyshots Dropdown checkbox 1`] = `
           }
         >
           <div
-            className="Dropdown "
+            className="Dropdown Dropdown--checkbox   "
           >
             <div
               className="Dropdown-box"
@@ -6201,7 +6201,7 @@ exports[`Storyshots Dropdown radio 1`] = `
           }
         >
           <div
-            className="Dropdown "
+            className="Dropdown    "
           >
             <div
               className="Dropdown-box"

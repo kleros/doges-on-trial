@@ -25,11 +25,20 @@ export default class Dropdown extends PureComponent {
     ]).isRequired,
 
     // Handlers
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+
+    // Modifiers
+    inverted: PropTypes.bool,
+    className: PropTypes.string
   }
 
   static defaultProps = {
-    label: null
+    // State
+    label: null,
+
+    // Modifiers
+    inverted: false,
+    className: ''
   }
 
   state = { isOpen: false }
@@ -57,12 +66,16 @@ export default class Dropdown extends PureComponent {
   }
 
   render() {
-    const { type, label, options, value } = this.props
+    const { type, label, options, value, inverted, className } = this.props
     const { isOpen } = this.state
 
     const isCheckbox = type === 'checkbox'
     return (
-      <div className={`Dropdown ${isOpen ? 'is-open' : ''}`}>
+      <div
+        className={`Dropdown ${isCheckbox ? 'Dropdown--checkbox' : ''} ${
+          inverted ? 'Dropdown--inverted' : ''
+        } ${isOpen ? 'is-open' : ''} ${className}`}
+      >
         <div onClick={this.handleBoxClick} className="Dropdown-box">
           {isCheckbox ? (
             <span>

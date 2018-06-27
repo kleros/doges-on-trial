@@ -1,12 +1,37 @@
+@import '../../styles/_colors.scss';
+
 /* @define Doges */
 .Doges {
-  padding: 40px 13%;
+  &-settingsBar {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 13%;
 
-  @media only screen and (max-width: 1100px) {
-    padding: 40px 8%;
-  }
+    @media only screen and (max-width: 1100px) {
+      padding: 40px 8%;
+    }
 
-  @media only screen and (max-width: 950px) {
-    padding: 40px 3%;
+    @media only screen and (max-width: 950px) {
+      padding: 40px 3%;
+    }
+
+    &-count {
+      &-label {
+        color: $lightText;
+      }
+
+      &-number {
+        font-weight: 500;
+      }
+    }
+
+    &-dropdowns {
+      display: flex;
+
+      &-dropdown {
+        margin-left: 16px;
+      }
+    }
   }
 }
