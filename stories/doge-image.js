@@ -9,7 +9,7 @@ const createRenderDogeImageStory = status => () => (
 )
 
 storiesOf('Doge Image', module)
-  .add('pending', createRenderDogeImageStory('pending'))
-  .add('challenged', createRenderDogeImageStory('challenged'))
-  .add('accepted', createRenderDogeImageStory('accepted'))
-  .add('rejected', createRenderDogeImageStory('rejected'))
+  .add('pending', createRenderDogeImageStory('Pending'))
+  .add('challenged', createRenderDogeImageStory('Challenged'))
+  .add('accepted', createRenderDogeImageStory('Accepted'))
+  .add('rejected', createRenderDogeImageStory('Rejected'))

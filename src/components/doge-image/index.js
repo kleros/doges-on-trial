@@ -2,20 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
+import * as dogeConstants from '../../constants/doge'
+
 import './doge-image.css'
 
 const DogeImage = ({ status, imageSrc }) => {
   let icon
-  switch (status) {
-    case 'pending':
+  switch (dogeConstants.STATUS_ENUM[status]) {
+    case dogeConstants.STATUS_ENUM.Pending:
       break
-    case 'challenged':
+    case dogeConstants.STATUS_ENUM.Challenged:
       icon = 'question'
       break
-    case 'accepted':
+    case dogeConstants.STATUS_ENUM.Accepted:
       icon = 'check'
       break
-    case 'rejected':
+    case dogeConstants.STATUS_ENUM.Rejected:
       icon = 'times'
       break
     default:
@@ -23,7 +25,7 @@ const DogeImage = ({ status, imageSrc }) => {
   }
 
   return (
-    <div className={`DogeImage DogeImage--${status}`}>
+    <div className={`DogeImage DogeImage--${status.toLowerCase()}`}>
       <img src={imageSrc} alt="Doge Submission" className="DogeImage-image" />
       {icon && <FontAwesomeIcon icon={icon} className="DogeImage-icon" />}
     </div>
@@ -32,8 +34,7 @@ const DogeImage = ({ status, imageSrc }) => {
 
 DogeImage.propTypes = {
   // State
-  status: PropTypes.oneOf(['pending', 'challenged', 'accepted', 'rejected'])
-    .isRequired,
+  status: PropTypes.oneOf(dogeConstants.STATUS_ENUM.values).isRequired,
   imageSrc: PropTypes.string.isRequired
 }
 

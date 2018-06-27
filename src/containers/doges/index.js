@@ -2,14 +2,93 @@ import React, { PureComponent } from 'react'
 import memoizeOne from 'memoize-one'
 
 import Dropdown from '../../components/dropdown'
+import MasonryGrid from '../../components/masonry-grid'
+import DogeCard from '../../components/doge-card'
+import doge from '../../assets/images/doge.jpg'
 import * as dogeConstants from '../../constants/doge'
 
 import './doges.css'
 
-export default class Doges extends PureComponent {
-  state = { filterValue: [0], sortValue: 0 }
+const bricks = [
+  <DogeCard
+    key={0}
+    id={0}
+    status={dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Pending]}
+    imageSrc={doge}
+    masonryGridFilterValues={[
+      dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Pending]
+    ]}
+    masonryGridSortValues={{
+      Newest: 1,
+      Oldest: 1,
+      'Challenges ↑': 1,
+      'Challenges ↓': -1
+    }}
+  >
+    Pending
+  </DogeCard>,
+  <DogeCard
+    key={1}
+    id={1}
+    status={dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Challenged]}
+    imageSrc={doge}
+    masonryGridFilterValues={[
+      dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Challenged]
+    ]}
+    masonryGridSortValues={{
+      Newest: 2,
+      Oldest: 2,
+      'Challenges ↑': 2,
+      'Challenges ↓': -2
+    }}
+  >
+    Challenged
+  </DogeCard>,
+  <DogeCard
+    key={2}
+    id={2}
+    status={dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Accepted]}
+    imageSrc={doge}
+    masonryGridFilterValues={[
+      dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Accepted]
+    ]}
+    masonryGridSortValues={{
+      Newest: 3,
+      Oldest: 3,
+      'Challenges ↑': 3,
+      'Challenges ↓': -3
+    }}
+  >
+    Accepted
+  </DogeCard>,
+  <DogeCard
+    key={3}
+    id={3}
+    status={dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Rejected]}
+    imageSrc={doge}
+    masonryGridFilterValues={[
+      dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Rejected]
+    ]}
+    masonryGridSortValues={{
+      Newest: 4,
+      Oldest: 4,
+      'Challenges ↑': 4,
+      'Challenges ↓': -4
+    }}
+  >
+    Rejected
+  </DogeCard>
+]
 
-  getFilterOptionCounts = memoizeOne(() =>
+export default class Doges extends PureComponent {
+  state = {
+    filterValue: dogeConstants.FILTER_OPTIONS_ENUM.values.map((_, i) => i),
+    filter: dogeConstants.FILTER_OPTIONS_ENUM.values,
+    sortValue: 0,
+    sort: { [dogeConstants.SORT_OPTIONS_ENUM[0]]: 'ascending' }
+  }
+
+  getFilterOptionsWithCountsAndColors = memoizeOne(() =>
     dogeConstants.FILTER_OPTIONS_ENUM.values.map(value => ({
       label: value,
       count: 5,
@@ -17,12 +96,22 @@ export default class Doges extends PureComponent {
     }))
   )
 
-  handleFilterChange = value => this.setState({ filterValue: value })
+  handleFilterChange = value =>
+    this.setState({
+      filterValue: value,
+      filter: value.map(v => dogeConstants.FILTER_OPTIONS_ENUM[v])
+    })
 
-  handleSortChange = value => this.setState({ sortValue: value })
+  handleSortChange = value =>
+    this.setState({
+      sortValue: value,
+      sort: {
+        [dogeConstants.SORT_OPTIONS_ENUM[value]]: 'ascending'
+      }
+    })
 
   render() {
-    const { filterValue, sortValue } = this.state
+    const { filterValue, filter, sortValue, sort } = this.state
     return (
       <div className="Doges">
         <div className="Doges-settingsBar">
@@ -37,7 +126,7 @@ export default class Doges extends PureComponent {
               value={filterValue}
               type="checkbox"
               label="Filter"
-              options={this.getFilterOptionCounts()}
+              options={this.getFilterOptionsWithCountsAndColors()}
               onChange={this.handleFilterChange}
               inverted
               className="Doges-settingsBar-dropdowns-dropdown"
@@ -51,6 +140,9 @@ export default class Doges extends PureComponent {
             />
           </div>
         </div>
+        <MasonryGrid filter={filter} sort={sort} className="Doges-masonryGrid">
+          {bricks}
+        </MasonryGrid>
       </div>
     )
   }

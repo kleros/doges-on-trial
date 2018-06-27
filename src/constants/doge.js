@@ -16,10 +16,7 @@ export const STATUS_COLOR_ENUM = createEnum([
 
 // Gallery Settings
 export const FILTER_OPTIONS_ENUM = createEnum([
-  'Pending',
-  'Challenged',
-  'Accepted',
-  'Rejected',
+  ...STATUS_ENUM.values,
   'My Submissions',
   'My Challenges'
 ])

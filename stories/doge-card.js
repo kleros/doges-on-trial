@@ -11,7 +11,7 @@ const createRenderDogeCardStory = status => () => (
 )
 
 storiesOf('Doge Card', module)
-  .add('pending', createRenderDogeCardStory('pending'))
-  .add('challenged', createRenderDogeCardStory('challenged'))
-  .add('accepted', createRenderDogeCardStory('accepted'))
-  .add('rejected', createRenderDogeCardStory('rejected'))
+  .add('pending', createRenderDogeCardStory('Pending'))
+  .add('challenged', createRenderDogeCardStory('Challenged'))
+  .add('accepted', createRenderDogeCardStory('Accepted'))
+  .add('rejected', createRenderDogeCardStory('Rejected'))

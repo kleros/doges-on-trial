@@ -7,7 +7,7 @@
   box-shadow: 0 0 6px 0 $lightGrey, 0 0 1px 0 $lightGrey, 0 1px 0 0 $lightGrey;
   overflow: hidden;
   position: relative;
-  width: 300px;
+  width: 250px;
 
   &-image {
     display: block;
@@ -22,19 +22,19 @@
     top: 10px;
     width: 15px;
 
-    &--pending {
+    .DogeCard--pending & {
       background: $info;
     }
 
-    &--challenged {
+    .DogeCard--challenged & {
       background: $warning;
     }
 
-    &--accepted {
+    .DogeCard--accepted & {
       background: $success;
     }
 
-    &--rejected {
+    .DogeCard--rejected & {
       background: $error;
     }
   }
@@ -55,28 +55,28 @@
     user-select: none;
     width: calc(100% - 20px);
 
-    .DogeCard:hover & {
-      opacity: 0.8;
-    }
-
-    &--pending {
+    .DogeCard--pending & {
       background: $info;
       box-shadow: 0 2px 0 0 $info;
     }
 
-    &--challenged {
+    .DogeCard--challenged & {
       background: $warning;
       box-shadow: 0 2px 0 0 $warning;
     }
 
-    &--accepted {
+    .DogeCard--accepted & {
       background: $success;
       box-shadow: 0 2px 0 0 $success;
     }
 
-    &--rejected {
+    .DogeCard--rejected & {
       background: $error;
       box-shadow: 0 2px 0 0 $error;
+    }
+
+    .DogeCard:hover & {
+      opacity: 0.8;
     }
   }
 }

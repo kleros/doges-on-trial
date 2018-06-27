@@ -3638,7 +3638,7 @@ exports[`Storyshots Doge Card accepted 1`] = `
           }
         >
           <div
-            className="DogeCard"
+            className="DogeCard DogeCard--accepted"
             id={1}
             onClick={[Function]}
           >
@@ -3648,10 +3648,10 @@ exports[`Storyshots Doge Card accepted 1`] = `
               src="doge.jpg"
             />
             <div
-              className="DogeCard-tag DogeCard-tag--accepted"
+              className="DogeCard-tag"
             />
             <div
-              className="DogeCard-label DogeCard-label--accepted"
+              className="DogeCard-label"
             >
               ACCEPTED
             </div>
@@ -3919,7 +3919,7 @@ exports[`Storyshots Doge Card challenged 1`] = `
           }
         >
           <div
-            className="DogeCard"
+            className="DogeCard DogeCard--challenged"
             id={1}
             onClick={[Function]}
           >
@@ -3929,10 +3929,10 @@ exports[`Storyshots Doge Card challenged 1`] = `
               src="doge.jpg"
             />
             <div
-              className="DogeCard-tag DogeCard-tag--challenged"
+              className="DogeCard-tag"
             />
             <div
-              className="DogeCard-label DogeCard-label--challenged"
+              className="DogeCard-label"
             >
               CHALLENGED
             </div>
@@ -4200,7 +4200,7 @@ exports[`Storyshots Doge Card pending 1`] = `
           }
         >
           <div
-            className="DogeCard"
+            className="DogeCard DogeCard--pending"
             id={1}
             onClick={[Function]}
           >
@@ -4210,10 +4210,10 @@ exports[`Storyshots Doge Card pending 1`] = `
               src="doge.jpg"
             />
             <div
-              className="DogeCard-tag DogeCard-tag--pending"
+              className="DogeCard-tag"
             />
             <div
-              className="DogeCard-label DogeCard-label--pending"
+              className="DogeCard-label"
             >
               PENDING
             </div>
@@ -4481,7 +4481,7 @@ exports[`Storyshots Doge Card rejected 1`] = `
           }
         >
           <div
-            className="DogeCard"
+            className="DogeCard DogeCard--rejected"
             id={1}
             onClick={[Function]}
           >
@@ -4491,10 +4491,10 @@ exports[`Storyshots Doge Card rejected 1`] = `
               src="doge.jpg"
             />
             <div
-              className="DogeCard-tag DogeCard-tag--rejected"
+              className="DogeCard-tag"
             />
             <div
-              className="DogeCard-label DogeCard-label--rejected"
+              className="DogeCard-label"
             >
               REJECTED
             </div>

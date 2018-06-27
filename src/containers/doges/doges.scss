@@ -5,6 +5,7 @@
   &-settingsBar {
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 40px 13%;
 
@@ -28,10 +29,16 @@
 
     &-dropdowns {
       display: flex;
+      flex-wrap: wrap;
+      margin-top: -16px;
 
       &-dropdown {
-        margin-left: 16px;
+        margin: 16px 0 0 16px;
       }
     }
+  }
+
+  &-masonryGrid {
+    margin: auto;
   }
 }

@@ -33,9 +33,14 @@ export default class MasonryGrid extends PureComponent {
 
     // Modifiers
     sizes: [
-      { columns: 2, gutter: 10 },
-      { mq: '768px', columns: 3, gutter: 25 },
-      { mq: '1024px', columns: 4, gutter: 50 }
+      { columns: 1, gutter: 10 }, // 250px
+      { mq: '510px', columns: 2, gutter: 10 },
+      { mq: '770px', columns: 3, gutter: 10 },
+      { mq: '1030px', columns: 4, gutter: 10 },
+      { mq: '1290px', columns: 5, gutter: 10 },
+      { mq: '1550px', columns: 6, gutter: 10 },
+      { mq: '1810px', columns: 7, gutter: 10 },
+      { mq: '2070px', columns: 8, gutter: 10 }
     ],
     className: '',
     style: undefined
@@ -54,12 +59,12 @@ export default class MasonryGrid extends PureComponent {
       sizes
     })
     this.bricks.resize(true)
-    this.bricks.pack()
+    setTimeout(() => this.bricks.pack(), 500)
   }
 
   filter = memoizeOne((children, filter) => {
     console.info('MasonryGrid filter cache miss.')
-    if (!filter || filter.length === 0) return children
+    if (!filter) return children
 
     return Children.map(
       children,
@@ -74,7 +79,7 @@ export default class MasonryGrid extends PureComponent {
 
   sort = memoizeOne((children, sort) => {
     console.info('MasonryGrid sort cache miss.')
-    if (!sort || sort.length === 0) return children
+    if (!sort) return children
 
     const sortKeys = Object.keys(sort)
     const defaultSortValues = sortKeys.reduce((acc, sortKey) => {
@@ -105,7 +110,7 @@ export default class MasonryGrid extends PureComponent {
 
   updatePacking = memoizeOne(children => {
     console.info('MasonryGrid updatePacking cache miss.')
-    this.bricks && this.bricks.update()
+    this.bricks && setTimeout(() => this.bricks.pack(), 1)
     return children
   })
 
