@@ -20,9 +20,4 @@ export const FILTER_OPTIONS_ENUM = createEnum([
   'My Submissions',
   'My Challenges'
 ])
-export const SORT_OPTIONS_ENUM = createEnum([
-  'Newest',
-  'Oldest',
-  'Challenges ↑',
-  'Challenges ↓'
-])
+export const SORT_OPTIONS_ENUM = createEnum(['Newest', 'Oldest'])
