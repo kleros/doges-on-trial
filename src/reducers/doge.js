@@ -2,7 +2,15 @@ import PropTypes from 'prop-types'
 import createReducer, { createResource } from 'lessdux'
 
 // Common Shapes
-export const _dogeShape = PropTypes.shape({})
+export const _dogeShape = PropTypes.shape({
+  ID: PropTypes.string.isRequired,
+  lastAction: PropTypes.instanceOf(Date),
+  submitter: PropTypes.string.isRequired,
+  challenger: PropTypes.string.isRequired,
+  balance: PropTypes.number.isRequired,
+  disputed: PropTypes.bool.isRequired,
+  disputeID: PropTypes.string.isRequired
+})
 export const _dogesShape = PropTypes.arrayOf(_dogeShape.isRequired)
 
 // Shapes

@@ -1,6 +1,10 @@
 import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import memoizeOne from 'memoize-one'
 
+import * as dogeSelectors from '../../reducers/doge'
+import * as dogeActions from '../../actions/doge'
 import Dropdown from '../../components/dropdown'
 import MasonryGrid from '../../components/masonry-grid'
 import DogeCard from '../../components/doge-card'
@@ -80,12 +84,26 @@ const bricks = [
   </DogeCard>
 ]
 
-export default class Doges extends PureComponent {
+class Doges extends PureComponent {
+  static propTypes = {
+    // Redux State
+    doges: dogeSelectors.dogesShape.isRequired,
+
+    // Action Dispatchers
+    fetchDoges: PropTypes.func.isRequired
+  }
+
   state = {
     filterValue: dogeConstants.FILTER_OPTIONS_ENUM.values.map((_, i) => i),
     filter: dogeConstants.FILTER_OPTIONS_ENUM.values,
     sortValue: 0,
     sort: { [dogeConstants.SORT_OPTIONS_ENUM[0]]: 'ascending' }
+  }
+
+  componentDidMount() {
+    const { fetchDoges } = this.props
+    const { filterValue, sortValue } = this.state
+    fetchDoges(0, 10, filterValue, sortValue)
   }
 
   getFilterOptionsWithCountsAndColors = memoizeOne(() =>
@@ -111,7 +129,9 @@ export default class Doges extends PureComponent {
     })
 
   render() {
+    const { doges } = this.props
     const { filterValue, filter, sortValue, sort } = this.state
+    console.log(doges)
     return (
       <div className="Doges">
         <div className="Doges-settingsBar">
@@ -147,3 +167,8 @@ export default class Doges extends PureComponent {
     )
   }
 }
+
+export default connect(
+  state => ({ doges: state.doge.doges }),
+  { fetchDoges: dogeActions.fetchDoges }
+)(Doges)

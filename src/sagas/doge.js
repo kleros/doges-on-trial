@@ -6,12 +6,12 @@ import { web3, arbitrablePermissionList } from '../bootstrap/dapp-api'
 import * as dogeConstants from '../constants/doge'
 
 // Parsers
-export const parseDoge = (doge, ID) => ({
+const parseDoge = (doge, ID) => ({
   ID,
-  lastAction: new Date(doge.lastAction),
+  lastAction: doge.lastAction ? new Date(doge.lastAction) : null,
   submitter: doge.submitter,
   challenger: doge.challenger,
-  balance: web3.utils.fromWei(doge.balance),
+  balance: Number(web3.utils.fromWei(doge.balance)),
   disputed: doge.disputed,
   disputeID: doge.disputeID
 })
