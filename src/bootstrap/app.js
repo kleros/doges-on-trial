@@ -5,12 +5,14 @@ import { Provider, connect } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import { Switch, Route } from 'react-router-dom'
 
+import * as modalActions from '../actions/modal'
 import Doges from '../containers/doges'
 import NavBar from '../components/nav-bar'
 import PageNotFound from '../components/page-not-found'
 import Button from '../components/button'
 import NotificationBadge from '../components/notification-badge'
 import Identicon from '../components/identicon'
+import * as modalConstants from '../constants/modal'
 
 import Initializer from './initializer'
 import GlobalComponents from './global-components'
@@ -20,9 +22,15 @@ import './app.css'
 
 const today = new Date()
 const noOp = () => {}
-const ConnectedNavBar = connect(state => ({
-  accounts: state.wallet.accounts
-}))(({ accounts }) => (
+const ConnectedNavBar = connect(
+  state => ({
+    accounts: state.wallet.accounts
+  }),
+  {
+    handleSubmitDogeClick: () =>
+      modalActions.openDogeModal(modalConstants.DOGE_MODAL_ENUM.Submit)
+  }
+)(({ accounts, handleSubmitDogeClick }) => (
   <NavBar
     routes={[
       { title: 'Doges', to: '/' },
@@ -31,7 +39,12 @@ const ConnectedNavBar = connect(state => ({
       { title: 'Twitterverse', to: 'https://twitter.com', isExternal: true }
     ]}
     extras={[
-      <Button key="0" type="ternary" size="small">
+      <Button
+        key="0"
+        onClick={handleSubmitDogeClick}
+        type="ternary"
+        size="small"
+      >
         Submit Doge
       </Button>,
       <NotificationBadge

@@ -4,11 +4,13 @@ import { reducer as form } from 'redux-form'
 
 import wallet from './wallet'
 import doge from './doge'
+import modal from './modal'
 
 // Export root reducer
 export default combineReducers({
   router,
   form,
   wallet,
-  doge
+  doge,
+  modal
 })

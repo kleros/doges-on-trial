@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'
 import createReducer, { createResource } from 'lessdux'
 
+import * as dogeConstants from '../constants/doge'
+
 // Common Shapes
 export const _dogeShape = PropTypes.shape({
   ID: PropTypes.string.isRequired,
+  status: PropTypes.oneOf(dogeConstants.STATUS_ENUM.indexes).isRequired,
   lastAction: PropTypes.instanceOf(Date),
   submitter: PropTypes.string.isRequired,
   challenger: PropTypes.string.isRequired,

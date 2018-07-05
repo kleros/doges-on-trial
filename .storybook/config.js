@@ -1,10 +1,11 @@
 import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
 import { host } from 'storybook-host'
-import { createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom'
 
+import modal from '../src/reducers/modal'
 import GlobalComponents from '../src/bootstrap/global-components'
 
 import '../src/bootstrap/fontawesome'
@@ -20,7 +21,7 @@ addDecorator(
 )
 
 // Integration Wrapper
-const store = createStore(state => state)
+const store = createStore(combineReducers({ modal }))
 addDecorator(story => (
   <Provider store={store}>
     <div>
