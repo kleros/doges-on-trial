@@ -14,6 +14,10 @@
   transform: translate(-50%, -50%);
   z-index: 1000;
 
+  &--overlay {
+    z-index: 1000;
+  }
+
   &-close {
     position: absolute;
     right: 27px;

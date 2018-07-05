@@ -11,10 +11,19 @@
   flex-direction: column;
   height: 250px;
   justify-content: space-around;
+  position: relative;
   width: 250px;
 
   &-icon {
     height: 90px;
     width: 90px !important;
+  }
+
+  &-filePreview {
+    max-height: 100%;
+    opacity: 0.4;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
   }
 }

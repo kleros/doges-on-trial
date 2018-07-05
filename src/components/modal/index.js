@@ -5,9 +5,11 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 import './modal.css'
 
+process.env.NODE_ENV !== 'test' && ReactModal.setAppElement('#root')
 const Modal = ({ onRequestClose, children, className, ...rest }) => (
   <ReactModal
     onRequestClose={onRequestClose}
+    overlayClassName="Modal--overlay"
     className={`Modal ${className}`}
     {...rest}
   >
@@ -26,13 +28,16 @@ Modal.propTypes = {
   onRequestClose: PropTypes.func.isRequired,
 
   // State
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 
   // Modifiers
   className: PropTypes.string
 }
 
 Modal.defaultProps = {
+  // State
+  children: null,
+
   // Modifiers
   className: ''
 }

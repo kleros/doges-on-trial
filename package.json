@@ -82,6 +82,7 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/react-fontawesome": "^0.0.20",
     "bricks.js": "^1.8.0",
+    "browser-image-compression": "^0.0.3",
     "create-redux-form": "^0.1.2",
     "history": "^4.7.2",
     "lessdux": "^0.7.3",

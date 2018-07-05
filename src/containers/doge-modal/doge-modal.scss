@@ -1,0 +1,10 @@
+/* @define DogeModal */
+.DogeModal {
+  width: 60%;
+
+  &-submit {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}

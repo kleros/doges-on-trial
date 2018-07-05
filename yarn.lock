@@ -2356,6 +2356,10 @@ brorand@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
 
+browser-image-compression@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/browser-image-compression/-/browser-image-compression-0.0.3.tgz#df6ac3c7ba21205f40bd63049f6641c99f599ce8"
+
 browser-process-hrtime@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/browser-process-hrtime/-/browser-process-hrtime-0.1.2.tgz#425d68a58d3447f02a04aa894187fce8af8b7b8e"

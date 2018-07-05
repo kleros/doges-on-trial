@@ -2,6 +2,8 @@
 
 /* @define ValueList */
 .ValueList {
+  width: 100%;
+
   &-item {
     align-items: center;
     border-bottom: 1px solid $lightGrey;
