@@ -7,7 +7,7 @@ import doge from '../src/assets/images/doge.jpg'
 
 const onClick = action('onClick')
 const createRenderDogeCardStory = status => () => (
-  <DogeCard id={1} status={status} imageSrc={doge} onClick={onClick} />
+  <DogeCard id={'0x'} status={status} imageSrc={doge} onClick={onClick} />
 )
 
 storiesOf('Doge Card', module)

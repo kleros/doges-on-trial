@@ -2,91 +2,23 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import memoizeOne from 'memoize-one'
+import { RenderIf } from 'lessdux'
 
+import { IMAGES_BASE_URL } from '../../bootstrap/dapp-api'
+import * as walletSelectors from '../../reducers/wallet'
 import * as dogeSelectors from '../../reducers/doge'
 import * as dogeActions from '../../actions/doge'
 import Dropdown from '../../components/dropdown'
 import MasonryGrid from '../../components/masonry-grid'
 import DogeCard from '../../components/doge-card'
-import doge from '../../assets/images/doge.jpg'
 import * as dogeConstants from '../../constants/doge'
 
 import './doges.css'
 
-const bricks = [
-  <DogeCard
-    key={0}
-    id={0}
-    status={dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Pending]}
-    imageSrc={doge}
-    masonryGridFilterValues={[
-      dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Pending]
-    ]}
-    masonryGridSortValues={{
-      Newest: 1,
-      Oldest: 1,
-      'Challenges ↑': 1,
-      'Challenges ↓': -1
-    }}
-  >
-    Pending
-  </DogeCard>,
-  <DogeCard
-    key={1}
-    id={1}
-    status={dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Challenged]}
-    imageSrc={doge}
-    masonryGridFilterValues={[
-      dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Challenged]
-    ]}
-    masonryGridSortValues={{
-      Newest: 2,
-      Oldest: 2,
-      'Challenges ↑': 2,
-      'Challenges ↓': -2
-    }}
-  >
-    Challenged
-  </DogeCard>,
-  <DogeCard
-    key={2}
-    id={2}
-    status={dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Accepted]}
-    imageSrc={doge}
-    masonryGridFilterValues={[
-      dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Accepted]
-    ]}
-    masonryGridSortValues={{
-      Newest: 3,
-      Oldest: 3,
-      'Challenges ↑': 3,
-      'Challenges ↓': -3
-    }}
-  >
-    Accepted
-  </DogeCard>,
-  <DogeCard
-    key={3}
-    id={3}
-    status={dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Rejected]}
-    imageSrc={doge}
-    masonryGridFilterValues={[
-      dogeConstants.STATUS_ENUM[dogeConstants.STATUS_ENUM.Rejected]
-    ]}
-    masonryGridSortValues={{
-      Newest: 4,
-      Oldest: 4,
-      'Challenges ↑': 4,
-      'Challenges ↓': -4
-    }}
-  >
-    Rejected
-  </DogeCard>
-]
-
 class Doges extends PureComponent {
   static propTypes = {
     // Redux State
+    accounts: walletSelectors.accountsShape.isRequired,
     doges: dogeSelectors.dogesShape.isRequired,
 
     // Action Dispatchers
@@ -94,7 +26,7 @@ class Doges extends PureComponent {
   }
 
   state = {
-    filterValue: dogeConstants.FILTER_OPTIONS_ENUM.values.map((_, i) => i),
+    filterValue: dogeConstants.FILTER_OPTIONS_ENUM.indexes,
     filter: dogeConstants.FILTER_OPTIONS_ENUM.values,
     sortValue: 0,
     sort: { [dogeConstants.SORT_OPTIONS_ENUM[0]]: 'ascending' }
@@ -106,12 +38,65 @@ class Doges extends PureComponent {
     fetchDoges(0, 10, filterValue, sortValue)
   }
 
-  getFilterOptionsWithCountsAndColors = memoizeOne(() =>
-    dogeConstants.FILTER_OPTIONS_ENUM.values.map(value => ({
-      label: value,
-      count: 5,
-      color: dogeConstants.STATUS_COLOR_ENUM[dogeConstants.STATUS_ENUM[value]]
-    }))
+  getFilterOptionsWithCountsAndColors = memoizeOne((accounts, doges = []) =>
+    dogeConstants.FILTER_OPTIONS_ENUM.values.map(value => {
+      let count
+      switch (dogeConstants.FILTER_OPTIONS_ENUM[value]) {
+        case dogeConstants.FILTER_OPTIONS_ENUM.Pending:
+        case dogeConstants.FILTER_OPTIONS_ENUM.Challenged:
+        case dogeConstants.FILTER_OPTIONS_ENUM.Accepted:
+        case dogeConstants.FILTER_OPTIONS_ENUM.Rejected:
+          count = doges.filter(
+            doge => doge.status === dogeConstants.FILTER_OPTIONS_ENUM[value]
+          ).length
+          break
+        case dogeConstants.FILTER_OPTIONS_ENUM['My Submissions']:
+          count = doges.filter(doge => doge.submitter === accounts[0]).length
+          break
+        case dogeConstants.FILTER_OPTIONS_ENUM['My Challenges']:
+          count = doges.filter(doge => doge.challenger === accounts[0]).length
+          break
+        default:
+          count = 0
+          break
+      }
+
+      return {
+        label: value,
+        count,
+        color: dogeConstants.STATUS_COLOR_ENUM[dogeConstants.STATUS_ENUM[value]]
+      }
+    })
+  )
+
+  mapDoges = memoizeOne((accounts, doges) =>
+    doges.map(doge => (
+      <DogeCard
+        key={doge.ID}
+        id={doge.ID}
+        status={dogeConstants.STATUS_ENUM[doge.status]}
+        imageSrc={IMAGES_BASE_URL + doge.ID}
+        masonryGridFilterValues={[
+          dogeConstants.STATUS_ENUM[doge.status],
+          accounts[0] === doge.submitter &&
+            dogeConstants.FILTER_OPTIONS_ENUM[
+              dogeConstants.FILTER_OPTIONS_ENUM['My Submissions']
+            ],
+          accounts[0] === doge.challenger &&
+            dogeConstants.FILTER_OPTIONS_ENUM[
+              dogeConstants.FILTER_OPTIONS_ENUM['My Challenges']
+            ]
+        ]}
+        masonryGridSortValues={{
+          Newest: -doge.lastAction,
+          Oldest: doge.lastAction,
+          'Challenges ↑': doge.disputed,
+          'Challenges ↓': !doge.disputed
+        }}
+      >
+        {dogeConstants.STATUS_ENUM[doge.status]}
+      </DogeCard>
+    ))
   )
 
   handleFilterChange = value =>
@@ -129,9 +114,9 @@ class Doges extends PureComponent {
     })
 
   render() {
-    const { doges } = this.props
+    const { accounts, doges } = this.props
     const { filterValue, filter, sortValue, sort } = this.state
-    console.log(doges)
+
     return (
       <div className="Doges">
         <div className="Doges-settingsBar">
@@ -146,7 +131,10 @@ class Doges extends PureComponent {
               value={filterValue}
               type="checkbox"
               label="Filter"
-              options={this.getFilterOptionsWithCountsAndColors()}
+              options={this.getFilterOptionsWithCountsAndColors(
+                accounts.data,
+                doges.data || undefined
+              )}
               onChange={this.handleFilterChange}
               inverted
               className="Doges-settingsBar-dropdowns-dropdown"
@@ -160,15 +148,28 @@ class Doges extends PureComponent {
             />
           </div>
         </div>
-        <MasonryGrid filter={filter} sort={sort} className="Doges-masonryGrid">
-          {bricks}
-        </MasonryGrid>
+        <RenderIf
+          resource={doges}
+          loading="Loading doges..."
+          done={
+            doges.data && (
+              <MasonryGrid
+                filter={filter}
+                sort={sort}
+                className="Doges-masonryGrid"
+              >
+                {this.mapDoges(accounts.data, doges.data)}
+              </MasonryGrid>
+            )
+          }
+          failedLoading="There was an error fetching your doges."
+        />
       </div>
     )
   }
 }
 
 export default connect(
-  state => ({ doges: state.doge.doges }),
+  state => ({ accounts: state.wallet.accounts, doges: state.doge.doges }),
   { fetchDoges: dogeActions.fetchDoges }
 )(Doges)

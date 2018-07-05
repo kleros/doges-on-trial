@@ -6,6 +6,7 @@ const env = process.env.NODE_ENV === 'production' ? 'PROD' : 'DEV'
 const ETHEREUM_PROVIDER = process.env[`REACT_APP_${env}_ETHEREUM_PROVIDER`]
 const ARBITRABLE_PERMISSION_LIST_ADDRESS =
   process.env[`REACT_APP_${env}_ARBITRABLE_PERMISSION_LIST_ADDRESS`]
+const IMAGES_BASE_URL = process.env[`REACT_APP_${env}_IMAGES_BASE_URL`]
 
 let web3
 if (process.env.NODE_ENV === 'test')
@@ -49,5 +50,6 @@ export {
   ETHAddressRegExpCaptureGroup,
   ETHAddressRegExp,
   strictETHAddressRegExp,
-  arbitrablePermissionList
+  arbitrablePermissionList,
+  IMAGES_BASE_URL
 }

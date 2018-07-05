@@ -4,11 +4,15 @@
  * @returns {object} - A JS enum object.
  */
 export default function createEnum(arr) {
-  const enumObj = arr.reduce((acc, value, i) => {
-    acc[value] = i
-    acc[i] = value
-    return acc
-  }, {})
-  enumObj.values = [...arr]
-  return Object.freeze(enumObj)
+  return Object.freeze(
+    arr.reduce((acc, value, i) => {
+      acc[value] = i
+      acc[i] = value
+      if (acc.values) acc.values.push(value)
+      else acc.values = [value]
+      if (acc.indexes) acc.indexes.push(i)
+      else acc.indexes = [i]
+      return acc
+    }, {})
+  )
 }

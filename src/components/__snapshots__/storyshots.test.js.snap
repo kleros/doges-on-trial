@@ -3639,14 +3639,10 @@ exports[`Storyshots Doge Card accepted 1`] = `
         >
           <div
             className="DogeCard DogeCard--accepted"
-            id={1}
+            id="0x"
             onClick={[Function]}
           >
-            <img
-              alt="Doge List Submission"
-              className="DogeCard-image"
-              src="doge.jpg"
-            />
+            Loading image...
             <div
               className="DogeCard-tag"
             />
@@ -3920,14 +3916,10 @@ exports[`Storyshots Doge Card challenged 1`] = `
         >
           <div
             className="DogeCard DogeCard--challenged"
-            id={1}
+            id="0x"
             onClick={[Function]}
           >
-            <img
-              alt="Doge List Submission"
-              className="DogeCard-image"
-              src="doge.jpg"
-            />
+            Loading image...
             <div
               className="DogeCard-tag"
             />
@@ -4201,14 +4193,10 @@ exports[`Storyshots Doge Card pending 1`] = `
         >
           <div
             className="DogeCard DogeCard--pending"
-            id={1}
+            id="0x"
             onClick={[Function]}
           >
-            <img
-              alt="Doge List Submission"
-              className="DogeCard-image"
-              src="doge.jpg"
-            />
+            Loading image...
             <div
               className="DogeCard-tag"
             />
@@ -4482,14 +4470,10 @@ exports[`Storyshots Doge Card rejected 1`] = `
         >
           <div
             className="DogeCard DogeCard--rejected"
-            id={1}
+            id="0x"
             onClick={[Function]}
           >
-            <img
-              alt="Doge List Submission"
-              className="DogeCard-image"
-              src="doge.jpg"
-            />
+            Loading image...
             <div
               className="DogeCard-tag"
             />

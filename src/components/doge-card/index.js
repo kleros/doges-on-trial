@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Img from 'react-image'
 
 import * as dogeConstants from '../../constants/doge'
 
@@ -11,9 +12,16 @@ const DogeCard = ({ id, status, imageSrc, onClick }) => (
     onClick={onClick}
     className={`DogeCard DogeCard--${status.toLowerCase()}`}
   >
-    <img
+    <Img
       src={imageSrc}
       alt={`Doge List Submission`}
+      loader={'Loading image...'}
+      unloader={
+        <div className="DogeCard-failedImage">
+          There was an error fetching the image or it has not been uploaded
+          properly. Try submitting it again.
+        </div>
+      }
       className="DogeCard-image"
     />
     <div className="DogeCard-tag" />
@@ -23,7 +31,7 @@ const DogeCard = ({ id, status, imageSrc, onClick }) => (
 
 DogeCard.propTypes = {
   // State
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   status: PropTypes.oneOf(dogeConstants.STATUS_ENUM.values).isRequired,
   imageSrc: PropTypes.string.isRequired,
 
