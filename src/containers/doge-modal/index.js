@@ -10,6 +10,7 @@ import * as dogeSelectors from '../../reducers/doge'
 import * as dogeActions from '../../actions/doge'
 import * as modalSelectors from '../../reducers/modal'
 import * as modalActions from '../../actions/modal'
+import { web3 } from '../../bootstrap/dapp-api'
 import Modal from '../../components/modal'
 import InfoCard from '../../components/info-card'
 import FilePicker from '../../components/file-picker'
@@ -136,7 +137,18 @@ class DogeModal extends PureComponent {
                       items={[
                         {
                           label: 'Deposit',
-                          value: arbitrablePermissionListData.data.stake
+                          value: String(
+                            web3.utils.fromWei(
+                              web3.utils
+                                .toBN(arbitrablePermissionListData.data.stake)
+                                .add(
+                                  web3.utils.toBN(
+                                    arbitrablePermissionListData.data
+                                      .arbitrationCost
+                                  )
+                                )
+                            )
+                          )
                         }
                       ]}
                     />

@@ -27,8 +27,8 @@ ValueList.propTypes = {
   // State
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.number.isRequired,
+      label: PropTypes.node.isRequired,
+      value: PropTypes.node.isRequired,
       icon: PropTypes.string
     }).isRequired
   ).isRequired

@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import createReducer, { createResource } from 'lessdux'
 
+import { web3 } from '../bootstrap/dapp-api'
+
 // Shapes
 const {
   shape: arbitrablePermissionListDataShape,
@@ -8,9 +10,9 @@ const {
 } = createResource(
   PropTypes.shape({
     arbitrator: PropTypes.string.isRequired,
-    stake: PropTypes.number.isRequired,
+    stake: PropTypes.string.isRequired,
     timeToChallenge: PropTypes.number.isRequired,
-    arbitrationCost: PropTypes.number.isRequired
+    arbitrationCost: PropTypes.string.isRequired
   })
 )
 export { arbitrablePermissionListDataShape }
@@ -23,6 +25,13 @@ export default createReducer({
 // Selectors
 export const getSubmitCost = state =>
   state.arbitrablePermissionList.arbitrablePermissionListData.data &&
-  state.arbitrablePermissionList.arbitrablePermissionListData.data.stake +
-    state.arbitrablePermissionList.arbitrablePermissionListData.data
-      .arbitrationCost
+  web3.utils
+    .toBN(
+      state.arbitrablePermissionList.arbitrablePermissionListData.data.stake
+    )
+    .add(
+      web3.utils.toBN(
+        state.arbitrablePermissionList.arbitrablePermissionListData.data
+          .arbitrationCost
+      )
+    )

@@ -19,7 +19,7 @@ export function* fetchAccounts() {
 
 /**
  * Fetches the current wallet's ethereum balance.
- * @returns {number} - The balance.
+ * @returns {string} - The balance.
  */
 export function* fetchBalance() {
   const balance = yield call(
@@ -27,7 +27,7 @@ export function* fetchBalance() {
     yield select(walletSelectors.getAccount)
   )
 
-  return web3.utils.fromWei(balance, 'ether')
+  return String(balance)
 }
 
 /**

@@ -32,7 +32,7 @@ const parseDoge = (doge, ID) => ({
   lastAction: doge.lastAction ? new Date(Number(doge.lastAction)) : null,
   submitter: doge.submitter,
   challenger: doge.challenger,
-  balance: Number(web3.utils.fromWei(doge.balance)),
+  balance: String(doge.balance),
   disputed: doge.disputed,
   disputeID: doge.disputeID
 })
@@ -79,12 +79,7 @@ function* createDoge({ payload: { imageFileDataURL } }) {
   )
     yield call(arbitrablePermissionList.methods.requestRegistering(hash).send, {
       from: yield select(walletSelectors.getAccount),
-      value:
-        web3.utils.toWei(
-          (yield select(
-            arbitrablePermissionListSelectors.getSubmitCost
-          )).toFixed(18)
-        ) + 1
+      value: yield select(arbitrablePermissionListSelectors.getSubmitCost)
     })
 
   // Upload image

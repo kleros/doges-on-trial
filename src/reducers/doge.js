@@ -10,7 +10,7 @@ export const _dogeShape = PropTypes.shape({
   lastAction: PropTypes.instanceOf(Date),
   submitter: PropTypes.string.isRequired,
   challenger: PropTypes.string.isRequired,
-  balance: PropTypes.number.isRequired,
+  balance: PropTypes.string.isRequired,
   disputed: PropTypes.bool.isRequired,
   disputeID: PropTypes.string.isRequired
 })

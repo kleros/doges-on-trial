@@ -25,7 +25,7 @@ const Modal = ({ onRequestClose, children, className, ...rest }) => (
 Modal.propTypes = {
   // React Modal
   ...ReactModal.propTypes,
-  onRequestClose: PropTypes.func.isRequired,
+  onRequestClose: PropTypes.func,
 
   // State
   children: PropTypes.node,
@@ -35,6 +35,9 @@ Modal.propTypes = {
 }
 
 Modal.defaultProps = {
+  // React Modal
+  onRequestClose: null,
+
   // State
   children: null,
 

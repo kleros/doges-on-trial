@@ -2,11 +2,7 @@ import { takeLatest, call, all } from 'redux-saga/effects'
 
 import * as arbitrablePermissionListActions from '../actions/arbitrable-permission-list'
 import { lessduxSaga } from '../utils/saga'
-import {
-  web3,
-  arbitrablePermissionList,
-  arbitrator
-} from '../bootstrap/dapp-api'
+import { arbitrablePermissionList, arbitrator } from '../bootstrap/dapp-api'
 
 /**
  * Fetches the arbitrable permission list's data.
@@ -29,9 +25,9 @@ function* fetchArbitrablePermissionListData() {
 
   return {
     arbitrator: d.arbitrator,
-    stake: Number(web3.utils.fromWei(d.stake)),
+    stake: String(d.stake),
     timeToChallenge: Number(d.timeToChallenge) * 1000,
-    arbitrationCost: Number(web3.utils.fromWei(arbitrationCost))
+    arbitrationCost: String(arbitrationCost)
   }
 }
 
