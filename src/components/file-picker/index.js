@@ -20,10 +20,9 @@ const FilePicker = ({
       {buttonMessage}
     </Button>
     {imageFilePreviewURL && (
-      <img
-        src={imageFilePreviewURL}
-        alt="File Preview"
+      <div
         className="FilePicker-filePreview"
+        style={{ backgroundImage: `url(${imageFilePreviewURL})` }}
       />
     )}
   </Dropzone>

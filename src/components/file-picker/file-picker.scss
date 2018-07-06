@@ -20,8 +20,10 @@
   }
 
   &-filePreview {
-    max-height: 100%;
-    opacity: 0.4;
+    background-position: center center;
+    background-size: cover;
+    height: 100%;
+    opacity: 0.2;
     position: absolute;
     width: 100%;
     z-index: -1;
