@@ -1,10 +1,10 @@
 [build.environment]
   NODE_VERSION='9.4.0'
   YARN_FLAGS='--pure-lockfile'
-  REACT_APP_DEV_ETHEREUM_PROVIDER='http://localhost:8545'
-  REACT_APP_DEV_ARBITRABLE_PERMISSION_LIST_ADDRESS='0x3058d9369bc85f0cbfc5a2bb4dd6025c8c72dce0'
-  REACT_APP_DEV_IMAGES_BASE_URL='https://staging-doges-on-trial-doge-images.s3.us-east-2.amazonaws.com/'
-  REACT_APP_DEV_IMAGE_UPLOAD_URL='https://8aoprv935h.execute-api.us-east-2.amazonaws.com/staging/doges-on-trial/doge-images'
+  REACT_APP_PROD_ETHEREUM_PROVIDER='http://localhost:8545'
+  REACT_APP_PROD_ARBITRABLE_PERMISSION_LIST_ADDRESS='0x3058d9369bc85f0cbfc5a2bb4dd6025c8c72dce0'
+  REACT_APP_PROD_IMAGES_BASE_URL='https://staging-doges-on-trial-doge-images.s3.us-east-2.amazonaws.com/'
+  REACT_APP_PROD_IMAGE_UPLOAD_URL='https://8aoprv935h.execute-api.us-east-2.amazonaws.com/staging/doges-on-trial/doge-images'
 
 [context.production.environment]
   REACT_APP_PROD_ETHEREUM_PROVIDER='<provider>'
