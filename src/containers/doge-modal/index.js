@@ -2,13 +2,19 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import browserImageCompression from 'browser-image-compression'
+import { RenderIf } from 'lessdux'
 
+import * as arbitrablePermissionListSelectors from '../../reducers/arbitrable-permission-list'
+import * as arbitrablePermissionListActions from '../../actions/arbitrable-permission-list'
+import * as dogeSelectors from '../../reducers/doge'
+import * as dogeActions from '../../actions/doge'
 import * as modalSelectors from '../../reducers/modal'
 import * as modalActions from '../../actions/modal'
 import Modal from '../../components/modal'
 import InfoCard from '../../components/info-card'
 import FilePicker from '../../components/file-picker'
 import ValueList from '../../components/value-list'
+import Button from '../../components/button'
 import * as modalConstants from '../../constants/modal'
 
 import './doge-modal.css'
@@ -16,9 +22,15 @@ import './doge-modal.css'
 class DogeModal extends PureComponent {
   static propTypes = {
     // Redux State
+    arbitrablePermissionListData:
+      arbitrablePermissionListSelectors.arbitrablePermissionListDataShape
+        .isRequired,
+    doge: dogeSelectors.dogeShape.isRequired,
     openDogeModal: modalSelectors.openDogeModalShape,
 
     // Action Dispatchers
+    fetchArbitrablePermissionListData: PropTypes.func.isRequired,
+    createDoge: PropTypes.func.isRequired,
     closeDogeModal: PropTypes.func.isRequired
   }
 
@@ -28,6 +40,18 @@ class DogeModal extends PureComponent {
   }
 
   state = { imageFileDataURL: null, imageFileError: null }
+
+  componentDidMount() {
+    const { fetchArbitrablePermissionListData } = this.props
+    fetchArbitrablePermissionListData()
+  }
+
+  componentDidUpdate(prevProps) {
+    const { doge: prevDoge } = prevProps
+    const { doge } = this.props
+    if (prevDoge.creating && !doge.creating)
+      this.setState({ imageFileDataURL: null, imageFileError: null })
+  }
 
   handleOnFileDropAccepted = async ([file]) => {
     // It's not an image
@@ -60,8 +84,19 @@ class DogeModal extends PureComponent {
     })
   }
 
+  handleSubmitDogeClick = () => {
+    const { createDoge } = this.props
+    const { imageFileDataURL } = this.state
+    createDoge(imageFileDataURL)
+  }
+
   render() {
-    const { openDogeModal, closeDogeModal } = this.props
+    const {
+      arbitrablePermissionListData,
+      doge,
+      openDogeModal,
+      closeDogeModal
+    } = this.props
     const { imageFileDataURL, imageFileError } = this.state
     return (
       <Modal
@@ -80,7 +115,33 @@ class DogeModal extends PureComponent {
             />
             <br />
             <br />
-            <ValueList items={[{ label: 'Deposit', value: 0.00123 }]} />
+            <RenderIf
+              resource={arbitrablePermissionListData}
+              loading="Loading data..."
+              done={
+                arbitrablePermissionListData.data && (
+                  <div className="DogeModal-submit-bottom">
+                    <ValueList
+                      items={[
+                        {
+                          label: 'Deposit',
+                          value: arbitrablePermissionListData.data.stake
+                        }
+                      ]}
+                    />
+                    <br />
+                    <br />
+                    <Button
+                      onClick={this.handleSubmitDogeClick}
+                      disabled={!imageFileDataURL || doge.creating}
+                    >
+                      {doge.creating ? 'Submitting...' : 'Submit Doge'}
+                    </Button>
+                  </div>
+                )
+              }
+              failedLoading="There was an error fetching your doges."
+            />
           </div>
         ) : openDogeModal === modalConstants.DOGE_MODAL_ENUM.Details ? (
           'Details'
@@ -91,6 +152,16 @@ class DogeModal extends PureComponent {
 }
 
 export default connect(
-  state => ({ openDogeModal: state.modal.openDogeModal }),
-  { closeDogeModal: modalActions.closeDogeModal }
+  state => ({
+    arbitrablePermissionListData:
+      state.arbitrablePermissionList.arbitrablePermissionListData,
+    doge: state.doge.doge,
+    openDogeModal: state.modal.openDogeModal
+  }),
+  {
+    fetchArbitrablePermissionListData:
+      arbitrablePermissionListActions.fetchArbitrablePermissionListData,
+    createDoge: dogeActions.createDoge,
+    closeDogeModal: modalActions.closeDogeModal
+  }
 )(DogeModal)

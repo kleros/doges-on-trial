@@ -8,7 +8,7 @@ import * as errorConstants from '../constants/error'
 
 /**
  * Fetches the current wallet's accounts.
- * @returns {object[]} - The accounts.
+ * @returns {string[]} - The accounts.
  */
 export function* fetchAccounts() {
   const accounts = yield call(web3.eth.getAccounts)

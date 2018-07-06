@@ -1,8 +1,14 @@
-import { takeLatest, call, all } from 'redux-saga/effects'
+import { takeLatest, select, call, all } from 'redux-saga/effects'
 
 import * as dogeActions from '../actions/doge'
+import * as walletSelectors from '../reducers/wallet'
+import * as arbitrablePermissionListSelectors from '../reducers/arbitrable-permission-list'
 import { lessduxSaga } from '../utils/saga'
-import { web3, arbitrablePermissionList } from '../bootstrap/dapp-api'
+import {
+  web3,
+  arbitrablePermissionList,
+  IMAGE_UPLOAD_URL
+} from '../bootstrap/dapp-api'
 import * as dogeConstants from '../constants/doge'
 
 // Parsers
@@ -58,6 +64,46 @@ function* fetchDoges({ payload: { cursor, count, filterValue, sortValue } }) {
 }
 
 /**
+ * Submits a doge to the list.
+ * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
+ * @returns {object} - The `lessdux` collection mod object for updating the list of doges.
+ */
+function* createDoge({ payload: { imageFileDataURL } }) {
+  const hash = web3.utils.keccak256(imageFileDataURL)
+
+  // Add to contract if absent
+  if (
+    Number(
+      (yield call(arbitrablePermissionList.methods.items(hash).call)).status
+    ) === 0
+  )
+    yield call(arbitrablePermissionList.methods.requestRegistering(hash).send, {
+      from: yield select(walletSelectors.getAccount),
+      value:
+        web3.utils.toWei(
+          (yield select(
+            arbitrablePermissionListSelectors.getSubmitCost
+          )).toFixed(18)
+        ) + 1
+    })
+
+  // Upload image
+  yield call(fetch, IMAGE_UPLOAD_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ payload: { imageFileDataURL } })
+  })
+
+  return {
+    collection: dogeActions.doges.self,
+    resource: parseDoge(
+      yield call(arbitrablePermissionList.methods.items(hash).call),
+      hash
+    )
+  }
+}
+
+/**
  * The root of the doge saga.
  */
 export default function* dogeSaga() {
@@ -68,5 +114,14 @@ export default function* dogeSaga() {
     'fetch',
     dogeActions.doges,
     fetchDoges
+  )
+
+  // Doge
+  yield takeLatest(
+    dogeActions.doge.CREATE,
+    lessduxSaga,
+    'create',
+    dogeActions.doge,
+    createDoge
   )
 }

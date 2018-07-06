@@ -21,7 +21,8 @@ const { shape: dogesShape, initialState: dogesInitialState } = createResource(
   _dogesShape
 )
 const { shape: dogeShape, initialState: dogeInitialState } = createResource(
-  _dogeShape
+  _dogeShape,
+  { withCreate: true }
 )
 export { dogesShape, dogeShape }
 

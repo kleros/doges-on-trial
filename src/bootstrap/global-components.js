@@ -6,6 +6,6 @@ import DogeModal from '../containers/doge-modal'
 export default () => (
   <div>
     <ReactTooltip multiline className="Tooltip" html />
-    <DogeModal />
+    {process.env.NODE_ENV !== 'test' && <DogeModal />}
   </div>
 )
