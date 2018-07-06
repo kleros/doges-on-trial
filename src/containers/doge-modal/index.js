@@ -39,7 +39,7 @@ class DogeModal extends PureComponent {
     openDogeModal: null
   }
 
-  state = { imageFileDataURL: null, imageFileError: null }
+  state = { imageFileDataURL: null, imageFileInfoMessage: null }
 
   componentDidMount() {
     const { fetchArbitrablePermissionListData } = this.props
@@ -50,7 +50,12 @@ class DogeModal extends PureComponent {
     const { doge: prevDoge } = prevProps
     const { doge } = this.props
     if (prevDoge.creating && !doge.creating)
-      this.setState({ imageFileDataURL: null, imageFileError: null })
+      this.setState({
+        imageFileDataURL: null,
+        imageFileInfoMessage: doge.failedCreating
+          ? 'Failed to submit Doge.'
+          : 'Doge submitted successfuly.'
+      })
   }
 
   handleOnFileDropAccepted = async ([file]) => {
@@ -58,7 +63,7 @@ class DogeModal extends PureComponent {
     if (file.type.slice(0, 5) !== 'image')
       return this.setState({
         imageFileDataURL: null,
-        imageFileError: 'File is not an image.'
+        imageFileInfoMessage: 'File is not an image.'
       })
 
     // It's an image, try to compress it
@@ -71,7 +76,7 @@ class DogeModal extends PureComponent {
     if (compressedFile.size > 100000)
       return this.setState({
         imageFileDataURL: null,
-        imageFileError:
+        imageFileInfoMessage:
           'Image is too big and cannot be resized. It must be less than 100KB.'
       })
 
@@ -80,7 +85,7 @@ class DogeModal extends PureComponent {
       imageFileDataURL: await browserImageCompression.getDataUrlFromFile(
         compressedFile
       ),
-      imageFileError: null
+      imageFileInfoMessage: null
     })
   }
 
@@ -97,22 +102,28 @@ class DogeModal extends PureComponent {
       openDogeModal,
       closeDogeModal
     } = this.props
-    const { imageFileDataURL, imageFileError } = this.state
+    const { imageFileDataURL, imageFileInfoMessage } = this.state
     return (
       <Modal
         isOpen={openDogeModal !== null}
-        onRequestClose={closeDogeModal}
+        onRequestClose={doge.creating ? null : closeDogeModal}
         className="DogeModal"
       >
         {openDogeModal === modalConstants.DOGE_MODAL_ENUM.Submit ? (
           <div className="DogeModal-submit">
-            {imageFileError && <InfoCard message={imageFileError} />}
+            {imageFileInfoMessage && (
+              <InfoCard message={imageFileInfoMessage} />
+            )}
             <h1>Submit your Doge</h1>
-            <FilePicker
-              multiple={false}
-              onDropAccepted={this.handleOnFileDropAccepted}
-              imageFilePreviewURL={imageFileDataURL}
-            />
+            {doge.creating ? (
+              'Submitting doge...'
+            ) : (
+              <FilePicker
+                multiple={false}
+                onDropAccepted={this.handleOnFileDropAccepted}
+                imageFilePreviewURL={imageFileDataURL}
+              />
+            )}
             <br />
             <br />
             <RenderIf
