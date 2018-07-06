@@ -2,6 +2,7 @@ import React, { PureComponent, Children } from 'react'
 import PropTypes from 'prop-types'
 import memoizeOne from 'memoize-one'
 import Bricks from 'bricks.js'
+import debounce from 'debounce'
 
 import './masonry-grid.css'
 
@@ -66,13 +67,16 @@ export default class MasonryGrid extends PureComponent {
     console.info('MasonryGrid filter cache miss.')
     if (!filter) return children
 
+    const debouncedUpdatePacking = debounce(() =>
+      setTimeout(this.updatePacking, 1000)
+    )
     return Children.map(
       children,
       child =>
         child.props.masonryGridFilterValues.some(filterValue =>
           filter.includes(filterValue)
         )
-          ? child
+          ? React.cloneElement(child, { debouncedUpdatePacking })
           : null
     )
   })
