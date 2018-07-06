@@ -68,7 +68,7 @@ export default class MasonryGrid extends PureComponent {
     if (!filter) return children
 
     const debouncedUpdatePacking = debounce(() =>
-      setTimeout(this.updatePacking, 1000)
+      setTimeout(() => this.bricks.pack(), 1000)
     )
     return Children.map(
       children,

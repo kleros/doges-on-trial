@@ -163,11 +163,16 @@ class DogeModal extends PureComponent {
                   </div>
                 )
               }
-              failedLoading="There was an error fetching your doges."
+              failedLoading="There was an error fetching the list's data."
             />
           </div>
         ) : openDogeModal === modalConstants.DOGE_MODAL_ENUM.Details ? (
-          <div className="DogeModal-details">Details</div>
+          <RenderIf
+            resource={doge}
+            loading="Loading doge..."
+            done={doge.data && <div className="DogeModal-details">Details</div>}
+            failedLoading="There was an error fetching the doge."
+          />
         ) : null}
       </Modal>
     )

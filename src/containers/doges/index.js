@@ -173,7 +173,7 @@ class Doges extends PureComponent {
               </MasonryGrid>
             )
           }
-          failedLoading="There was an error fetching your doges."
+          failedLoading="There was an error fetching the doges."
         />
       </div>
     )
