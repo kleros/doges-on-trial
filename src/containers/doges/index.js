@@ -8,10 +8,12 @@ import { IMAGES_BASE_URL } from '../../bootstrap/dapp-api'
 import * as walletSelectors from '../../reducers/wallet'
 import * as dogeSelectors from '../../reducers/doge'
 import * as dogeActions from '../../actions/doge'
+import * as modalActions from '../../actions/modal'
 import Dropdown from '../../components/dropdown'
 import MasonryGrid from '../../components/masonry-grid'
 import DogeCard from '../../components/doge-card'
 import * as dogeConstants from '../../constants/doge'
+import * as modalConstants from '../../constants/modal'
 
 import './doges.css'
 
@@ -22,7 +24,9 @@ class Doges extends PureComponent {
     doges: dogeSelectors.dogesShape.isRequired,
 
     // Action Dispatchers
-    fetchDoges: PropTypes.func.isRequired
+    fetchDoges: PropTypes.func.isRequired,
+    fetchDoge: PropTypes.func.isRequired,
+    openDogeModal: PropTypes.func.isRequired
   }
 
   state = {
@@ -76,6 +80,7 @@ class Doges extends PureComponent {
         id={doge.ID}
         status={dogeConstants.STATUS_ENUM[doge.status]}
         imageSrc={IMAGES_BASE_URL + doge.ID}
+        onClick={this.handleDogeCardClick}
         masonryGridFilterValues={[
           dogeConstants.STATUS_ENUM[doge.status],
           accounts[0] === doge.submitter &&
@@ -112,6 +117,12 @@ class Doges extends PureComponent {
         [dogeConstants.SORT_OPTIONS_ENUM[value]]: 'ascending'
       }
     })
+
+  handleDogeCardClick = ({ currentTarget: { id } }) => {
+    const { fetchDoge, openDogeModal } = this.props
+    fetchDoge(id)
+    openDogeModal(modalConstants.DOGE_MODAL_ENUM.Details)
+  }
 
   render() {
     const { accounts, doges } = this.props
@@ -171,5 +182,9 @@ class Doges extends PureComponent {
 
 export default connect(
   state => ({ accounts: state.wallet.accounts, doges: state.doge.doges }),
-  { fetchDoges: dogeActions.fetchDoges }
+  {
+    fetchDoges: dogeActions.fetchDoges,
+    fetchDoge: dogeActions.fetchDoge,
+    openDogeModal: modalActions.openDogeModal
+  }
 )(Doges)

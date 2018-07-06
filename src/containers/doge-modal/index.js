@@ -167,7 +167,7 @@ class DogeModal extends PureComponent {
             />
           </div>
         ) : openDogeModal === modalConstants.DOGE_MODAL_ENUM.Details ? (
-          'Details'
+          <div className="DogeModal-details">Details</div>
         ) : null}
       </Modal>
     )

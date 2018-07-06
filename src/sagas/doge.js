@@ -11,32 +11,6 @@ import {
 } from '../bootstrap/dapp-api'
 import * as dogeConstants from '../constants/doge'
 
-// Parsers
-const parseDogeStatus = (dogeStatus, disputed) => {
-  if (disputed) return dogeConstants.STATUS_ENUM.Challenged
-  switch (Number(dogeStatus)) {
-    case dogeConstants.IN_CONTRACT_STATUS_ENUM.Resubmitted:
-    case dogeConstants.IN_CONTRACT_STATUS_ENUM.Submitted:
-      return dogeConstants.STATUS_ENUM.Pending
-    case dogeConstants.IN_CONTRACT_STATUS_ENUM.Registered:
-      return dogeConstants.STATUS_ENUM.Accepted
-    case dogeConstants.IN_CONTRACT_STATUS_ENUM.Cleared:
-      return dogeConstants.STATUS_ENUM.Rejected
-    default:
-      throw new Error('Invalid doge status.')
-  }
-}
-const parseDoge = (doge, ID) => ({
-  ID,
-  status: parseDogeStatus(doge.status, doge.disputed),
-  lastAction: doge.lastAction ? new Date(Number(doge.lastAction)) : null,
-  submitter: doge.submitter,
-  challenger: doge.challenger,
-  balance: String(doge.balance),
-  disputed: doge.disputed,
-  disputeID: doge.disputeID
-})
-
 /**
  * Fetches a paginatable list of doges.
  * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
@@ -58,9 +32,7 @@ function* fetchDoges({ payload: { cursor, count, filterValue, sortValue } }) {
       '0x0000000000000000000000000000000000000000000000000000000000000000'
   )
 
-  return (yield all(
-    dogeIDs.map(ID => call(arbitrablePermissionList.methods.items(ID).call))
-  )).map((doge, i) => parseDoge(doge, dogeIDs[i]))
+  return yield all(dogeIDs.map(ID => call(fetchDoge, { payload: { ID } })))
 }
 
 /**
@@ -69,15 +41,11 @@ function* fetchDoges({ payload: { cursor, count, filterValue, sortValue } }) {
  * @returns {object} - The `lessdux` collection mod object for updating the list of doges.
  */
 function* createDoge({ payload: { imageFileDataURL } }) {
-  const hash = web3.utils.keccak256(imageFileDataURL)
+  const ID = web3.utils.keccak256(imageFileDataURL)
 
   // Add to contract if absent
-  if (
-    Number(
-      (yield call(arbitrablePermissionList.methods.items(hash).call)).status
-    ) === 0
-  )
-    yield call(arbitrablePermissionList.methods.requestRegistering(hash).send, {
+  if (Number((yield call(fetchDoge, { payload: { ID } }))._status) === 0)
+    yield call(arbitrablePermissionList.methods.requestRegistering(ID).send, {
       from: yield select(walletSelectors.getAccount),
       value: yield select(arbitrablePermissionListSelectors.getSubmitCost)
     })
@@ -91,10 +59,46 @@ function* createDoge({ payload: { imageFileDataURL } }) {
 
   return {
     collection: dogeActions.doges.self,
-    resource: parseDoge(
-      yield call(arbitrablePermissionList.methods.items(hash).call),
-      hash
-    )
+    resource: yield call(fetchDoge, { payload: { ID } })
+  }
+}
+
+/**
+ * Fetches a doge from the list.
+ * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
+ * @returns {object} - The fetched doge.
+ */
+function* fetchDoge({ payload: { ID } }) {
+  const doge = yield call(arbitrablePermissionList.methods.items(ID).call)
+
+  let status
+  if (doge.disputed) status = dogeConstants.STATUS_ENUM.Challenged
+  else
+    switch (Number(doge.status)) {
+      case dogeConstants.IN_CONTRACT_STATUS_ENUM.Resubmitted:
+      case dogeConstants.IN_CONTRACT_STATUS_ENUM.Submitted:
+        status = dogeConstants.STATUS_ENUM.Pending
+        break
+      case dogeConstants.IN_CONTRACT_STATUS_ENUM.Registered:
+        status = dogeConstants.STATUS_ENUM.Accepted
+        break
+      case dogeConstants.IN_CONTRACT_STATUS_ENUM.Cleared:
+        status = dogeConstants.STATUS_ENUM.Rejected
+        break
+      default:
+        throw new Error('Invalid doge status.')
+    }
+
+  return {
+    ID,
+    status,
+    _status: doge.status,
+    lastAction: doge.lastAction ? new Date(Number(doge.lastAction)) : null,
+    submitter: doge.submitter,
+    challenger: doge.challenger,
+    balance: String(doge.balance),
+    disputed: doge.disputed,
+    disputeID: doge.disputeID
   }
 }
 
@@ -118,5 +122,12 @@ export default function* dogeSaga() {
     'create',
     dogeActions.doge,
     createDoge
+  )
+  yield takeLatest(
+    dogeActions.doge.FETCH,
+    lessduxSaga,
+    'fetch',
+    dogeActions.doge,
+    fetchDoge
   )
 }

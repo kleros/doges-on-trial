@@ -10,7 +10,7 @@ import * as errorConstants from '../constants/error'
  * Fetches the current wallet's accounts.
  * @returns {string[]} - The accounts.
  */
-export function* fetchAccounts() {
+function* fetchAccounts() {
   const accounts = yield call(web3.eth.getAccounts)
   if (!accounts[0]) throw new Error(errorConstants.ETH_NO_ACCOUNTS)
 
@@ -21,7 +21,7 @@ export function* fetchAccounts() {
  * Fetches the current wallet's ethereum balance.
  * @returns {string} - The balance.
  */
-export function* fetchBalance() {
+function* fetchBalance() {
   const balance = yield call(
     web3.eth.getBalance,
     yield select(walletSelectors.getAccount)
