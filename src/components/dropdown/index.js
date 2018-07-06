@@ -121,7 +121,7 @@ export default class Dropdown extends PureComponent {
                     </span>
                   )}
                   {o.label || o}
-                  {o.count && (
+                  {o.count ? (
                     <div className="Dropdown-options-option-count">
                       {o.color && (
                         <div
@@ -131,7 +131,7 @@ export default class Dropdown extends PureComponent {
                       )}
                       {o.count}
                     </div>
-                  )}
+                  ) : null}
                 </div>
               )
             })}
