@@ -86,7 +86,8 @@ function* fetchDoge({ payload: { ID } }) {
         status = dogeConstants.STATUS_ENUM.Rejected
         break
       default:
-        throw new Error('Invalid doge status.')
+        console.error('Invalid doge status.')
+        break
     }
 
   return {
