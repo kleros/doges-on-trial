@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import browserImageCompression from 'browser-image-compression'
-import { RenderIf } from 'lessdux'
 
 import * as arbitrablePermissionListSelectors from '../../reducers/arbitrable-permission-list'
 import * as arbitrablePermissionListActions from '../../actions/arbitrable-permission-list'
@@ -10,13 +9,11 @@ import * as dogeSelectors from '../../reducers/doge'
 import * as dogeActions from '../../actions/doge'
 import * as modalSelectors from '../../reducers/modal'
 import * as modalActions from '../../actions/modal'
-import { web3 } from '../../bootstrap/dapp-api'
 import Modal from '../../components/modal'
-import InfoCard from '../../components/info-card'
-import FilePicker from '../../components/file-picker'
-import ValueList from '../../components/value-list'
-import Button from '../../components/button'
 import * as modalConstants from '../../constants/modal'
+
+import Submit from './components/submit'
+import Details from './components/details'
 
 import './doge-modal.css'
 
@@ -111,68 +108,15 @@ class DogeModal extends PureComponent {
         className="DogeModal"
       >
         {openDogeModal === modalConstants.DOGE_MODAL_ENUM.Submit ? (
-          <div className="DogeModal-submit">
-            {imageFileInfoMessage && (
-              <InfoCard message={imageFileInfoMessage} />
-            )}
-            <h1>Submit your Doge</h1>
-            {doge.creating ? (
-              'Submitting doge...'
-            ) : (
-              <FilePicker
-                multiple={false}
-                onDropAccepted={this.handleOnFileDropAccepted}
-                imageFilePreviewURL={imageFileDataURL}
-              />
-            )}
-            <br />
-            <br />
-            <RenderIf
-              resource={arbitrablePermissionListData}
-              loading="Loading data..."
-              done={
-                arbitrablePermissionListData.data && (
-                  <div className="DogeModal-submit-bottom">
-                    <ValueList
-                      items={[
-                        {
-                          label: 'Deposit',
-                          value: String(
-                            web3.utils.fromWei(
-                              web3.utils
-                                .toBN(arbitrablePermissionListData.data.stake)
-                                .add(
-                                  web3.utils.toBN(
-                                    arbitrablePermissionListData.data
-                                      .arbitrationCost
-                                  )
-                                )
-                            )
-                          )
-                        }
-                      ]}
-                    />
-                    <br />
-                    <br />
-                    <Button
-                      onClick={this.handleSubmitDogeClick}
-                      disabled={!imageFileDataURL || doge.creating}
-                    >
-                      {doge.creating ? 'Submitting...' : 'Submit Doge'}
-                    </Button>
-                  </div>
-                )
-              }
-              failedLoading="There was an error fetching the list's data."
-            />
-          </div>
-        ) : openDogeModal === modalConstants.DOGE_MODAL_ENUM.Details ? (
-          <RenderIf
-            resource={doge}
-            loading="Loading doge..."
-            done={doge.data && <div className="DogeModal-details">Details</div>}
-            failedLoading="There was an error fetching the doge."
+          <Submit
+            arbitrablePermissionListData={arbitrablePermissionListData}
+            doge={doge}
+            imageFileDataURL={imageFileDataURL}
+            imageFileInfoMessage={imageFileInfoMessage}
+            handleSubmitDogeClick={this.handleSubmitDogeClick}
           />
+        ) : openDogeModal === modalConstants.DOGE_MODAL_ENUM.Details ? (
+          <Details doge={doge} />
         ) : null}
       </Modal>
     )
