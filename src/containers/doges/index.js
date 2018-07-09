@@ -120,7 +120,7 @@ class Doges extends PureComponent {
 
   handleDogeCardClick = ({ currentTarget: { id } }) => {
     const { fetchDoge, openDogeModal } = this.props
-    fetchDoge(id)
+    fetchDoge(id, true)
     openDogeModal(modalConstants.DOGE_MODAL_ENUM.Details)
   }
 

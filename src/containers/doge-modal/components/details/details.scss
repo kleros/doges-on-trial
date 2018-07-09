@@ -3,4 +3,12 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+
+  &-valueList {
+    margin-top: 30px;
+  }
+
+  &-button {
+    margin-top: 50px;
+  }
 }

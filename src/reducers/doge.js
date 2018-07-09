@@ -12,7 +12,8 @@ export const _dogeShape = PropTypes.shape({
   challenger: PropTypes.string.isRequired,
   balance: PropTypes.string.isRequired,
   disputed: PropTypes.bool.isRequired,
-  disputeID: PropTypes.string.isRequired
+  disputeID: PropTypes.string.isRequired,
+  disputeStatus: PropTypes.oneOf(dogeConstants.DISPUTE_STATUS_ENUM.indexes)
 })
 export const _dogesShape = PropTypes.arrayOf(_dogeShape.isRequired)
 

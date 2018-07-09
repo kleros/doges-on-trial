@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 
 import './value-list.css'
 
-const ValueList = ({ items }) => (
-  <div className="ValueList">
+const ValueList = ({ items, className }) => (
+  <div className={`ValueList ${className}`}>
     {items.map((item, i) => (
       <div key={i} className="ValueList-item">
         <h3 className="ValueList-item-label">
@@ -31,7 +31,15 @@ ValueList.propTypes = {
       value: PropTypes.node.isRequired,
       icon: PropTypes.string
     }).isRequired
-  ).isRequired
+  ).isRequired,
+
+  // Modifiers
+  className: PropTypes.string
+}
+
+ValueList.defaultProps = {
+  // Modifiers
+  className: ''
 }
 
 export default ValueList

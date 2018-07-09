@@ -9,7 +9,7 @@ import { arbitrablePermissionList, arbitrator } from '../bootstrap/dapp-api'
  * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
  * @returns {object} - The fetched data.
  */
-function* fetchArbitrablePermissionListData() {
+export function* fetchArbitrablePermissionListData() {
   const d = yield all({
     arbitrator: call(arbitrablePermissionList.methods.arbitrator().call),
     stake: call(arbitrablePermissionList.methods.stake().call),

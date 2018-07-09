@@ -8,7 +8,7 @@ import './doge-image.css'
 
 const DogeImage = ({ status, imageSrc }) => {
   let icon
-  switch (dogeConstants.STATUS_ENUM[status]) {
+  switch (status) {
     case dogeConstants.STATUS_ENUM.Pending:
       break
     case dogeConstants.STATUS_ENUM.Challenged:
@@ -25,7 +25,11 @@ const DogeImage = ({ status, imageSrc }) => {
   }
 
   return (
-    <div className={`DogeImage DogeImage--${status.toLowerCase()}`}>
+    <div
+      className={`DogeImage DogeImage--${dogeConstants.STATUS_ENUM[
+        status
+      ].toLowerCase()}`}
+    >
       <img src={imageSrc} alt="Doge Submission" className="DogeImage-image" />
       {icon && <FontAwesomeIcon icon={icon} className="DogeImage-icon" />}
     </div>
@@ -34,7 +38,7 @@ const DogeImage = ({ status, imageSrc }) => {
 
 DogeImage.propTypes = {
   // State
-  status: PropTypes.oneOf(dogeConstants.STATUS_ENUM.values).isRequired,
+  status: PropTypes.oneOf(dogeConstants.STATUS_ENUM.indexes).isRequired,
   imageSrc: PropTypes.string.isRequired
 }
 

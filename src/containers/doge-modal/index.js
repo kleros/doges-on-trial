@@ -116,7 +116,10 @@ class DogeModal extends PureComponent {
             handleSubmitDogeClick={this.handleSubmitDogeClick}
           />
         ) : openDogeModal === modalConstants.DOGE_MODAL_ENUM.Details ? (
-          <Details doge={doge} />
+          <Details
+            arbitrablePermissionListData={arbitrablePermissionListData}
+            doge={doge}
+          />
         ) : null}
       </Modal>
     )

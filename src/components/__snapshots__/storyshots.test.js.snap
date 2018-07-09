@@ -24639,7 +24639,7 @@ exports[`Storyshots Value List with icons 1`] = `
             }
           >
             <div
-              className="ValueList"
+              className="ValueList "
             >
               <div
                 className="ValueList-item"
@@ -24974,7 +24974,7 @@ exports[`Storyshots Value List without icons 1`] = `
             }
           >
             <div
-              className="ValueList"
+              className="ValueList "
             >
               <div
                 className="ValueList-item"

@@ -21,4 +21,7 @@ export const createDoge = imageFileDataURL => ({
   type: doge.CREATE,
   payload: { imageFileDataURL }
 })
-export const fetchDoge = ID => ({ type: doge.FETCH, payload: { ID } })
+export const fetchDoge = (ID, withDisputeStatus) => ({
+  type: doge.FETCH,
+  payload: { ID, withDisputeStatus }
+})

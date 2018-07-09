@@ -1,15 +1,20 @@
-import { takeLatest, select, call, all } from 'redux-saga/effects'
+import { takeLatest, select, call, all, put } from 'redux-saga/effects'
 
 import * as dogeActions from '../actions/doge'
 import * as walletSelectors from '../reducers/wallet'
 import * as arbitrablePermissionListSelectors from '../reducers/arbitrable-permission-list'
+import * as arbitrablePermissionListActions from '../actions/arbitrable-permission-list'
 import { lessduxSaga } from '../utils/saga'
+import { action } from '../utils/action'
 import {
   web3,
   arbitrablePermissionList,
+  arbitrator,
   IMAGE_UPLOAD_URL
 } from '../bootstrap/dapp-api'
 import * as dogeConstants from '../constants/doge'
+
+import { fetchArbitrablePermissionListData } from './arbitrable-permission-list'
 
 /**
  * Fetches a paginatable list of doges.
@@ -68,7 +73,7 @@ function* createDoge({ payload: { imageFileDataURL } }) {
  * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
  * @returns {object} - The fetched doge.
  */
-function* fetchDoge({ payload: { ID } }) {
+function* fetchDoge({ payload: { ID, withDisputeStatus } }) {
   const doge = yield call(arbitrablePermissionList.methods.items(ID).call)
 
   let status
@@ -90,6 +95,26 @@ function* fetchDoge({ payload: { ID } }) {
         break
     }
 
+  let disputeStatus
+  if (withDisputeStatus) {
+    // Update arbitrable permission list data
+    const arbitrablePermissionListData = yield call(
+      fetchArbitrablePermissionListData
+    )
+    yield put(
+      action(
+        arbitrablePermissionListActions.arbitrablePermissionListData.RECEIVE,
+        { arbitrablePermissionListData }
+      )
+    )
+
+    // Fetch dispute status
+    arbitrator.options.address = arbitrablePermissionListData.arbitrator
+    disputeStatus = Number(
+      yield call(arbitrator.methods.disputeStatus(doge.disputeID).call)
+    )
+  }
+
   return {
     ID,
     status,
@@ -99,7 +124,8 @@ function* fetchDoge({ payload: { ID } }) {
     challenger: doge.challenger,
     balance: String(doge.balance),
     disputed: doge.disputed,
-    disputeID: doge.disputeID
+    disputeID: doge.disputeID,
+    disputeStatus
   }
 }
 

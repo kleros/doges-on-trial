@@ -22,6 +22,11 @@ export const STATUS_COLOR_ENUM = createEnum([
   '#47cf73',
   '#ff364f'
 ])
+export const DISPUTE_STATUS_ENUM = createEnum([
+  'Waiting',
+  'Appealable',
+  'Solved'
+])
 
 // Gallery Settings
 export const FILTER_OPTIONS_ENUM = createEnum([
