@@ -132,10 +132,23 @@ class Doges extends PureComponent {
       <div className="Doges">
         <div className="Doges-settingsBar">
           <h3 className="Doges-settingsBar-count">
-            <span className="Doges-settingsBar-count-label">
-              Doges submitted:
-            </span>{' '}
-            <span className="Doges-settingsBar-count-number">1245</span>
+            <RenderIf
+              resource={doges}
+              loading={null}
+              done={
+                doges.data && (
+                  <div>
+                    <span className="Doges-settingsBar-count-label">
+                      Doges submitted:
+                    </span>{' '}
+                    <span className="Doges-settingsBar-count-number">
+                      {doges.data.length}
+                    </span>
+                  </div>
+                )
+              }
+              failedLoading={null}
+            />
           </h3>
           <div className="Doges-settingsBar-dropdowns">
             <Dropdown
