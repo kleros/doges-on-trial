@@ -95,7 +95,7 @@ function* fetchDoge({ payload: { ID, withDisputeStatus } }) {
         break
     }
 
-  let disputeStatus
+  let disputeData = null
   if (withDisputeStatus) {
     // Update arbitrable permission list data
     const arbitrablePermissionListData = yield call(
@@ -108,24 +108,35 @@ function* fetchDoge({ payload: { ID, withDisputeStatus } }) {
       )
     )
 
-    // Fetch dispute status
+    // Fetch dispute data
     arbitrator.options.address = arbitrablePermissionListData.arbitrator
-    disputeStatus = Number(
-      yield call(arbitrator.methods.disputeStatus(doge.disputeID).call)
-    )
+    const d = yield all({
+      disputeStatus: call(
+        arbitrator.methods.disputeStatus(doge.disputeID).call
+      ),
+      appealCost: call(
+        arbitrator.methods.appealCost(doge.disputeID, '0x00').call
+      )
+    })
+    disputeData = {
+      disputeStatus: Number(d.disputeStatus),
+      appealCost: String(d.appealCost)
+    }
   }
 
   return {
     ID,
     status,
     _status: doge.status,
-    lastAction: doge.lastAction ? new Date(Number(doge.lastAction)) : null,
+    lastAction: doge.lastAction
+      ? new Date(Number(doge.lastAction * 1000))
+      : null,
     submitter: doge.submitter,
     challenger: doge.challenger,
     balance: String(doge.balance),
     disputed: doge.disputed,
     disputeID: doge.disputeID,
-    disputeStatus
+    ...disputeData
   }
 }
 

@@ -20,32 +20,100 @@ const Details = ({ arbitrablePermissionListData, doge }) => {
   if (arbitrablePermissionListData.data && doge.data)
     switch (doge.data.status) {
       case dogeConstants.STATUS_ENUM.Pending: // You can challenge the doge
-        title = 'Send Doge to Trial?'
-        valueListItems = [
-          {
-            label: 'Deposit',
-            value: String(
-              web3.utils.fromWei(
-                web3.utils
-                  .toBN(arbitrablePermissionListData.data.stake)
-                  .add(
-                    web3.utils.toBN(
-                      arbitrablePermissionListData.data.arbitrationCost
+        if (
+          Date.now() - doge.data.lastAction >=
+          arbitrablePermissionListData.data.timeToChallenge
+        ) {
+          title = 'This Doge Has Been Judged'
+          button = { children: 'Execute Request', onClick: null }
+        } else {
+          title = 'Send Doge to Trial?'
+          valueListItems = [
+            {
+              label: 'Deposit',
+              value: String(
+                web3.utils.fromWei(
+                  web3.utils
+                    .toBN(arbitrablePermissionListData.data.stake)
+                    .add(
+                      web3.utils.toBN(
+                        arbitrablePermissionListData.data.arbitrationCost
+                      )
                     )
-                  )
+                )
               )
-            )
-          }
-        ]
-        button = { children: 'Submit Challenge', onClick: null }
+            }
+          ]
+          button = { children: 'Submit Challenge', onClick: null }
+        }
         break
       case dogeConstants.STATUS_ENUM.Challenged: // The doge has an ongoing challenge
         switch (doge.disputeStatus) {
           case dogeConstants.DISPUTE_STATUS_ENUM.Waiting: // The dispute is waiting for a ruling
+            title = 'This Doge is Being Judged'
+            valueListItems = [
+              {
+                label: 'Total Deposited',
+                value: String(
+                  web3.utils.fromWei(
+                    web3.utils
+                      .toBN(arbitrablePermissionListData.data.stake)
+                      .add(
+                        web3.utils.toBN(
+                          arbitrablePermissionListData.data.arbitrationCost
+                        )
+                      )
+                      .muln(2)
+                  )
+                )
+              }
+            ]
             break
           case dogeConstants.DISPUTE_STATUS_ENUM.Appealable: // You can appeal the dispute's ruling
+            title = 'This Doge Has Been Judged'
+            valueListItems = [
+              {
+                label: 'Total Deposited',
+                value: String(
+                  web3.utils.fromWei(
+                    web3.utils
+                      .toBN(arbitrablePermissionListData.data.stake)
+                      .add(
+                        web3.utils.toBN(
+                          arbitrablePermissionListData.data.arbitrationCost
+                        )
+                      )
+                      .muln(2)
+                  )
+                )
+              },
+              {
+                label: 'Appeal Fees',
+                value: String(web3.utils.fromWei(doge.data.appealCost))
+              }
+            ]
+            button = { children: 'Appeal', onClick: null }
             break
           case dogeConstants.DISPUTE_STATUS_ENUM.Solved: // You can execute the dispute's ruling
+            title = 'This Doge Has Been Judged'
+            valueListItems = [
+              {
+                label: 'Total Deposited',
+                value: String(
+                  web3.utils.fromWei(
+                    web3.utils
+                      .toBN(arbitrablePermissionListData.data.stake)
+                      .add(
+                        web3.utils.toBN(
+                          arbitrablePermissionListData.data.arbitrationCost
+                        )
+                      )
+                      .muln(2)
+                  )
+                )
+              }
+            ]
+            button = { children: 'Execute Ruling', onClick: null }
             break
           default:
             throw new Error('Invalid doge challenged state.')
@@ -53,11 +121,11 @@ const Details = ({ arbitrablePermissionListData, doge }) => {
         break
       case dogeConstants.STATUS_ENUM.Accepted:
       case dogeConstants.STATUS_ENUM.Rejected: // The doge has been accepted or rejected
+        title = 'This Doge Has Been Judged'
         break
       default:
         throw new Error('Invalid doge state.')
     }
-
   return (
     <RenderIf
       resource={arbitrablePermissionListData}
