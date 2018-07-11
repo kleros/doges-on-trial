@@ -2184,6 +2184,42 @@ exports[`Storyshots Colors bases 1`] = `
               data-radium={true}
               style={
                 Object {
+                  "background": "#A3A2A5",
+                  "border": "2px solid $mint",
+                  "borderRadius": "5px",
+                  "height": "80px",
+                  "margin": "40px",
+                  "position": "relative",
+                  "width": "80px",
+                }
+              }
+            >
+              <div
+                data-radium={true}
+                style={
+                  Object {
+                    "position": "absolute",
+                    "top": "110%",
+                  }
+                }
+              >
+                LIGHT GREY
+                <div
+                  data-radium={true}
+                  style={
+                    Object {
+                      "color": "#a3a2a5",
+                    }
+                  }
+                >
+                  #A3A2A5
+                </div>
+              </div>
+            </div>
+            <div
+              data-radium={true}
+              style={
+                Object {
                   "background": "#47525D",
                   "border": "2px solid $mint",
                   "borderRadius": "5px",
@@ -2220,7 +2256,7 @@ exports[`Storyshots Colors bases 1`] = `
               data-radium={true}
               style={
                 Object {
-                  "background": "#A3A2A5",
+                  "background": "#1A1B23",
                   "border": "2px solid $mint",
                   "borderRadius": "5px",
                   "height": "80px",
@@ -2239,7 +2275,7 @@ exports[`Storyshots Colors bases 1`] = `
                   }
                 }
               >
-                LIGHT GREY
+                DARKEST GREY
                 <div
                   data-radium={true}
                   style={
@@ -2248,7 +2284,7 @@ exports[`Storyshots Colors bases 1`] = `
                     }
                   }
                 >
-                  #A3A2A5
+                  #1A1B23
                 </div>
               </div>
             </div>
@@ -2465,42 +2501,6 @@ exports[`Storyshots Colors bases 1`] = `
                   }
                 >
                   #FFF
-                </div>
-              </div>
-            </div>
-            <div
-              data-radium={true}
-              style={
-                Object {
-                  "background": "#1A1B23",
-                  "border": "2px solid $mint",
-                  "borderRadius": "5px",
-                  "height": "80px",
-                  "margin": "40px",
-                  "position": "relative",
-                  "width": "80px",
-                }
-              }
-            >
-              <div
-                data-radium={true}
-                style={
-                  Object {
-                    "position": "absolute",
-                    "top": "110%",
-                  }
-                }
-              >
-                DARK TEXT
-                <div
-                  data-radium={true}
-                  style={
-                    Object {
-                      "color": "#a3a2a5",
-                    }
-                  }
-                >
-                  #1A1B23
                 </div>
               </div>
             </div>
@@ -3335,6 +3335,78 @@ exports[`Storyshots Colors typography 1`] = `
                   }
                 >
                   #A3A2A5
+                </div>
+              </div>
+            </div>
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "background": "#47525D",
+                  "border": "2px solid $mint",
+                  "borderRadius": "5px",
+                  "height": "80px",
+                  "margin": "40px",
+                  "position": "relative",
+                  "width": "80px",
+                }
+              }
+            >
+              <div
+                data-radium={true}
+                style={
+                  Object {
+                    "position": "absolute",
+                    "top": "110%",
+                  }
+                }
+              >
+                MEDIUM TEXT
+                <div
+                  data-radium={true}
+                  style={
+                    Object {
+                      "color": "#a3a2a5",
+                    }
+                  }
+                >
+                  #47525D
+                </div>
+              </div>
+            </div>
+            <div
+              data-radium={true}
+              style={
+                Object {
+                  "background": "#1A1B23",
+                  "border": "2px solid $mint",
+                  "borderRadius": "5px",
+                  "height": "80px",
+                  "margin": "40px",
+                  "position": "relative",
+                  "width": "80px",
+                }
+              }
+            >
+              <div
+                data-radium={true}
+                style={
+                  Object {
+                    "position": "absolute",
+                    "top": "110%",
+                  }
+                }
+              >
+                DARK TEXT
+                <div
+                  data-radium={true}
+                  style={
+                    Object {
+                      "color": "#a3a2a5",
+                    }
+                  }
+                >
+                  #1A1B23
                 </div>
               </div>
             </div>

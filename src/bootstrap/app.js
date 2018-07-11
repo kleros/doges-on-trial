@@ -7,6 +7,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import * as modalActions from '../actions/modal'
 import Doges from '../containers/doges'
+import HowItWorks from '../containers/how-it-works'
 import NavBar from '../components/nav-bar'
 import PageNotFound from '../components/page-not-found'
 import Button from '../components/button'
@@ -35,8 +36,11 @@ const ConnectedNavBar = connect(
     routes={[
       { title: 'Doges', to: '/' },
       { title: 'How it Works', to: '/how-it-works' },
-      { title: 'Crypto Meme', to: '/crypto-meme' },
-      { title: 'Twitterverse', to: 'https://twitter.com', isExternal: true }
+      {
+        title: 'Twitterverse',
+        to: 'https://twitter.com/hashtag/DogesOnTrial?src=hash',
+        isExternal: true
+      }
     ]}
     extras={[
       <Button
@@ -77,6 +81,7 @@ const App = ({ store, history, testElement }) => (
           <div id="scroll-root">
             <Switch>
               <Route exact path="/" component={Doges} />
+              <Route exact path="/how-it-works" component={HowItWorks} />
               <Route component={PageNotFound} />
             </Switch>
           </div>

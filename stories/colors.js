@@ -51,14 +51,19 @@ storiesOf('Colors', module)
         hexCode: '#3D464D'
       },
       {
+        variableName: 'lightGrey',
+        name: 'LIGHT GREY',
+        hexCode: '#A3A2A5'
+      },
+      {
         variableName: 'darkGrey',
         name: 'DARK GREY',
         hexCode: '#47525D'
       },
       {
-        variableName: 'lightGrey',
-        name: 'LIGHT GREY',
-        hexCode: '#A3A2A5'
+        variableName: 'darkestGrey',
+        name: 'DARKEST GREY',
+        hexCode: '#1A1B23'
       },
       {
         variableName: 'mint',
@@ -89,11 +94,6 @@ storiesOf('Colors', module)
         variableName: 'white',
         name: 'WHITE',
         hexCode: '#FFF'
-      },
-      {
-        variableName: 'darkText',
-        name: 'DARK TEXT',
-        hexCode: '#1A1B23'
       }
     ])
   )
@@ -113,6 +113,12 @@ storiesOf('Colors', module)
       { variableName: 'heading', name: 'HEADING', hexCode: '#1A1B23' },
       { variableName: 'text', name: 'TEXT', hexCode: '#3D464D' },
       { variableName: 'lightText', name: 'LIGHT TEXT', hexCode: '#A3A2A5' },
+      { variableName: 'mediumText', name: 'MEDIUM TEXT', hexCode: '#47525D' },
+      {
+        variableName: 'darkText',
+        name: 'DARK TEXT',
+        hexCode: '#1A1B23'
+      },
       {
         variableName: 'invertedText',
         name: 'INVERTED TEXT',
