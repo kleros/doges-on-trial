@@ -137,6 +137,7 @@ class DogeModal extends PureComponent {
             doge={doge}
             imageFileDataURL={imageFileDataURL}
             imageFileInfoMessage={imageFileInfoMessage}
+            handleOnFileDropAccepted={this.handleOnFileDropAccepted}
             handleSubmitDogeClick={this.handleSubmitDogeClick}
           />
         ) : openDogeModal === modalConstants.DOGE_MODAL_ENUM.Details ? (

@@ -164,7 +164,9 @@ function* executeDogeRequest({ payload: { ID } }) {
 
     return {
       collection: dogeActions.doges.self,
-      resource: yield call(fetchDoge, { payload: { ID } }),
+      resource: yield call(fetchDoge, {
+        payload: { ID, withDisputeStatus: true }
+      }),
       find: d => d.ID === ID,
       updating: ID
     }
@@ -206,7 +208,9 @@ function* submitDogeChallenge({ payload: { ID } }) {
 
     return {
       collection: dogeActions.doges.self,
-      resource: yield call(fetchDoge, { payload: { ID } }),
+      resource: yield call(fetchDoge, {
+        payload: { ID, withDisputeStatus: true }
+      }),
       find: d => d.ID === ID,
       updating: ID
     }
@@ -248,7 +252,9 @@ function* appealDogeRuling({ payload: { ID } }) {
 
     return {
       collection: dogeActions.doges.self,
-      resource: yield call(fetchDoge, { payload: { ID } }),
+      resource: yield call(fetchDoge, {
+        payload: { ID, withDisputeStatus: true }
+      }),
       find: d => d.ID === ID,
       updating: ID
     }
@@ -294,7 +300,9 @@ function* executeDogeRuling({ payload: { ID } }) {
 
     return {
       collection: dogeActions.doges.self,
-      resource: yield call(fetchDoge, { payload: { ID } }),
+      resource: yield call(fetchDoge, {
+        payload: { ID, withDisputeStatus: true }
+      }),
       find: d => d.ID === ID,
       updating: ID
     }

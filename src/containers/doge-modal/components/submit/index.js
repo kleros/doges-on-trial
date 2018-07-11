@@ -17,6 +17,7 @@ const Submit = ({
   doge,
   imageFileDataURL,
   imageFileInfoMessage,
+  handleOnFileDropAccepted,
   handleSubmitDogeClick
 }) => (
   <div className="Submit">
@@ -27,7 +28,7 @@ const Submit = ({
     ) : (
       <FilePicker
         multiple={false}
-        onDropAccepted={this.handleOnFileDropAccepted}
+        onDropAccepted={handleOnFileDropAccepted}
         imageFilePreviewURL={imageFileDataURL}
       />
     )}
@@ -83,6 +84,7 @@ Submit.propTypes = {
   imageFileInfoMessage: PropTypes.string,
 
   // Handlers
+  handleOnFileDropAccepted: PropTypes.func.isRequired,
   handleSubmitDogeClick: PropTypes.func.isRequired
 }
 
