@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { RenderIf } from 'lessdux'
 
 import { web3, IMAGES_BASE_URL } from '../../../../bootstrap/dapp-api'
@@ -12,7 +13,14 @@ import Button from '../../../../components/button'
 
 import './details.css'
 
-const Details = ({ arbitrablePermissionListData, doge }) => {
+const Details = ({
+  arbitrablePermissionListData,
+  doge,
+  onExecuteRequestClick,
+  onSubmitChallengeClick,
+  onAppealClick,
+  onExecuteRulingClick
+}) => {
   let infoCardMessage
   let title
   let valueListItems
@@ -25,7 +33,10 @@ const Details = ({ arbitrablePermissionListData, doge }) => {
           arbitrablePermissionListData.data.timeToChallenge
         ) {
           title = 'This Doge Has Been Judged'
-          button = { children: 'Execute Request', onClick: null }
+          button = {
+            children: 'Execute Request',
+            onClick: onExecuteRequestClick
+          }
         } else {
           title = 'Send Doge to Trial?'
           valueListItems = [
@@ -44,7 +55,10 @@ const Details = ({ arbitrablePermissionListData, doge }) => {
               )
             }
           ]
-          button = { children: 'Submit Challenge', onClick: null }
+          button = {
+            children: 'Submit Challenge',
+            onClick: onSubmitChallengeClick
+          }
         }
         break
       case dogeConstants.STATUS_ENUM.Challenged: // The doge has an ongoing challenge
@@ -92,7 +106,7 @@ const Details = ({ arbitrablePermissionListData, doge }) => {
                 value: String(web3.utils.fromWei(doge.data.appealCost))
               }
             ]
-            button = { children: 'Appeal', onClick: null }
+            button = { children: 'Appeal', onClick: onAppealClick }
             break
           case dogeConstants.DISPUTE_STATUS_ENUM.Solved: // You can execute the dispute's ruling
             title = 'This Doge Has Been Judged'
@@ -113,7 +127,10 @@ const Details = ({ arbitrablePermissionListData, doge }) => {
                 )
               }
             ]
-            button = { children: 'Execute Ruling', onClick: null }
+            button = {
+              children: 'Execute Ruling',
+              onClick: onExecuteRulingClick
+            }
             break
           default:
             throw new Error('Invalid doge challenged state.')
@@ -134,6 +151,7 @@ const Details = ({ arbitrablePermissionListData, doge }) => {
         <RenderIf
           resource={doge}
           loading="Loading doge..."
+          updating="Updating doge..."
           done={
             doge.data && (
               <div className="Details">
@@ -149,11 +167,18 @@ const Details = ({ arbitrablePermissionListData, doge }) => {
                     className="Details-valueList"
                   />
                 )}
-                {button && <Button className="Details-button" {...button} />}
+                {button && (
+                  <Button
+                    id={doge.data.ID}
+                    className="Details-button"
+                    {...button}
+                  />
+                )}
               </div>
             )
           }
           failedLoading="There was an error fetching the doge."
+          failedUpdating="There was an error updating the doge."
         />
       }
       failedLoading="There was an error fetching the list data."
@@ -166,7 +191,13 @@ Details.propTypes = {
   arbitrablePermissionListData:
     arbitrablePermissionListSelectors.arbitrablePermissionListDataShape
       .isRequired,
-  doge: dogeSelectors.dogeShape.isRequired
+  doge: dogeSelectors.dogeShape.isRequired,
+
+  // Handlers
+  onExecuteRequestClick: PropTypes.func.isRequired,
+  onSubmitChallengeClick: PropTypes.func.isRequired,
+  onAppealClick: PropTypes.func.isRequired,
+  onExecuteRulingClick: PropTypes.func.isRequired
 }
 
 export default Details

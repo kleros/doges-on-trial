@@ -35,3 +35,6 @@ export const getSubmitCost = state =>
           .arbitrationCost
       )
     )
+export const getAppealCost = state =>
+  state.arbitrablePermissionList.arbitrablePermissionListData.data &&
+  state.arbitrablePermissionList.arbitrablePermissionListData.data.appealCost

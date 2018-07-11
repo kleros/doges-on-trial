@@ -29,6 +29,10 @@ class DogeModal extends PureComponent {
     // Action Dispatchers
     fetchArbitrablePermissionListData: PropTypes.func.isRequired,
     createDoge: PropTypes.func.isRequired,
+    executeDogeRequest: PropTypes.func.isRequired,
+    submitDogeChallenge: PropTypes.func.isRequired,
+    appealDogeRuling: PropTypes.func.isRequired,
+    executeDogeRuling: PropTypes.func.isRequired,
     closeDogeModal: PropTypes.func.isRequired
   }
 
@@ -93,6 +97,26 @@ class DogeModal extends PureComponent {
     createDoge(imageFileDataURL)
   }
 
+  handleExecuteRequestClick = ({ currentTarget: { id } }) => {
+    const { executeDogeRequest } = this.props
+    executeDogeRequest(id)
+  }
+
+  handleSubmitChallengeClick = ({ currentTarget: { id } }) => {
+    const { submitDogeChallenge } = this.props
+    submitDogeChallenge(id)
+  }
+
+  handleAppealClick = ({ currentTarget: { id } }) => {
+    const { appealDogeRuling } = this.props
+    appealDogeRuling(id)
+  }
+
+  handleExecuteRulingClick = ({ currentTarget: { id } }) => {
+    const { executeDogeRuling } = this.props
+    executeDogeRuling(id)
+  }
+
   render() {
     const {
       arbitrablePermissionListData,
@@ -104,7 +128,7 @@ class DogeModal extends PureComponent {
     return (
       <Modal
         isOpen={openDogeModal !== null}
-        onRequestClose={doge.creating ? null : closeDogeModal}
+        onRequestClose={doge.creating || doge.updating ? null : closeDogeModal}
         className="DogeModal"
       >
         {openDogeModal === modalConstants.DOGE_MODAL_ENUM.Submit ? (
@@ -119,6 +143,10 @@ class DogeModal extends PureComponent {
           <Details
             arbitrablePermissionListData={arbitrablePermissionListData}
             doge={doge}
+            onExecuteRequestClick={this.handleExecuteRequestClick}
+            onSubmitChallengeClick={this.handleSubmitChallengeClick}
+            onAppealClick={this.handleAppealClick}
+            onExecuteRulingClick={this.handleExecuteRulingClick}
           />
         ) : null}
       </Modal>
@@ -137,6 +165,10 @@ export default connect(
     fetchArbitrablePermissionListData:
       arbitrablePermissionListActions.fetchArbitrablePermissionListData,
     createDoge: dogeActions.createDoge,
+    executeDogeRequest: dogeActions.executeDogeRequest,
+    submitDogeChallenge: dogeActions.submitDogeChallenge,
+    appealDogeRuling: dogeActions.appealDogeRuling,
+    executeDogeRuling: dogeActions.executeDogeRuling,
     closeDogeModal: modalActions.closeDogeModal
   }
 )(DogeModal)

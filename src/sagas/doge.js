@@ -1,5 +1,6 @@
 import { takeLatest, select, call, all, put } from 'redux-saga/effects'
 
+import * as dogeSelectors from '../reducers/doge'
 import * as dogeActions from '../actions/doge'
 import * as walletSelectors from '../reducers/wallet'
 import * as arbitrablePermissionListSelectors from '../reducers/arbitrable-permission-list'
@@ -141,6 +142,177 @@ function* fetchDoge({ payload: { ID, withDisputeStatus } }) {
 }
 
 /**
+ * Executes a doge's request.
+ * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
+ * @returns {object} - The `lessdux` collection mod object for updating the list of doges.
+ */
+function* executeDogeRequest({ payload: { ID } }) {
+  try {
+    // Set collection mod for granular loading indicators
+    yield put(
+      action(dogeActions.doge.UPDATE, {
+        collectionMod: {
+          collection: dogeActions.doges.self,
+          updating: [ID]
+        }
+      })
+    )
+
+    yield call(arbitrablePermissionList.methods.executeRequest(ID).send, {
+      from: yield select(walletSelectors.getAccount)
+    })
+
+    return {
+      collection: dogeActions.doges.self,
+      resource: yield call(fetchDoge, { payload: { ID } }),
+      find: d => d.ID === ID,
+      updating: ID
+    }
+  } catch (err) {
+    // Remove collection mod for granular loading indicators if something fails
+    yield put(
+      action(dogeActions.doge.FAIL_UPDATE, {
+        collectionMod: {
+          collection: dogeActions.doges.self,
+          updating: ID
+        }
+      })
+    )
+    throw err
+  }
+}
+
+/**
+ * Submits a doge challenge.
+ * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
+ * @returns {object} - The `lessdux` collection mod object for updating the list of doges.
+ */
+function* submitDogeChallenge({ payload: { ID } }) {
+  try {
+    // Set collection mod for granular loading indicators
+    yield put(
+      action(dogeActions.doge.UPDATE, {
+        collectionMod: {
+          collection: dogeActions.doges.self,
+          updating: [ID]
+        }
+      })
+    )
+
+    yield call(arbitrablePermissionList.methods.challengeRegistering(ID).send, {
+      from: yield select(walletSelectors.getAccount),
+      value: yield select(arbitrablePermissionListSelectors.getSubmitCost)
+    })
+
+    return {
+      collection: dogeActions.doges.self,
+      resource: yield call(fetchDoge, { payload: { ID } }),
+      find: d => d.ID === ID,
+      updating: ID
+    }
+  } catch (err) {
+    // Remove collection mod for granular loading indicators if something fails
+    yield put(
+      action(dogeActions.doge.FAIL_UPDATE, {
+        collectionMod: {
+          collection: dogeActions.doges.self,
+          updating: ID
+        }
+      })
+    )
+    throw err
+  }
+}
+
+/**
+ * Appeals a doge's ruling.
+ * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
+ * @returns {object} - The `lessdux` collection mod object for updating the list of doges.
+ */
+function* appealDogeRuling({ payload: { ID } }) {
+  try {
+    // Set collection mod for granular loading indicators
+    yield put(
+      action(dogeActions.doge.UPDATE, {
+        collectionMod: {
+          collection: dogeActions.doges.self,
+          updating: [ID]
+        }
+      })
+    )
+
+    yield call(arbitrablePermissionList.methods.appeal(ID).send, {
+      from: yield select(walletSelectors.getAccount),
+      value: yield select(arbitrablePermissionListSelectors.getAppealCost)
+    })
+
+    return {
+      collection: dogeActions.doges.self,
+      resource: yield call(fetchDoge, { payload: { ID } }),
+      find: d => d.ID === ID,
+      updating: ID
+    }
+  } catch (err) {
+    // Remove collection mod for granular loading indicators if something fails
+    yield put(
+      action(dogeActions.doge.FAIL_UPDATE, {
+        collectionMod: {
+          collection: dogeActions.doges.self,
+          updating: ID
+        }
+      })
+    )
+    throw err
+  }
+}
+
+/**
+ * Executes a doge's ruling.
+ * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
+ * @returns {object} - The `lessdux` collection mod object for updating the list of doges.
+ */
+function* executeDogeRuling({ payload: { ID } }) {
+  try {
+    // Set collection mod for granular loading indicators
+    yield put(
+      action(dogeActions.doge.UPDATE, {
+        collectionMod: {
+          collection: dogeActions.doges.self,
+          updating: [ID]
+        }
+      })
+    )
+
+    yield call(
+      arbitrator.methods.executeRuling(
+        yield select(dogeSelectors.getDogeDisputeID)
+      ).send,
+      {
+        from: yield select(walletSelectors.getAccount)
+      }
+    )
+
+    return {
+      collection: dogeActions.doges.self,
+      resource: yield call(fetchDoge, { payload: { ID } }),
+      find: d => d.ID === ID,
+      updating: ID
+    }
+  } catch (err) {
+    // Remove collection mod for granular loading indicators if something fails
+    yield put(
+      action(dogeActions.doge.FAIL_UPDATE, {
+        collectionMod: {
+          collection: dogeActions.doges.self,
+          updating: ID
+        }
+      })
+    )
+    throw err
+  }
+}
+
+/**
  * The root of the doge saga.
  */
 export default function* dogeSaga() {
@@ -167,5 +339,33 @@ export default function* dogeSaga() {
     'fetch',
     dogeActions.doge,
     fetchDoge
+  )
+  yield takeLatest(
+    dogeActions.doge.EXECUTE_REQUEST,
+    lessduxSaga,
+    'update',
+    dogeActions.doge,
+    executeDogeRequest
+  )
+  yield takeLatest(
+    dogeActions.doge.SUBMIT_CHALLENGE,
+    lessduxSaga,
+    'update',
+    dogeActions.doge,
+    submitDogeChallenge
+  )
+  yield takeLatest(
+    dogeActions.doge.APPEAL_RULING,
+    lessduxSaga,
+    'update',
+    dogeActions.doge,
+    appealDogeRuling
+  )
+  yield takeLatest(
+    dogeActions.doge.EXECUTE_RULING,
+    lessduxSaga,
+    'update',
+    dogeActions.doge,
+    executeDogeRuling
   )
 }

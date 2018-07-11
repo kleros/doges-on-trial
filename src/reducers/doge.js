@@ -24,7 +24,7 @@ const { shape: dogesShape, initialState: dogesInitialState } = createResource(
 )
 const { shape: dogeShape, initialState: dogeInitialState } = createResource(
   _dogeShape,
-  { withCreate: true }
+  { withCreate: true, withUpdate: true }
 )
 export { dogesShape, dogeShape }
 
@@ -33,3 +33,8 @@ export default createReducer({
   doges: dogesInitialState,
   doge: dogeInitialState
 })
+
+// Selectors
+export const getDogeDisputeID = (state, ID) =>
+  state.doge.doges.data &&
+  state.doge.doges.data.find(d => d.ID === ID).disputeID
