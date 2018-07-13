@@ -7,6 +7,8 @@ import ReactInfiniteScroller from 'react-infinite-scroller'
 
 import { IMAGES_BASE_URL } from '../../bootstrap/dapp-api'
 import * as walletSelectors from '../../reducers/wallet'
+import * as arbitrablePermissionListSelectors from '../../reducers/arbitrable-permission-list'
+import * as arbitrablePermissionListActions from '../../actions/arbitrable-permission-list'
 import * as dogeSelectors from '../../reducers/doge'
 import * as dogeActions from '../../actions/doge'
 import * as modalActions from '../../actions/modal'
@@ -22,9 +24,13 @@ class Doges extends PureComponent {
   static propTypes = {
     // Redux State
     accounts: walletSelectors.accountsShape.isRequired,
+    arbitrablePermissionListData:
+      arbitrablePermissionListSelectors.arbitrablePermissionListDataShape
+        .isRequired,
     doges: dogeSelectors.dogesShape.isRequired,
 
     // Action Dispatchers
+    fetchArbitrablePermissionListData: PropTypes.func.isRequired,
     fetchDoges: PropTypes.func.isRequired,
     fetchDoge: PropTypes.func.isRequired,
     openDogeModal: PropTypes.func.isRequired
@@ -38,6 +44,8 @@ class Doges extends PureComponent {
   }
 
   componentDidMount() {
+    const { fetchArbitrablePermissionListData } = this.props
+    fetchArbitrablePermissionListData()
     this.fetchDoges(true)
   }
 
@@ -143,23 +151,23 @@ class Doges extends PureComponent {
   }
 
   render() {
-    const { accounts, doges } = this.props
+    const { accounts, arbitrablePermissionListData, doges } = this.props
     const { filterValue, filter, sortValue, sort } = this.state
     return (
       <div className="Doges">
         <div className="Doges-settingsBar">
           <h3 className="Doges-settingsBar-count">
             <RenderIf
-              resource={doges}
+              resource={arbitrablePermissionListData}
               loading={null}
               done={
-                doges.data && (
+                arbitrablePermissionListData.data && (
                   <div>
                     <span className="Doges-settingsBar-count-label">
                       Doges submitted:
                     </span>{' '}
                     <span className="Doges-settingsBar-count-number">
-                      {doges.data.length}
+                      {arbitrablePermissionListData.data.itemsCount}
                     </span>
                   </div>
                 )
@@ -220,9 +228,13 @@ class Doges extends PureComponent {
 export default connect(
   state => ({
     accounts: state.wallet.accounts,
+    arbitrablePermissionListData:
+      state.arbitrablePermissionList.arbitrablePermissionListData,
     doges: state.doge.doges
   }),
   {
+    fetchArbitrablePermissionListData:
+      arbitrablePermissionListActions.fetchArbitrablePermissionListData,
     fetchDoges: dogeActions.fetchDoges,
     fetchDoge: dogeActions.fetchDoge,
     openDogeModal: modalActions.openDogeModal

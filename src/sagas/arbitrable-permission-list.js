@@ -15,7 +15,8 @@ export function* fetchArbitrablePermissionListData() {
     stake: call(arbitrablePermissionList.methods.stake().call),
     timeToChallenge: call(
       arbitrablePermissionList.methods.timeToChallenge().call
-    )
+    ),
+    itemsCount: call(arbitrablePermissionList.methods.itemsCount().call)
   })
 
   arbitrator.options.address = d.arbitrator
@@ -27,6 +28,7 @@ export function* fetchArbitrablePermissionListData() {
     arbitrator: d.arbitrator,
     stake: String(d.stake),
     timeToChallenge: Number(d.timeToChallenge) * 1000,
+    itemsCount: Number(d.itemsCount),
     arbitrationCost: String(arbitrationCost)
   }
 }

@@ -12,6 +12,7 @@ const {
     arbitrator: PropTypes.string.isRequired,
     stake: PropTypes.string.isRequired,
     timeToChallenge: PropTypes.number.isRequired,
+    itemsCount: PropTypes.number.isRequired,
     arbitrationCost: PropTypes.string.isRequired
   })
 )
