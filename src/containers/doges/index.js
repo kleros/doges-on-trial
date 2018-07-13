@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import memoizeOne from 'memoize-one'
 import { RenderIf } from 'lessdux'
+import ReactInfiniteScroller from 'react-infinite-scroller'
 
 import { IMAGES_BASE_URL } from '../../bootstrap/dapp-api'
 import * as walletSelectors from '../../reducers/wallet'
@@ -37,9 +38,7 @@ class Doges extends PureComponent {
   }
 
   componentDidMount() {
-    const { fetchDoges } = this.props
-    const { filterValue, sortValue } = this.state
-    fetchDoges(0, 10, filterValue, sortValue)
+    this.fetchDoges(true)
   }
 
   getFilterOptionsWithCountsAndColors = memoizeOne((accounts, doges = []) =>
@@ -105,18 +104,24 @@ class Doges extends PureComponent {
   )
 
   handleFilterChange = value =>
-    this.setState({
-      filterValue: value,
-      filter: value.map(v => dogeConstants.FILTER_OPTIONS_ENUM[v])
-    })
+    this.setState(
+      {
+        filterValue: value,
+        filter: value.map(v => dogeConstants.FILTER_OPTIONS_ENUM[v])
+      },
+      () => this.fetchDoges(true)
+    )
 
   handleSortChange = value =>
-    this.setState({
-      sortValue: value,
-      sort: {
-        [dogeConstants.SORT_OPTIONS_ENUM[value]]: 'ascending'
-      }
-    })
+    this.setState(
+      {
+        sortValue: value,
+        sort: {
+          [dogeConstants.SORT_OPTIONS_ENUM[value]]: 'ascending'
+        }
+      },
+      () => this.fetchDoges(true)
+    )
 
   handleDogeCardClick = ({ currentTarget: { id } }) => {
     const { fetchDoge, openDogeModal } = this.props
@@ -124,10 +129,22 @@ class Doges extends PureComponent {
     openDogeModal(modalConstants.DOGE_MODAL_ENUM.Details)
   }
 
+  fetchDoges = clear => {
+    const { doges, fetchDoges } = this.props
+    const { filterValue, sortValue } = this.state
+    fetchDoges(
+      doges.data && clear !== true
+        ? doges.data[doges.data.length - 1].ID
+        : '0x00',
+      10,
+      filterValue,
+      sortValue
+    )
+  }
+
   render() {
     const { accounts, doges } = this.props
     const { filterValue, filter, sortValue, sort } = this.state
-
     return (
       <div className="Doges">
         <div className="Doges-settingsBar">
@@ -172,29 +189,39 @@ class Doges extends PureComponent {
             />
           </div>
         </div>
-        <RenderIf
-          resource={doges}
-          loading="Loading doges..."
-          done={
-            doges.data && (
-              <MasonryGrid
-                filter={filter}
-                sort={sort}
-                className="Doges-masonryGrid"
-              >
-                {this.mapDoges(accounts.data, doges.data)}
-              </MasonryGrid>
-            )
-          }
-          failedLoading="There was an error fetching the doges."
-        />
+        <ReactInfiniteScroller
+          hasMore={!doges.loading && doges.data ? doges.data.hasMore : false}
+          loadMore={this.fetchDoges}
+          loader={<div key={0}>Loading more doges...</div>}
+          useWindow={false}
+        >
+          <RenderIf
+            resource={doges}
+            loading="Loading doges..."
+            done={
+              doges.data && (
+                <MasonryGrid
+                  filter={filter}
+                  sort={sort}
+                  className="Doges-masonryGrid"
+                >
+                  {this.mapDoges(accounts.data, doges.data)}
+                </MasonryGrid>
+              )
+            }
+            failedLoading="There was an error fetching the doges."
+          />
+        </ReactInfiniteScroller>
       </div>
     )
   }
 }
 
 export default connect(
-  state => ({ accounts: state.wallet.accounts, doges: state.doge.doges }),
+  state => ({
+    accounts: state.wallet.accounts,
+    doges: state.doge.doges
+  }),
   {
     fetchDoges: dogeActions.fetchDoges,
     fetchDoge: dogeActions.fetchDoge,

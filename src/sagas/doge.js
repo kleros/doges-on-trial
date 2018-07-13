@@ -23,7 +23,7 @@ import { fetchArbitrablePermissionListData } from './arbitrable-permission-list'
  * @returns {object[]} - The fetched doges.
  */
 function* fetchDoges({ payload: { cursor, count, filterValue, sortValue } }) {
-  const dogeIDs = (yield call(
+  const data = yield call(
     arbitrablePermissionList.methods.queryItems(
       cursor,
       count,
@@ -32,13 +32,22 @@ function* fetchDoges({ payload: { cursor, count, filterValue, sortValue } }) {
       ),
       sortValue
     ).call
-  )).filter(
-    ID =>
-      ID !==
-      '0x0000000000000000000000000000000000000000000000000000000000000000'
   )
 
-  return yield all(dogeIDs.map(ID => call(fetchDoge, { payload: { ID } })))
+  const doges = [
+    ...(cursor === '0x00' ? [] : (yield select(dogeSelectors.getDoges)) || []),
+    ...(yield all(
+      data.values
+        .filter(
+          ID =>
+            ID !==
+            '0x0000000000000000000000000000000000000000000000000000000000000000'
+        )
+        .map(ID => call(fetchDoge, { payload: { ID } }))
+    ))
+  ]
+  doges.hasMore = data.hasMore
+  return doges
 }
 
 /**
