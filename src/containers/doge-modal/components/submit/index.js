@@ -46,13 +46,15 @@ const Submit = ({
                   label: 'Deposit',
                   value: String(
                     web3.utils.fromWei(
-                      web3.utils
-                        .toBN(arbitrablePermissionListData.data.stake)
-                        .add(
-                          web3.utils.toBN(
-                            arbitrablePermissionListData.data.arbitrationCost
+                      String(
+                        web3.utils
+                          .toBN(arbitrablePermissionListData.data.stake)
+                          .add(
+                            web3.utils.toBN(
+                              arbitrablePermissionListData.data.arbitrationCost
+                            )
                           )
-                        )
+                      )
                     )
                   )
                 }

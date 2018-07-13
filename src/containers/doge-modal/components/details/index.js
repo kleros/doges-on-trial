@@ -43,13 +43,15 @@ const renderDogeDetails = (
             label: 'Deposit',
             value: String(
               web3.utils.fromWei(
-                web3.utils
-                  .toBN(arbitrablePermissionListData.stake)
-                  .add(
-                    web3.utils.toBN(
-                      arbitrablePermissionListData.arbitrationCost
+                String(
+                  web3.utils
+                    .toBN(arbitrablePermissionListData.stake)
+                    .add(
+                      web3.utils.toBN(
+                        arbitrablePermissionListData.arbitrationCost
+                      )
                     )
-                  )
+                )
               )
             )
           }
@@ -69,14 +71,16 @@ const renderDogeDetails = (
               label: 'Total Deposited',
               value: String(
                 web3.utils.fromWei(
-                  web3.utils
-                    .toBN(arbitrablePermissionListData.stake)
-                    .add(
-                      web3.utils.toBN(
-                        arbitrablePermissionListData.arbitrationCost
+                  String(
+                    web3.utils
+                      .toBN(arbitrablePermissionListData.stake)
+                      .add(
+                        web3.utils.toBN(
+                          arbitrablePermissionListData.arbitrationCost
+                        )
                       )
-                    )
-                    .muln(2)
+                      .muln(2)
+                  )
                 )
               )
             }
@@ -89,14 +93,16 @@ const renderDogeDetails = (
               label: 'Total Deposited',
               value: String(
                 web3.utils.fromWei(
-                  web3.utils
-                    .toBN(arbitrablePermissionListData.stake)
-                    .add(
-                      web3.utils.toBN(
-                        arbitrablePermissionListData.arbitrationCost
+                  String(
+                    web3.utils
+                      .toBN(arbitrablePermissionListData.stake)
+                      .add(
+                        web3.utils.toBN(
+                          arbitrablePermissionListData.arbitrationCost
+                        )
                       )
-                    )
-                    .muln(2)
+                      .muln(2)
+                  )
                 )
               )
             },
@@ -114,14 +120,16 @@ const renderDogeDetails = (
               label: 'Total Deposited',
               value: String(
                 web3.utils.fromWei(
-                  web3.utils
-                    .toBN(arbitrablePermissionListData.stake)
-                    .add(
-                      web3.utils.toBN(
-                        arbitrablePermissionListData.arbitrationCost
+                  String(
+                    web3.utils
+                      .toBN(arbitrablePermissionListData.stake)
+                      .add(
+                        web3.utils.toBN(
+                          arbitrablePermissionListData.arbitrationCost
+                        )
                       )
-                    )
-                    .muln(2)
+                      .muln(2)
+                  )
                 )
               )
             }

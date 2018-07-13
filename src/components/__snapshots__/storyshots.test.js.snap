@@ -6947,7 +6947,11 @@ exports[`Storyshots File Picker default 1`] = `
             onDragOver={[Function]}
             onDragStart={[Function]}
             onDrop={[Function]}
-            style={Object {}}
+            style={
+              Object {
+                "position": "relative",
+              }
+            }
           >
             <svg
               aria-hidden="true"
@@ -6986,7 +6990,13 @@ exports[`Storyshots File Picker default 1`] = `
               onChange={[Function]}
               style={
                 Object {
-                  "display": "none",
+                  "bottom": 0,
+                  "left": 0,
+                  "opacity": 0.00001,
+                  "pointerEvents": "none",
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
                 }
               }
               type="file"
