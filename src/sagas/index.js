@@ -3,6 +3,7 @@ import { delay } from 'redux-saga'
 import { spawn, call, all } from 'redux-saga/effects'
 
 import walletSaga from './wallet'
+import notificationSaga from './notification'
 import arbitrablePermissionListSaga from './arbitrable-permission-list'
 import dogeSaga from './doge'
 
@@ -33,9 +34,12 @@ export function makeRestartable(saga) {
   }
 }
 
-const rootSagas = [walletSaga, arbitrablePermissionListSaga, dogeSaga].map(
-  makeRestartable
-)
+const rootSagas = [
+  walletSaga,
+  notificationSaga,
+  arbitrablePermissionListSaga,
+  dogeSaga
+].map(makeRestartable)
 
 /**
  * The root saga.
