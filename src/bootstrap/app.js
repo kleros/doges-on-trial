@@ -55,7 +55,7 @@ const ConnectedNavBar = connect(
         key="1"
         notifications={[
           {
-            id: '0',
+            ID: '0',
             date: today,
             message: 'This is a notification.',
             thumbnailURL: '404'

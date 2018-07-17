@@ -6,6 +6,7 @@ import * as notificationActions from '../actions/notification'
 import * as walletSelectors from '../reducers/wallet'
 import * as walletActions from '../actions/wallet'
 import { action } from '../utils/action'
+import { arbitrablePermissionList } from '../bootstrap/dapp-api'
 
 /**
  * Notification listener.
@@ -17,8 +18,13 @@ function* pushNotificationsListener() {
     const account = yield select(walletSelectors.getAccount) // Cache current account
 
     // Set up event channel with subscriber
-    const channel = eventChannel(emitter => {
-      console.log(emitter)
+    const channel = eventChannel(_emitter => {
+      arbitrablePermissionList
+        .getPastEvents('ItemStatusChange', {
+          fromBlock: localStorage.getItem('blockNumber') || 0
+        })
+        .then(console.log)
+      arbitrablePermissionList.events.ItemStatusChange().on('data', console.log)
       return () => {} // Unsubscribe function
     })
 

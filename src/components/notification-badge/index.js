@@ -10,7 +10,7 @@ export default class NotificationBadge extends PureComponent {
     children: PropTypes.node.isRequired,
     notifications: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        ID: PropTypes.string.isRequired,
         date: PropTypes.instanceOf(Date).isRequired,
         message: PropTypes.string.isRequired,
         thumbnailURL: PropTypes.string.isRequired
@@ -81,8 +81,8 @@ export default class NotificationBadge extends PureComponent {
               : notifications
             ).map(n => (
               <div
-                key={n.id}
-                id={n.id}
+                key={n.ID}
+                id={n.ID}
                 onClick={onNotificationClick}
                 className="NotificationBadge-notifications-notification"
               >

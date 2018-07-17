@@ -2,7 +2,12 @@ import PropTypes from 'prop-types'
 import createReducer, { createResource } from 'lessdux'
 
 // Common Shapes
-export const _notificationShape = PropTypes.shape({})
+export const _notificationShape = PropTypes.shape({
+  ID: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+  message: PropTypes.string.isRequired,
+  thumbnailURL: PropTypes.string.isRequired
+})
 export const _notificationsShape = PropTypes.arrayOf(
   _notificationShape.isRequired
 )

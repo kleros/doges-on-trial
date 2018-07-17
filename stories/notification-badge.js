@@ -9,31 +9,31 @@ import doge from '../src/assets/images/doge.jpg'
 const now = Date.now()
 const notifications = [
   {
-    id: '0',
+    ID: '0',
     date: new Date(now),
     message: 'This is a notification.',
     thumbnailURL: doge
   },
   {
-    id: '1',
+    ID: '1',
     date: new Date(now - 8.64e7),
     message: 'This is a notification.',
     thumbnailURL: doge
   },
   {
-    id: '2',
+    ID: '2',
     date: new Date(now - 6.048e8),
     message: 'This is a notification.',
     thumbnailURL: doge
   },
   {
-    id: '3',
+    ID: '3',
     date: new Date(now - 2.628e9),
     message: 'This is a notification.',
     thumbnailURL: doge
   },
   {
-    id: '4',
+    ID: '4',
     date: new Date(now - 1.577e10),
     message: 'This is a notification.',
     thumbnailURL: doge
