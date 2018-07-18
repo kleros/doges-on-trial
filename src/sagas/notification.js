@@ -116,12 +116,21 @@ function* pushNotificationsListener() {
     })
 
     // Keep listening while on the same account
-    while (account === (yield select(walletSelectors.getAccount))) {
-      const [notification, accounts] = yield race([
-        take(channel), // New notification
-        take(walletActions.accounts.RECEIVE) // Accounts refetch
-      ])
-      if (accounts) continue // Possible account change
+    while (
+      account === (yield select(walletSelectors.getAccount)) &&
+      timeToChallenge ===
+        (yield select(arbitrablePermissionListSelectors.getTimeToChallenge))
+    ) {
+      const [notification, accounts, arbitrablePermissionListData] = yield race(
+        [
+          take(channel), // New notification
+          take(walletActions.accounts.RECEIVE), // Accounts refetch
+          take(
+            arbitrablePermissionListActions.arbitrablePermissionListData.RECEIVE
+          ) // Arbitrable permission list data refetch
+        ]
+      )
+      if (accounts || arbitrablePermissionListData) continue // Possible account or time to challenge change
 
       // Put new notification
       yield put(
