@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { Provider, connect } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import { Switch, Route } from 'react-router-dom'
 
+import * as walletSelectors from '../reducers/wallet'
+import * as notificationSelectors from '../reducers/notification'
+import * as notificationActions from '../actions/notification'
+import * as dogeActions from '../actions/doge'
 import * as modalActions from '../actions/modal'
 import Doges from '../containers/doges'
 import HowItWorks from '../containers/how-it-works'
@@ -21,53 +25,75 @@ import './fontawesome'
 
 import './app.css'
 
-const today = new Date()
-const noOp = () => {}
-const ConnectedNavBar = connect(
-  state => ({
-    accounts: state.wallet.accounts
-  }),
-  {
-    handleSubmitDogeClick: () =>
-      modalActions.openDogeModal(modalConstants.DOGE_MODAL_ENUM.Submit)
+class _ConnectedNavBar extends PureComponent {
+  static propTypes = {
+    // Redux State
+    accounts: walletSelectors.accountsShape.isRequired,
+    notifications: notificationSelectors.notificationsShape.isRequired,
+
+    // Action Dispatchers
+    deleteNotification: PropTypes.func.isRequired,
+    fetchDoge: PropTypes.func.isRequired,
+    openDogeModal: PropTypes.func.isRequired
   }
-)(({ accounts, handleSubmitDogeClick }) => (
-  <NavBar
-    routes={[
-      { title: 'Doges', to: '/' },
-      { title: 'How it Works', to: '/how-it-works' },
-      {
-        title: 'Twitterverse',
-        to: 'https://twitter.com/hashtag/DogesOnTrial?src=hash',
-        isExternal: true
-      }
-    ]}
-    extras={[
-      <Button
-        key="0"
-        onClick={handleSubmitDogeClick}
-        type="ternary"
-        size="small"
-      >
-        Submit Doge
-      </Button>,
-      <NotificationBadge
-        key="1"
-        notifications={[
+
+  handleSubmitDogeClick = () => {
+    const { openDogeModal } = this.props
+    openDogeModal(modalConstants.DOGE_MODAL_ENUM.Submit)
+  }
+
+  handleNotificationClick = ({ currentTarget: { id } }) => {
+    const { deleteNotification, fetchDoge, openDogeModal } = this.props
+    deleteNotification(id)
+    fetchDoge(id, true)
+    openDogeModal(modalConstants.DOGE_MODAL_ENUM.Details)
+  }
+
+  render() {
+    const { accounts, notifications } = this.props
+    return (
+      <NavBar
+        routes={[
+          { title: 'Doges', to: '/' },
+          { title: 'How it Works', to: '/how-it-works' },
           {
-            ID: '0',
-            date: today,
-            message: 'This is a notification.',
-            thumbnailURL: '404'
+            title: 'Twitterverse',
+            to: 'https://twitter.com/hashtag/DogesOnTrial?src=hash',
+            isExternal: true
           }
         ]}
-        onNotificationClick={noOp}
-      >
-        <Identicon address={accounts.data[0]} round />
-      </NotificationBadge>
-    ]}
-  />
-))
+        extras={[
+          <Button
+            key="0"
+            onClick={this.handleSubmitDogeClick}
+            type="ternary"
+            size="small"
+          >
+            Submit Doge
+          </Button>,
+          <NotificationBadge
+            key="1"
+            notifications={notifications}
+            onNotificationClick={this.handleNotificationClick}
+          >
+            <Identicon address={accounts.data[0]} round />
+          </NotificationBadge>
+        ]}
+      />
+    )
+  }
+}
+const ConnectedNavBar = connect(
+  state => ({
+    accounts: state.wallet.accounts,
+    notifications: state.notification.notifications
+  }),
+  {
+    deleteNotification: notificationActions.deleteNotification,
+    fetchDoge: dogeActions.fetchDoge,
+    openDogeModal: modalActions.openDogeModal
+  }
+)(_ConnectedNavBar)
 
 const App = ({ store, history, testElement }) => (
   <Provider store={store}>

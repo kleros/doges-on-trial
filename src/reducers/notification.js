@@ -24,7 +24,16 @@ const {
 export { notificationsShape, notificationShape }
 
 // Reducer
+const cachedNotifications = localStorage.getItem('notifications')
 export default createReducer({
-  notifications: notificationsInitialState,
+  notifications: {
+    ...notificationsInitialState,
+    data: cachedNotifications
+      ? JSON.parse(cachedNotifications).map(n => ({
+          ...n,
+          date: new Date(n.date)
+        }))
+      : []
+  },
   notification: notificationInitialState
 })

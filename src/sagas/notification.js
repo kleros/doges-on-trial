@@ -1,13 +1,14 @@
 import { eventChannel } from 'redux-saga'
 import memoizeOne from 'memoize-one'
 
-import { fork, take, select, race, put } from 'redux-saga/effects'
+import { fork, takeLatest, take, select, race, put } from 'redux-saga/effects'
 
 import * as notificationActions from '../actions/notification'
 import * as walletSelectors from '../reducers/wallet'
 import * as walletActions from '../actions/wallet'
 import * as arbitrablePermissionListSelectors from '../reducers/arbitrable-permission-list'
 import * as arbitrablePermissionListActions from '../actions/arbitrable-permission-list'
+import { lessduxSaga } from '../utils/saga'
 import { action } from '../utils/action'
 import {
   web3,
@@ -54,7 +55,8 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
     }
 
     if (message) {
-      notifiedIDs[event.returnValues.value] = true
+      notifiedIDs[event.returnValues.value] =
+        event.returnValues.newDisputed === true ? 'disputed' : true
       emitter({
         ID: event.returnValues.value,
         date: await getBlockDate(event.blockHash),
@@ -64,7 +66,11 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
     }
   }
 
-  if (oldestNonDisputedSubmittedStatusEvent) {
+  if (
+    oldestNonDisputedSubmittedStatusEvent &&
+    notifiedIDs[oldestNonDisputedSubmittedStatusEvent.returnValues.value] !==
+      'disputed'
+  ) {
     const date = await getBlockDate(
       oldestNonDisputedSubmittedStatusEvent.blockHash
     )
@@ -78,6 +84,9 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
           oldestNonDisputedSubmittedStatusEvent.returnValues.value
       })
   }
+
+  if (events[0])
+    localStorage.setItem('nextEventsBlockNumber', events[0].blockNumber + 1)
 }
 
 /**
@@ -102,7 +111,7 @@ function* pushNotificationsListener() {
     const channel = eventChannel(emitter => {
       arbitrablePermissionList
         .getPastEvents('ItemStatusChange', {
-          fromBlock: localStorage.getItem('blockNumber') || 0
+          fromBlock: localStorage.getItem('nextEventsBlockNumber') || 0
         })
         .then(events =>
           emitNotifications(account, timeToChallenge, emitter, events)
@@ -134,9 +143,11 @@ function* pushNotificationsListener() {
 
       // Put new notification
       yield put(
-        action(notificationActions.notification.RECEIVE, {
-          collection: notificationActions.notifications.self,
-          resource: notification
+        action(notificationActions.notification.RECEIVE_CREATED, {
+          collectionMod: {
+            collection: notificationActions.notifications.self,
+            resource: notification
+          }
         })
       )
     }
@@ -152,4 +163,17 @@ function* pushNotificationsListener() {
 export default function* notificationSaga() {
   // Listeners
   yield fork(pushNotificationsListener)
+
+  // Notification
+  yield takeLatest(
+    notificationActions.notification.DELETE,
+    lessduxSaga,
+    {
+      flow: 'delete',
+      collection: notificationActions.notifications.self,
+      find: ({ payload: { ID } }) => n => n.ID === ID
+    },
+    notificationActions.notification,
+    null
+  )
 }

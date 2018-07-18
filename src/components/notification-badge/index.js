@@ -2,20 +2,15 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import TimeAgo from 'timeago-react'
 
+import * as notificationSelectors from '../../reducers/notification'
+
 import './notification-badge.css'
 
 export default class NotificationBadge extends PureComponent {
   static propTypes = {
     // State
     children: PropTypes.node.isRequired,
-    notifications: PropTypes.arrayOf(
-      PropTypes.shape({
-        ID: PropTypes.string.isRequired,
-        date: PropTypes.instanceOf(Date).isRequired,
-        message: PropTypes.string.isRequired,
-        thumbnailURL: PropTypes.string.isRequired
-      }).isRequired
-    ).isRequired,
+    notifications: notificationSelectors.notificationsShape.isRequired,
     maxShown: PropTypes.number,
 
     // Handlers
@@ -56,18 +51,19 @@ export default class NotificationBadge extends PureComponent {
       onShowAll
     } = this.props
     const { isOpen } = this.state
+    if (!notifications.data) return null
 
-    const useMaxShown = maxShown && notifications.length > maxShown
+    const useMaxShown = maxShown && notifications.data.length > maxShown
     return (
       <div className="NotificationBadge">
         {children}
-        {notifications.length > 0 && (
+        {notifications.data.length > 0 && (
           <div
             onMouseEnter={this.handleMouseEnter}
             onMouseLeave={this.handleMouseLeave}
             className="NotificationBadge-badge"
           >
-            {notifications.length}
+            {notifications.data.length}
           </div>
         )}
         {isOpen && (
@@ -77,8 +73,8 @@ export default class NotificationBadge extends PureComponent {
             className="NotificationBadge-notifications"
           >
             {(useMaxShown
-              ? notifications.slice(0, maxShown)
-              : notifications
+              ? notifications.data.slice(0, maxShown)
+              : notifications.data
             ).map(n => (
               <div
                 key={n.ID}

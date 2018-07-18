@@ -14,6 +14,10 @@ jest.mock('./components/identicon', () => () => <div>[Identicon]</div>)
 
 // Mock Globals
 Date.now = jest.fn(() => 1516916214006)
+global.localStorage = {
+  getItem() {},
+  setItem() {}
+}
 
 // Mock Time
 timezoneMock.register('UTC')

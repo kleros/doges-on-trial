@@ -218,7 +218,8 @@ function* executeDogeRuling({ payload: { ID } }) {
 }
 
 // Update collection mods
-const updateDogesCollectionMod = {
+const updateDogesCollectionModFlow = {
+  flow: 'update',
   collection: dogeActions.doges.self,
   updating: ({ payload: { ID } }) => ID,
   find: ({ payload: { ID } }) => d => d.ID === ID
@@ -255,28 +256,28 @@ export default function* dogeSaga() {
   yield takeLatest(
     dogeActions.doge.EXECUTE_REQUEST,
     lessduxSaga,
-    updateDogesCollectionMod,
+    updateDogesCollectionModFlow,
     dogeActions.doge,
     executeDogeRequest
   )
   yield takeLatest(
     dogeActions.doge.SUBMIT_CHALLENGE,
     lessduxSaga,
-    updateDogesCollectionMod,
+    updateDogesCollectionModFlow,
     dogeActions.doge,
     submitDogeChallenge
   )
   yield takeLatest(
     dogeActions.doge.APPEAL_RULING,
     lessduxSaga,
-    updateDogesCollectionMod,
+    updateDogesCollectionModFlow,
     dogeActions.doge,
     appealDogeRuling
   )
   yield takeLatest(
     dogeActions.doge.EXECUTE_RULING,
     lessduxSaga,
-    updateDogesCollectionMod,
+    updateDogesCollectionModFlow,
     dogeActions.doge,
     executeDogeRuling
   )

@@ -4,22 +4,20 @@ import { action as _action, errorAction } from './action'
 
 /**
  * Calls a saga with the `lessdux` flow.
- * @param {string|{ collection: string, updating: function, find: function }} flowOrUpdateCollectionMod - The `lessdux` flow that should be used, (create, fetch, update, delete) or an object with the data for updating a collection.
+ * @param {string|{ flow:string, collection: string, updating: function, find: function }} flowOrCollectionModFlow - The `lessdux` flow that should be used, (create, fetch, update, delete) or an object with the flow and the data for modifying a collection.
  * @param {object} resourceActions - The `lessdux` resource actions object.
  * @param {object} saga - The saga being called.
  * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object that triggered the saga.
  */
 export function* lessduxSaga(
-  flowOrUpdateCollectionMod,
+  flowOrCollectionModFlow,
   resourceActions,
   saga,
   action
 ) {
   let receiveWord
   let failWord
-  switch (
-    flowOrUpdateCollectionMod.collection ? 'update' : flowOrUpdateCollectionMod
-  ) {
+  switch (flowOrCollectionModFlow.flow || flowOrCollectionModFlow) {
     case 'create':
       receiveWord = '_CREATED'
       failWord = '_CREATE'
@@ -34,11 +32,11 @@ export function* lessduxSaga(
       yield put(
         _action(
           resourceActions.UPDATE, // Updates are not called directly so call it here to set .updating on the resource
-          flowOrUpdateCollectionMod.collection
+          flowOrCollectionModFlow.collection
             ? {
                 collectionMod: {
-                  collection: flowOrUpdateCollectionMod.collection,
-                  updating: [flowOrUpdateCollectionMod.updating(action)]
+                  collection: flowOrCollectionModFlow.collection,
+                  updating: [flowOrCollectionModFlow.updating(action)]
                 }
               }
             : undefined
@@ -54,12 +52,16 @@ export function* lessduxSaga(
   }
 
   try {
-    const result = flowOrUpdateCollectionMod.collection
+    const result = flowOrCollectionModFlow.collection
       ? {
-          collection: flowOrUpdateCollectionMod.collection,
-          resource: yield call(saga, action),
-          find: flowOrUpdateCollectionMod.find(action),
-          updating: flowOrUpdateCollectionMod.updating(action)
+          collection: flowOrCollectionModFlow.collection,
+          resource: saga && (yield call(saga, action)),
+          find:
+            flowOrCollectionModFlow.find &&
+            flowOrCollectionModFlow.find(action),
+          updating:
+            flowOrCollectionModFlow.updating &&
+            flowOrCollectionModFlow.updating(action)
         }
       : yield call(saga, action)
 
@@ -69,6 +71,7 @@ export function* lessduxSaga(
       })
     )
   } catch (err) {
+    console.error(err)
     err.message &&
       console.info(
         'Your connection is unstable, please check your network and refresh the page.'
@@ -76,12 +79,15 @@ export function* lessduxSaga(
     yield put(
       errorAction(
         resourceActions['FAIL' + failWord],
-        flowOrUpdateCollectionMod.collection
+        flowOrCollectionModFlow.collection
           ? {
               collectionMod: {
-                collection: flowOrUpdateCollectionMod.collection,
-                updating: flowOrUpdateCollectionMod.updating(action)
-              }
+                collection: flowOrCollectionModFlow.collection,
+                updating:
+                  flowOrCollectionModFlow.updating &&
+                  flowOrCollectionModFlow.updating(action)
+              },
+              error: err
             }
           : err
       )

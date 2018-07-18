@@ -7,38 +7,42 @@ import Identicon from '../src/components/identicon'
 import doge from '../src/assets/images/doge.jpg'
 
 const now = Date.now()
-const notifications = [
-  {
-    ID: '0',
-    date: new Date(now),
-    message: 'This is a notification.',
-    thumbnailURL: doge
-  },
-  {
-    ID: '1',
-    date: new Date(now - 8.64e7),
-    message: 'This is a notification.',
-    thumbnailURL: doge
-  },
-  {
-    ID: '2',
-    date: new Date(now - 6.048e8),
-    message: 'This is a notification.',
-    thumbnailURL: doge
-  },
-  {
-    ID: '3',
-    date: new Date(now - 2.628e9),
-    message: 'This is a notification.',
-    thumbnailURL: doge
-  },
-  {
-    ID: '4',
-    date: new Date(now - 1.577e10),
-    message: 'This is a notification.',
-    thumbnailURL: doge
-  }
-]
+const notifications = {
+  loading: false,
+  data: [
+    {
+      ID: '0',
+      date: new Date(now),
+      message: 'This is a notification.',
+      thumbnailURL: doge
+    },
+    {
+      ID: '1',
+      date: new Date(now - 8.64e7),
+      message: 'This is a notification.',
+      thumbnailURL: doge
+    },
+    {
+      ID: '2',
+      date: new Date(now - 6.048e8),
+      message: 'This is a notification.',
+      thumbnailURL: doge
+    },
+    {
+      ID: '3',
+      date: new Date(now - 2.628e9),
+      message: 'This is a notification.',
+      thumbnailURL: doge
+    },
+    {
+      ID: '4',
+      date: new Date(now - 1.577e10),
+      message: 'This is a notification.',
+      thumbnailURL: doge
+    }
+  ],
+  failedLoading: false
+}
 const onNotificationClick = action('onNotificationClick')
 
 storiesOf('Notification Badge', module)

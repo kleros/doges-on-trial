@@ -20729,22 +20729,7 @@ exports[`Storyshots Nav Bar default 1`] = `
               </div>
               <div
                 className="NavBar-extra "
-              >
-                <div
-                  className="NotificationBadge"
-                >
-                  <div>
-                    [Identicon]
-                  </div>
-                  <div
-                    className="NotificationBadge-badge"
-                    onMouseEnter={[Function]}
-                    onMouseLeave={[Function]}
-                  >
-                    5
-                  </div>
-                </div>
-              </div>
+              />
             </div>
           </div>
           <div
