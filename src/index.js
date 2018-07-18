@@ -21,11 +21,12 @@ const render = Component => {
 render(App)
 registerServiceWorker()
 
-window.onunload = () =>
+window.addEventListener('unload', () =>
   localStorage.setItem(
     'notifications',
     JSON.stringify(store.getState().notification.notifications.data)
   )
+)
 
 if (module.hot)
   module.hot.accept('./bootstrap/app', () => {
