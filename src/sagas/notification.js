@@ -27,9 +27,7 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
   for (const event of events.reverse()) {
     if (notifiedIDs[event.returnValues.value]) continue
     const isSubmitter = account === event.returnValues.submitter
-    const isSubmitterOrChallenger =
-      isSubmitter || account === event.returnValues.challenger
-    if (!isSubmitterOrChallenger) continue
+    if (!isSubmitter || account !== event.returnValues.challenger) continue
 
     let message
     switch (Number(event.returnValues.newStatus)) {
@@ -56,9 +54,7 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
     }
 
     if (message) {
-      notifiedIDs[event.returnValues.value] = event.returnValues.newDisputed
-        ? 'disputed'
-        : false
+      notifiedIDs[event.returnValues.value] = true
       emitter({
         ID: event.returnValues.value,
         date: await getBlockDate(event.blockHash),
@@ -68,11 +64,7 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
     }
   }
 
-  if (
-    oldestNonDisputedSubmittedStatusEvent &&
-    notifiedIDs[oldestNonDisputedSubmittedStatusEvent.returnValues.value] !==
-      'disputed'
-  ) {
+  if (oldestNonDisputedSubmittedStatusEvent) {
     const date = await getBlockDate(
       oldestNonDisputedSubmittedStatusEvent.blockHash
     )
@@ -104,7 +96,7 @@ function* pushNotificationsListener() {
     const account = yield select(walletSelectors.getAccount) // Cache current account
     const timeToChallenge = yield select(
       arbitrablePermissionListSelectors.getTimeToChallenge
-    )
+    ) // Cache current time to challenge
 
     // Set up event channel with subscriber
     const channel = eventChannel(emitter => {

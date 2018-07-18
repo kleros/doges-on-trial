@@ -22,10 +22,9 @@ const render = Component => {
 
 render(App)
 
-if (module.hot) {
+if (module.hot)
   module.hot.accept('./bootstrap/app', () => {
     render(App)
   })
-}
 
 registerServiceWorker()

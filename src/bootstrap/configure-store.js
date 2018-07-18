@@ -48,12 +48,11 @@ export default function configureStore(
   }
 
   // Testing Tools
-  if (dispatchSpy) {
+  if (dispatchSpy)
     middleware.push(_store => next => action => {
       dispatchSpy(action)
       return next(action)
     })
-  }
 
   middleware.push(sagaMiddleware, routerMiddleware(history))
   enhancers.unshift(applyMiddleware(...middleware))
