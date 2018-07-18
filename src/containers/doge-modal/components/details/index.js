@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { RenderIf } from 'lessdux'
+import { BeatLoader } from 'react-spinners'
 
 import { web3, IMAGES_BASE_URL } from '../../../../bootstrap/dapp-api'
 import * as arbitrablePermissionListSelectors from '../../../../reducers/arbitrable-permission-list'
@@ -172,13 +173,13 @@ const Details = ({
 }) => (
   <RenderIf
     resource={arbitrablePermissionListData}
-    loading="Loading list data..."
+    loading={<BeatLoader color="#3d464d" />}
     done={
       arbitrablePermissionListData.data && (
         <RenderIf
           resource={doge}
-          loading="Loading doge..."
-          updating="Updating doge..."
+          loading={<BeatLoader color="#3d464d" />}
+          updating={<BeatLoader color="#3d464d" />}
           done={
             doge.data &&
             !doge.updating &&

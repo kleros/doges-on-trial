@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import memoizeOne from 'memoize-one'
 import { RenderIf } from 'lessdux'
 import ReactInfiniteScroller from 'react-infinite-scroller'
+import { BeatLoader, ClimbingBoxLoader } from 'react-spinners'
 
 import { IMAGES_BASE_URL } from '../../bootstrap/dapp-api'
 import * as walletSelectors from '../../reducers/wallet'
@@ -159,7 +160,7 @@ class Doges extends PureComponent {
           <h3 className="Doges-settingsBar-count">
             <RenderIf
               resource={arbitrablePermissionListData}
-              loading={null}
+              loading={<BeatLoader color="#3d464d" />}
               done={
                 arbitrablePermissionListData.data && (
                   <div>
@@ -205,7 +206,7 @@ class Doges extends PureComponent {
         >
           <RenderIf
             resource={doges}
-            loading="Loading doges..."
+            loading={<ClimbingBoxLoader color="#3d464d" />}
             done={
               doges.data && (
                 <MasonryGrid

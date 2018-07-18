@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { RenderIf } from 'lessdux'
+import { BeatLoader } from 'react-spinners'
 
 import { web3 } from '../../../../bootstrap/dapp-api'
 import * as arbitrablePermissionListSelectors from '../../../../reducers/arbitrable-permission-list'
@@ -36,7 +37,7 @@ const Submit = ({
     <br />
     <RenderIf
       resource={arbitrablePermissionListData}
-      loading="Loading data..."
+      loading={<BeatLoader color="#3d464d" />}
       done={
         arbitrablePermissionListData.data && (
           <div className="Submit-bottom">

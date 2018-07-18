@@ -31,6 +31,13 @@ body,
   width: 100%;
 }
 
+// Root
+#root {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
 // Router Root
 #router-root {
   padding-top: 70px;
