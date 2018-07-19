@@ -20660,7 +20660,7 @@ exports[`Storyshots Nav Bar default 1`] = `
               <img
                 alt="Logo"
                 className="NavBar-logo"
-                src="meta-mask-logo.png"
+                src="logo.png"
               />
               <div
                 className="NavBar-route"

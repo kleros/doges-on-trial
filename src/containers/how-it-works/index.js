@@ -1,13 +1,13 @@
 import React from 'react'
 
-import doge from '../../assets/images/doge.jpg'
+import howItWorks from '../../assets/images/how-it-works.png'
 
 import './how-it-works.css'
 
 export default () => (
   <div className="HowItWorks">
     <h1 className="HowItWorks-title">Doges on Trial</h1>
-    <img src={doge} alt="Doge" className="HowItWorks-image" />
+    <img src={howItWorks} alt="Doge" className="HowItWorks-image" />
     <p className="HowItWorks-text">
       The Doge List is Kleros' majestic curated list experiment.
       <br />

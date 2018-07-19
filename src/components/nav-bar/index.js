@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
-import logo from '../../assets/images/meta-mask-logo.png'
+import logo from '../../assets/images/logo.png'
 
 import './nav-bar.css'
 
