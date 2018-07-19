@@ -10,6 +10,7 @@ import InfoCard from '../../../../components/info-card'
 import FilePicker from '../../../../components/file-picker'
 import ValueList from '../../../../components/value-list'
 import Button from '../../../../components/button'
+import deposit from '../../../../assets/images/deposit.svg'
 
 import './submit.css'
 
@@ -57,7 +58,8 @@ const Submit = ({
                           )
                       )
                     )
-                  )
+                  ),
+                  icon: deposit
                 }
               ]}
             />

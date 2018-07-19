@@ -11,6 +11,8 @@ import InfoCard from '../../../../components/info-card'
 import DogeImage from '../../../../components/doge-image'
 import ValueList from '../../../../components/value-list'
 import Button from '../../../../components/button'
+import deposit from '../../../../assets/images/deposit.svg'
+import appealFees from '../../../../assets/images/appeal-fees.svg'
 
 import './details.css'
 
@@ -54,7 +56,8 @@ const renderDogeDetails = (
                     )
                 )
               )
-            )
+            ),
+            icon: deposit
           }
         ]
         button = {
@@ -83,7 +86,8 @@ const renderDogeDetails = (
                       .muln(2)
                   )
                 )
-              )
+              ),
+              icon: deposit
             }
           ]
           break
@@ -105,11 +109,13 @@ const renderDogeDetails = (
                       .muln(2)
                   )
                 )
-              )
+              ),
+              icon: deposit
             },
             {
               label: 'Appeal Fees',
-              value: String(web3.utils.fromWei(doge.appealCost))
+              value: String(web3.utils.fromWei(doge.appealCost)),
+              icon: appealFees
             }
           ]
           button = { children: 'Appeal', onClick: onAppealClick }
@@ -132,7 +138,8 @@ const renderDogeDetails = (
                       .muln(2)
                   )
                 )
-              )
+              ),
+              icon: deposit
             }
           ]
           button = {
