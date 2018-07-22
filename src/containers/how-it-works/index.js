@@ -36,7 +36,7 @@ export default () => (
       <br />
       <br />
       Both the submitter and the challenger can appeal the decision made by the
-      jurors by paying the appeal fee.
+      jurors by paying the appeal fees.
       <br />
       <br />
       Enough reading now, go have some fun,
