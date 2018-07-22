@@ -6,7 +6,7 @@ import './value-list.css'
 const ValueList = ({ items, className }) => (
   <div className={`ValueList ${className}`}>
     {items.map((item, i) => (
-      <div key={i} className="ValueList-item">
+      <div key={i} className="ValueList-item" data-tip={item.tooltip}>
         <h3 className="ValueList-item-label">
           {item.icon && (
             <img
@@ -29,7 +29,8 @@ ValueList.propTypes = {
     PropTypes.shape({
       label: PropTypes.node.isRequired,
       value: PropTypes.node.isRequired,
-      icon: PropTypes.string
+      icon: PropTypes.string,
+      tooltip: PropTypes.string
     }).isRequired
   ).isRequired,
 

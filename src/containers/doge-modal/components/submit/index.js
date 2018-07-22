@@ -59,7 +59,9 @@ const Submit = ({
                       )
                     )
                   ),
-                  icon: deposit
+                  icon: deposit,
+                  tooltip:
+                    'This is the amount of ETH that you need to submit to cover arbitration fees and reward the counter party if they win a challenge against your submission.'
                 }
               ]}
             />

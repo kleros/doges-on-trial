@@ -268,6 +268,9 @@ exports[`Storyshots Button disabled 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -566,6 +569,9 @@ exports[`Storyshots Button primary 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -864,6 +870,9 @@ exports[`Storyshots Button secondary 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -1162,6 +1171,9 @@ exports[`Storyshots Button ternary 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -1434,6 +1446,9 @@ exports[`Storyshots Button with lots of text 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -1701,6 +1716,9 @@ exports[`Storyshots Card default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -2010,6 +2028,9 @@ exports[`Storyshots Colors backgrounds 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -2679,6 +2700,9 @@ exports[`Storyshots Colors bases 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -3132,6 +3156,9 @@ exports[`Storyshots Colors states 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -3621,6 +3648,9 @@ exports[`Storyshots Colors typography 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -3898,6 +3928,9 @@ exports[`Storyshots Doge Card accepted 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -4175,6 +4208,9 @@ exports[`Storyshots Doge Card challenged 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -4452,6 +4488,9 @@ exports[`Storyshots Doge Card pending 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -4729,6 +4768,9 @@ exports[`Storyshots Doge Card rejected 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -5016,6 +5058,9 @@ exports[`Storyshots Doge Image accepted 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -5303,6 +5348,9 @@ exports[`Storyshots Doge Image challenged 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -5574,6 +5622,9 @@ exports[`Storyshots Doge Image pending 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -5861,6 +5912,9 @@ exports[`Storyshots Doge Image rejected 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -6168,6 +6222,9 @@ exports[`Storyshots Dropdown checkbox 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -6456,6 +6513,9 @@ exports[`Storyshots Dropdown radio 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -6850,6 +6910,9 @@ exports[`Storyshots FAQ Group default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -7166,6 +7229,9 @@ exports[`Storyshots File Picker default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -7431,6 +7497,9 @@ exports[`Storyshots Identicon default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -7696,6 +7765,9 @@ exports[`Storyshots Identicon round 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -7979,6 +8051,9 @@ exports[`Storyshots Info Card default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -10960,6 +11035,9 @@ exports[`Storyshots Masonry Grid default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -12641,6 +12719,9 @@ exports[`Storyshots Masonry Grid filter evens 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -14322,6 +14403,9 @@ exports[`Storyshots Masonry Grid filter odds 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -17303,6 +17387,9 @@ exports[`Storyshots Masonry Grid sort ascending 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -20284,6 +20371,9 @@ exports[`Storyshots Masonry Grid sort descending 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -20373,6 +20463,9 @@ exports[`Storyshots Modal default 1`] = `
           }
         >
           <div>
+            <div>
+              [Modal]
+            </div>
             <div
               className="Button Button--primary Button--normal  "
               onClick={[Function]}
@@ -20558,6 +20651,9 @@ exports[`Storyshots Modal default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -20906,6 +21002,9 @@ exports[`Storyshots Nav Bar default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -21182,6 +21281,9 @@ exports[`Storyshots Notification Badge default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -21458,6 +21560,9 @@ exports[`Storyshots Notification Badge with a limit 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -21729,6 +21834,9 @@ exports[`Storyshots Page Not Found default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -22010,6 +22118,9 @@ exports[`Storyshots Requires MetaMask needs unlock 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -22312,6 +22423,9 @@ exports[`Storyshots Requires MetaMask not found 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -22608,6 +22722,9 @@ exports[`Storyshots Text Input default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -22914,6 +23031,9 @@ exports[`Storyshots Text Input error 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -23210,6 +23330,9 @@ exports[`Storyshots Text Input touched 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -23506,6 +23629,9 @@ exports[`Storyshots Text Input valid 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -23779,6 +23905,9 @@ exports[`Storyshots Tooltip default 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -24057,6 +24186,9 @@ exports[`Storyshots Typography headings 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -24332,6 +24464,9 @@ exports[`Storyshots Typography paragraphs 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -24599,6 +24734,9 @@ exports[`Storyshots Typography small 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -24700,6 +24838,7 @@ exports[`Storyshots Value List with icons 1`] = `
             >
               <div
                 className="ValueList-item"
+                data-tip={undefined}
               >
                 <h3
                   className="ValueList-item-label"
@@ -24720,6 +24859,7 @@ exports[`Storyshots Value List with icons 1`] = `
               </div>
               <div
                 className="ValueList-item"
+                data-tip={undefined}
               >
                 <h3
                   className="ValueList-item-label"
@@ -24740,6 +24880,7 @@ exports[`Storyshots Value List with icons 1`] = `
               </div>
               <div
                 className="ValueList-item"
+                data-tip={undefined}
               >
                 <h3
                   className="ValueList-item-label"
@@ -24934,6 +25075,9 @@ exports[`Storyshots Value List with icons 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;
@@ -25035,6 +25179,7 @@ exports[`Storyshots Value List without icons 1`] = `
             >
               <div
                 className="ValueList-item"
+                data-tip={undefined}
               >
                 <h3
                   className="ValueList-item-label"
@@ -25224,6 +25369,9 @@ exports[`Storyshots Value List without icons 1`] = `
       data-id="tooltip"
       id={undefined}
     />
+    <div>
+      [DogeModal]
+    </div>
   </div>
 </div>
 `;

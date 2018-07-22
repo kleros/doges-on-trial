@@ -11,6 +11,8 @@ configure({ adapter: new Adapter() })
 
 // Mock Modules
 jest.mock('./components/identicon', () => () => <div>[Identicon]</div>)
+jest.mock('./components/modal', () => () => <div>[Modal]</div>)
+jest.mock('./containers/doge-modal', () => () => <div>[DogeModal]</div>)
 
 // Mock Globals
 Date.now = jest.fn(() => 1516916214006)

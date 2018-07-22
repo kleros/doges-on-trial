@@ -56,7 +56,7 @@ class DogeModal extends PureComponent {
         imageFileDataURL: null,
         imageFileInfoMessage: doge.failedCreating
           ? 'Failed to submit Doge.'
-          : 'Doge submitted successfuly.'
+          : 'Doge submitted successfully.'
       })
   }
 
