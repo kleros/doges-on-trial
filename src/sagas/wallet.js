@@ -31,6 +31,23 @@ function* fetchBalance() {
 }
 
 /**
+ * Fetches the current wallet's settings.
+ * @returns {object} - The settings object.
+ */
+function* fetchSettings() {
+  return { email: 'abc@cba.com' }
+}
+
+/**
+ * Updates the current wallet settings' email.
+ * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
+ * @returns {object} - The updated settings object.
+ */
+function* updateEmail({ payload: { email } }) {
+  return { email }
+}
+
+/**
  * The root of the wallet saga.
  */
 export default function* walletSaga() {
@@ -50,5 +67,21 @@ export default function* walletSaga() {
     'fetch',
     walletActions.balance,
     fetchBalance
+  )
+
+  // Settings
+  yield takeLatest(
+    walletActions.settings.FETCH,
+    lessduxSaga,
+    'fetch',
+    walletActions.settings,
+    fetchSettings
+  )
+  yield takeLatest(
+    walletActions.settings.UPDATE_EMAIL,
+    lessduxSaga,
+    'update',
+    walletActions.settings,
+    updateEmail
   )
 }

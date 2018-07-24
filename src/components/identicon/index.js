@@ -4,7 +4,7 @@ import Blockies from 'react-blockies'
 
 import './identicon.css'
 
-const Identicon = ({ size, scale, address, round, ...rest }) => {
+const Identicon = ({ size, scale, address, tooltip, round, ...rest }) => {
   const length = size * scale
   const lengthStr = `${length}px`
   return (
@@ -15,6 +15,7 @@ const Identicon = ({ size, scale, address, round, ...rest }) => {
         width: lengthStr
       }}
       className="Identicon"
+      data-tip={tooltip}
     >
       <Blockies seed={address} size={size} scale={scale} {...rest} />
     </div>
@@ -29,6 +30,7 @@ Identicon.propTypes = {
 
   // State
   address: PropTypes.string.isRequired,
+  tooltip: PropTypes.string,
 
   // Modifiers
   round: PropTypes.bool
@@ -38,6 +40,9 @@ Identicon.defaultProps = {
   // React Blockies
   size: 8,
   scale: 5,
+
+  // State
+  tooltip: null,
 
   // Modifiers
   round: false

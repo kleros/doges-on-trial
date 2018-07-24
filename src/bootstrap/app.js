@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { Provider, connect } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 
 import * as walletSelectors from '../reducers/wallet'
 import * as notificationSelectors from '../reducers/notification'
@@ -12,6 +12,7 @@ import * as dogeActions from '../actions/doge'
 import * as modalActions from '../actions/modal'
 import Doges from '../containers/doges'
 import HowItWorks from '../containers/how-it-works'
+import Settings from '../containers/settings'
 import NavBar from '../components/nav-bar'
 import PageNotFound from '../components/page-not-found'
 import Button from '../components/button'
@@ -76,7 +77,9 @@ class _ConnectedNavBar extends PureComponent {
             notifications={notifications}
             onNotificationClick={this.handleNotificationClick}
           >
-            <Identicon address={accounts.data[0]} round />
+            <Link to="/settings">
+              <Identicon address={accounts.data[0]} tooltip="Settings" round />
+            </Link>
           </NotificationBadge>
         ]}
       />
@@ -108,6 +111,7 @@ const App = ({ store, history, testElement }) => (
             <Switch>
               <Route exact path="/" component={Doges} />
               <Route exact path="/how-it-works" component={HowItWorks} />
+              <Route exact path="/settings" component={Settings} />
               <Route component={PageNotFound} />
             </Switch>
           </div>
