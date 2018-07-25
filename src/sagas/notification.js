@@ -31,21 +31,21 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
     if (!isSubmitter || account !== event.returnValues.challenger) continue
 
     let message
-    switch (Number(event.returnValues.newStatus)) {
+    switch (Number(event.returnValues.status)) {
       case dogeConstants.IN_CONTRACT_STATUS_ENUM.Submitted:
-        if (event.returnValues.newDisputed === true && isSubmitter)
+        if (event.returnValues.disputed === true && isSubmitter)
           message = 'Your image has been challenged.'
-        else if (event.returnValues.newDisputed === false)
+        else if (event.returnValues.disputed === false)
           oldestNonDisputedSubmittedStatusEvent = event
         break
       case dogeConstants.IN_CONTRACT_STATUS_ENUM.Registered:
-        if (event.returnValues.newDisputed === false)
+        if (event.returnValues.disputed === false)
           message = `${
             isSubmitter ? 'Your image' : 'An image you challenged'
           } has been accepted into the list.`
         break
       case dogeConstants.IN_CONTRACT_STATUS_ENUM.Cleared:
-        if (event.returnValues.newDisputed === false)
+        if (event.returnValues.disputed === false)
           message = `${
             isSubmitter ? 'Your image' : 'An image you challenged'
           } has been rejected from the list.`
@@ -56,7 +56,7 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
 
     if (message) {
       notifiedIDs[event.returnValues.value] =
-        event.returnValues.newDisputed === true ? 'disputed' : true
+        event.returnValues.disputed === true ? 'disputed' : true
       emitter({
         ID: event.returnValues.value,
         date: await getBlockDate(event.blockHash),
@@ -86,7 +86,10 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
   }
 
   if (events[0])
-    localStorage.setItem('nextEventsBlockNumber', events[0].blockNumber + 1)
+    localStorage.setItem(
+      arbitrablePermissionList.options.address + 'nextEventsBlockNumber',
+      events[0].blockNumber + 1
+    )
 }
 
 /**
@@ -111,7 +114,10 @@ function* pushNotificationsListener() {
     const channel = eventChannel(emitter => {
       arbitrablePermissionList
         .getPastEvents('ItemStatusChange', {
-          fromBlock: localStorage.getItem('nextEventsBlockNumber') || 0
+          fromBlock:
+            localStorage.getItem(
+              arbitrablePermissionList.options.address + 'nextEventsBlockNumber'
+            ) || 0
         })
         .then(events =>
           emitNotifications(account, timeToChallenge, emitter, events)

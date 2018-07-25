@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import configureStore from './bootstrap/configure-store'
 import App from './bootstrap/app'
 import registerServiceWorker from './bootstrap/register-service-worker'
+import { arbitrablePermissionList } from './bootstrap/dapp-api'
 
 const { store, history } = configureStore()
 export default store
@@ -23,7 +24,7 @@ registerServiceWorker()
 
 window.addEventListener('unload', () =>
   localStorage.setItem(
-    'notifications',
+    arbitrablePermissionList.options.address + 'notifications',
     JSON.stringify(store.getState().notification.notifications.data)
   )
 )

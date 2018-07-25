@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import createReducer, { createResource } from 'lessdux'
 
+import { arbitrablePermissionList } from '../bootstrap/dapp-api'
+
 // Common Shapes
 export const _notificationShape = PropTypes.shape({
   ID: PropTypes.string.isRequired,
@@ -24,7 +26,9 @@ const {
 export { notificationsShape, notificationShape }
 
 // Reducer
-const cachedNotifications = localStorage.getItem('notifications')
+const cachedNotifications = localStorage.getItem(
+  arbitrablePermissionList.options.address + 'notifications'
+)
 export default createReducer({
   notifications: {
     ...notificationsInitialState,
