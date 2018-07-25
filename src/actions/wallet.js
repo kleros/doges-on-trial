@@ -23,7 +23,6 @@ export const fetchAccounts = () => ({ type: accounts.FETCH })
 export const fetchBalance = () => ({ type: balance.FETCH })
 
 // Settings
-export const fetchSettings = () => ({ type: settings.FETCH })
 export const updateEmail = ({ email }) => ({
   type: settings.UPDATE_EMAIL,
   payload: { email }
