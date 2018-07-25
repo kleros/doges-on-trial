@@ -41,7 +41,7 @@ const renderDogeDetails = (
           onClick: onExecuteRequestClick
         }
       } else {
-        title = 'Send Doge to Trial?'
+        title = 'Send Image to Trial?'
         valueListItems = [
           {
             label: 'Deposit',
@@ -64,7 +64,7 @@ const renderDogeDetails = (
           }
         ]
         button = {
-          children: 'Submit Challenge',
+          children: 'Send to Trial!',
           onClick: onSubmitChallengeClick
         }
       }

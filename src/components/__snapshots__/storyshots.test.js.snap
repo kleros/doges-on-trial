@@ -20664,11 +20664,16 @@ exports[`Storyshots Nav Bar default 1`] = `
             <div
               className="NavBar"
             >
-              <img
-                alt="Logo"
-                className="NavBar-logo"
-                src="logo.png"
-              />
+              <a
+                href="/"
+                onClick={[Function]}
+              >
+                <img
+                  alt="Logo"
+                  className="NavBar-logo"
+                  src="logo.png"
+                />
+              </a>
               <div
                 className="NavBar-route"
               >

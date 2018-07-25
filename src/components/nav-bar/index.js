@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import logo from '../../assets/images/logo.png'
 
@@ -8,7 +8,9 @@ import './nav-bar.css'
 
 const NavBar = ({ routes, extras }) => (
   <div className="NavBar">
-    <img src={logo} alt="Logo" className="NavBar-logo" />
+    <Link to="/">
+      <img src={logo} alt="Logo" className="NavBar-logo" />
+    </Link>
     {routes.map(r => (
       <div key={r.title} className="NavBar-route">
         {r.isExternal ? (
