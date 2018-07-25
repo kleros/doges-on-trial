@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { RenderIf } from 'lessdux'
+import { Link } from 'react-router-dom'
 import { BeatLoader } from 'react-spinners'
 
 import { web3, IMAGES_BASE_URL } from '../../../../bootstrap/dapp-api'
@@ -176,6 +177,11 @@ const renderDogeDetails = (
         <ValueList items={valueListItems} className="Details-valueList" />
       )}
       {button && <Button id={doge.ID} className="Details-button" {...button} />}
+      <br />
+      <small>
+        Set an email in <Link to="/settings">settings</Link> to receive email
+        notifications.
+      </small>
     </div>
   )
 }

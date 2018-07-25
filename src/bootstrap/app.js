@@ -13,6 +13,7 @@ import * as modalActions from '../actions/modal'
 import Doges from '../containers/doges'
 import HowItWorks from '../containers/how-it-works'
 import Settings from '../containers/settings'
+import DogeModal from '../containers/doge-modal'
 import NavBar from '../components/nav-bar'
 import PageNotFound from '../components/page-not-found'
 import Button from '../components/button'
@@ -116,6 +117,10 @@ const App = ({ store, history, testElement }) => (
             </Switch>
           </div>
           {testElement}
+          <Switch>
+            <Route exact path="/settings" component={null} />
+            <Route exact path="*" component={DogeModal} />
+          </Switch>
           <Route exact path="*" component={GlobalComponents} />
         </div>
       </ConnectedRouter>

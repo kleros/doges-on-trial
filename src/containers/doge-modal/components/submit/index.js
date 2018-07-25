@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { RenderIf } from 'lessdux'
+import { Link } from 'react-router-dom'
 import { BeatLoader } from 'react-spinners'
 
 import { web3 } from '../../../../bootstrap/dapp-api'
@@ -73,6 +74,11 @@ const Submit = ({
             >
               {doge.creating ? 'Submitting...' : 'Submit Doge'}
             </Button>
+            <br />
+            <small>
+              Set an email in <Link to="/settings">settings</Link> to receive
+              email notifications.
+            </small>
           </div>
         )
       }
