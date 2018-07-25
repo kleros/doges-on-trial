@@ -54,7 +54,20 @@ const DogeCard = ({
       }
       className="DogeCard-image"
     />
-    <div className="DogeCard-tag" />
+    <div
+      className="DogeCard-tag"
+      data-tip={
+        {
+          Pending:
+            "This image can still be challenged. If you think it's not a doge, challenge it!",
+          Challenged:
+            'This image is currently being challenged. Stay tuned for the ruling!',
+          Accepted:
+            'This image has been accepted into the list and can no longer be challenged.',
+          Rejected: 'This image has been rejected from the list.'
+        }[status]
+      }
+    />
     <div className="DogeCard-label">{status.toUpperCase()}</div>
   </div>
 )

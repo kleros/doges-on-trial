@@ -3717,7 +3717,7 @@ exports[`Storyshots Doge Card accepted 1`] = `
             Loading image...
             <div
               className="DogeCard-tag"
-              data-tip=""
+              data-tip="This image has been accepted into the list and can no longer be challenged."
             />
             <div
               className="DogeCard-label"
@@ -4551,7 +4551,7 @@ exports[`Storyshots Doge Card rejected 1`] = `
             Loading image...
             <div
               className="DogeCard-tag"
-              data-tip=""
+              data-tip="This image has been rejected from the list."
             />
             <div
               className="DogeCard-label"
