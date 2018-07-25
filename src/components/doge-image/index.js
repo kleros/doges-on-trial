@@ -31,7 +31,13 @@ const DogeImage = ({ status, imageSrc }) => {
       ].toLowerCase()}`}
     >
       <img src={imageSrc} alt="Doge Submission" className="DogeImage-image" />
-      {icon && <FontAwesomeIcon icon={icon} className="DogeImage-icon" />}
+      {icon && (
+        <FontAwesomeIcon
+          icon={icon}
+          className="DogeImage-icon"
+          data-tip={dogeConstants.STATUS_ENUM[status]}
+        />
+      )}
     </div>
   )
 }
