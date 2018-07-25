@@ -22,7 +22,7 @@ export { accountsShape, balanceShape, settingsShape }
 export default createReducer({
   accounts: accountsInitialState,
   balance: balanceInitialState,
-  settings: settingsInitialState
+  settings: { ...settingsInitialState, data: { email: '' } }
 })
 
 // Selectors
