@@ -93,7 +93,7 @@ class DogeModal extends PureComponent {
       return this.setState({
         imageFileDataURL: null,
         imageFileInfoMessage:
-          'Image is too small. It must be more than 100px wide and 100px tall.'
+          'Image is too small. It must be more than 250px wide and 250px tall.'
       })
 
     // All good
