@@ -60,7 +60,7 @@ function* createDoge({ payload: { imageFileDataURL } }) {
 
   // Add to contract if absent
   if (Number((yield call(fetchDoge, { payload: { ID } }))._status) === 0)
-    yield call(arbitrablePermissionList.methods.requestRegistering(ID).send, {
+    yield call(arbitrablePermissionList.methods.requestRegistration(ID).send, {
       from: yield select(walletSelectors.getAccount),
       value: yield select(arbitrablePermissionListSelectors.getSubmitCost)
     })
@@ -171,7 +171,7 @@ function* executeDogeRequest({ payload: { ID } }) {
  * @returns {object} - The `lessdux` collection mod object for updating the list of doges.
  */
 function* submitDogeChallenge({ payload: { ID } }) {
-  yield call(arbitrablePermissionList.methods.challengeRegistering(ID).send, {
+  yield call(arbitrablePermissionList.methods.challengeRegistration(ID).send, {
     from: yield select(walletSelectors.getAccount),
     value: yield select(arbitrablePermissionListSelectors.getSubmitCost)
   })
