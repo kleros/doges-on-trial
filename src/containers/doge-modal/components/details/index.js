@@ -38,7 +38,7 @@ const renderDogeDetails = (
       ) {
         title = 'This Doge Has Been Judged'
         button = {
-          children: 'Execute Request',
+          children: 'Finalize Registration',
           onClick: onExecuteRequestClick
         }
       } else {

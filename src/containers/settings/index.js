@@ -30,6 +30,11 @@ const Settings = ({
       done={
         settings.data && (
           <div className="Settings-emailForm">
+            <small className="Settings-emailForm-message">
+              Save an email to be notified whenever your submissions or
+              submissions you challenged get challenged, accepted, rejected, or
+              are pending finalization.
+            </small>
             <EmailForm
               onSubmit={updateEmail}
               initialValues={{ email: settings.data.email }}
