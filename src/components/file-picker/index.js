@@ -33,8 +33,8 @@ FilePicker.propTypes = {
   ...Dropzone.propTypes,
 
   // State
-  message: PropTypes.string,
-  buttonMessage: PropTypes.string,
+  message: PropTypes.node,
+  buttonMessage: PropTypes.node,
   imageFilePreviewURL: PropTypes.string
 }
 

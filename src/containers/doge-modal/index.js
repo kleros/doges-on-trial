@@ -69,13 +69,15 @@ class DogeModal extends PureComponent {
       })
 
     // It's an image, try to compress it
-    const compressedFile =
+    let compressedFile =
       file.type.slice(6, 9) === 'gif'
         ? file
-        : await browserImageCompression(file, 0.1)
+        : await browserImageCompression(file, 0.3)
+    // Sometimes compression can increase its size
+    compressedFile = file.size < compressedFile.size ? file : compressedFile
 
     // It's still too big
-    if (compressedFile.size > 100000)
+    if (compressedFile.size > 3e6)
       return this.setState({
         imageFileDataURL: null,
         imageFileInfoMessage:

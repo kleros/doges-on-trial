@@ -32,6 +32,14 @@ const Submit = ({
       <FilePicker
         multiple={false}
         onDropAccepted={handleOnFileDropAccepted}
+        message={
+          <span>
+            (Max Size: 300KB)
+            <br />
+            <br />
+            Drag file here or
+          </span>
+        }
         imageFilePreviewURL={imageFileDataURL}
       />
     )}
