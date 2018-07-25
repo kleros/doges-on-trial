@@ -84,11 +84,21 @@ class DogeModal extends PureComponent {
           'Image is too big and cannot be resized. It must be less than 100KB.'
       })
 
-    // It's small enough now
+    // It's small enough now, check dimensions
+    const imageFileDataURL = await browserImageCompression.getDataUrlFromFile(
+      compressedFile
+    )
+    const img = await browserImageCompression.loadImage(imageFileDataURL)
+    if (img.width < 250 || img.height < 250)
+      return this.setState({
+        imageFileDataURL: null,
+        imageFileInfoMessage:
+          'Image is too small. It must be more than 100px wide and 100px tall.'
+      })
+
+    // All good
     this.setState({
-      imageFileDataURL: await browserImageCompression.getDataUrlFromFile(
-        compressedFile
-      ),
+      imageFileDataURL,
       imageFileInfoMessage: null
     })
   }

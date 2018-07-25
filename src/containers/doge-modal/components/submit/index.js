@@ -37,6 +37,9 @@ const Submit = ({
             (Max Size: 300KB)
             <br />
             <br />
+            (Min W/H: 100px/100px)
+            <br />
+            <br />
             Drag file here or
           </span>
         }
