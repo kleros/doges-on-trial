@@ -9,6 +9,8 @@ const ARBITRABLE_PERMISSION_LIST_ADDRESS =
   process.env[`REACT_APP_${env}_ARBITRABLE_PERMISSION_LIST_ADDRESS`]
 const IMAGES_BASE_URL = process.env[`REACT_APP_${env}_IMAGES_BASE_URL`]
 const IMAGE_UPLOAD_URL = process.env[`REACT_APP_${env}_IMAGE_UPLOAD_URL`]
+const PATCH_USER_SETTINGS_URL =
+  process.env[`REACT_APP_${env}_PATCH_USER_SETTINGS_URL`]
 
 let web3
 if (process.env.NODE_ENV === 'test')
@@ -56,5 +58,6 @@ export {
   arbitrablePermissionList,
   arbitrator,
   IMAGES_BASE_URL,
-  IMAGE_UPLOAD_URL
+  IMAGE_UPLOAD_URL,
+  PATCH_USER_SETTINGS_URL
 }
