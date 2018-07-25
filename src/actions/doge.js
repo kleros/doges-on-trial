@@ -30,9 +30,9 @@ export const createDoge = imageFileDataURL => ({
   type: doge.CREATE,
   payload: { imageFileDataURL }
 })
-export const fetchDoge = (ID, withDisputeStatus) => ({
+export const fetchDoge = (ID, withDisputeData) => ({
   type: doge.FETCH,
-  payload: { ID, withDisputeStatus }
+  payload: { ID, withDisputeData }
 })
 export const executeDogeRequest = ID => ({
   type: doge.EXECUTE_REQUEST,

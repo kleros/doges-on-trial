@@ -83,7 +83,7 @@ function* createDoge({ payload: { imageFileDataURL } }) {
  * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
  * @returns {object} - The fetched doge.
  */
-function* fetchDoge({ payload: { ID, withDisputeStatus } }) {
+function* fetchDoge({ payload: { ID, withDisputeData } }) {
   const doge = yield call(arbitrablePermissionList.methods.items(ID).call)
 
   let status
@@ -106,7 +106,7 @@ function* fetchDoge({ payload: { ID, withDisputeStatus } }) {
     }
 
   let disputeData = null
-  if (withDisputeStatus) {
+  if (withDisputeData) {
     // Update arbitrable permission list data
     const arbitrablePermissionListData = yield call(
       fetchArbitrablePermissionListData
@@ -124,12 +124,16 @@ function* fetchDoge({ payload: { ID, withDisputeStatus } }) {
       disputeStatus: call(
         arbitrator.methods.disputeStatus(doge.disputeID).call
       ),
+      currentRuling: call(
+        arbitrator.methods.currentRuling(doge.disputeID).call
+      ),
       appealCost: call(
         arbitrator.methods.appealCost(doge.disputeID, '0x00').call
       )
     })
     disputeData = {
       disputeStatus: Number(d.disputeStatus),
+      currentRuling: Number(d.currentRuling),
       appealCost: String(d.appealCost)
     }
   }
@@ -161,7 +165,7 @@ function* executeDogeRequest({ payload: { ID } }) {
   })
 
   return yield call(fetchDoge, {
-    payload: { ID, withDisputeStatus: true }
+    payload: { ID, withDisputeData: true }
   })
 }
 
@@ -177,7 +181,7 @@ function* submitDogeChallenge({ payload: { ID } }) {
   })
 
   return yield call(fetchDoge, {
-    payload: { ID, withDisputeStatus: true }
+    payload: { ID, withDisputeData: true }
   })
 }
 
@@ -193,7 +197,7 @@ function* appealDogeRuling({ payload: { ID } }) {
   })
 
   return yield call(fetchDoge, {
-    payload: { ID, withDisputeStatus: true }
+    payload: { ID, withDisputeData: true }
   })
 }
 
@@ -213,7 +217,7 @@ function* executeDogeRuling({ payload: { ID } }) {
   )
 
   return yield call(fetchDoge, {
-    payload: { ID, withDisputeStatus: true }
+    payload: { ID, withDisputeData: true }
   })
 }
 

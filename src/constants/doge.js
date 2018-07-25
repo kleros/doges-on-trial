@@ -27,6 +27,7 @@ export const DISPUTE_STATUS_ENUM = createEnum([
   'Appealable',
   'Solved'
 ])
+export const RULING_ENUM = createEnum(['Pending', 'Accepted', 'Rejected'])
 
 // Gallery Settings
 export const FILTER_OPTIONS_ENUM = createEnum([

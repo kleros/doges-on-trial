@@ -25,6 +25,7 @@ const renderDogeDetails = (
   onAppealClick,
   onExecuteRulingClick
 ) => {
+  let status = doge.status
   let infoCardMessage
   let title
   let valueListItems
@@ -97,6 +98,10 @@ const renderDogeDetails = (
           ]
           break
         case dogeConstants.DISPUTE_STATUS_ENUM.Appealable: // You can appeal the dispute's ruling
+          status =
+            dogeConstants.STATUS_ENUM[
+              dogeConstants.RULING_ENUM[doge.currentRuling]
+            ]
           title = 'This Doge Has Been Judged'
           valueListItems = [
             {
@@ -129,6 +134,10 @@ const renderDogeDetails = (
           button = { children: 'Appeal', onClick: onAppealClick }
           break
         case dogeConstants.DISPUTE_STATUS_ENUM.Solved: // You can execute the dispute's ruling
+          status =
+            dogeConstants.STATUS_ENUM[
+              dogeConstants.RULING_ENUM[doge.currentRuling]
+            ]
           title = 'This Doge Has Been Judged'
           valueListItems = [
             {
@@ -172,7 +181,7 @@ const renderDogeDetails = (
     <div className="Details">
       {infoCardMessage && <InfoCard message={infoCardMessage} />}
       {title && <h1>{title}</h1>}
-      <DogeImage status={doge.status} imageSrc={IMAGES_BASE_URL + doge.ID} />
+      <DogeImage status={status} imageSrc={IMAGES_BASE_URL + doge.ID} />
       {valueListItems && (
         <ValueList items={valueListItems} className="Details-valueList" />
       )}
