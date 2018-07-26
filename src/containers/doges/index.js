@@ -201,33 +201,35 @@ class Doges extends PureComponent {
             />
           </div>
         </div>
-        <ReactInfiniteScroller
-          hasMore={!doges.loading && doges.data ? doges.data.hasMore : false}
-          loadMore={this.fetchDoges}
-          loader={
-            <div key={0}>
-              <BeatLoader color="#3d464d" />
-            </div>
-          }
-          useWindow={false}
-        >
-          <RenderIf
-            resource={doges}
-            loading={<ClimbingBoxLoader color="#3d464d" />}
-            done={
-              doges.data && (
-                <MasonryGrid
-                  filter={filter}
-                  sort={sort}
-                  className="Doges-masonryGrid"
-                >
-                  {this.mapDoges(accounts.data, doges.data)}
-                </MasonryGrid>
-              )
+        <div className="Doges-masonryGridLoaderContainer">
+          <ReactInfiniteScroller
+            hasMore={!doges.loading && doges.data ? doges.data.hasMore : false}
+            loadMore={this.fetchDoges}
+            loader={
+              <div
+                key={0}
+                className="Doges-masonryGridLoaderContainer-masonryGridLoader-loader"
+              >
+                <BeatLoader color="#3d464d" />
+              </div>
             }
-            failedLoading="There was an error fetching the doges."
-          />
-        </ReactInfiniteScroller>
+            useWindow={false}
+            className="Doges-masonryGridLoaderContainer-masonryGridLoader"
+          >
+            <RenderIf
+              resource={doges}
+              loading={<ClimbingBoxLoader color="#3d464d" />}
+              done={
+                doges.data && (
+                  <MasonryGrid filter={filter} sort={sort}>
+                    {this.mapDoges(accounts.data, doges.data)}
+                  </MasonryGrid>
+                )
+              }
+              failedLoading="There was an error fetching the doges."
+            />
+          </ReactInfiniteScroller>
+        </div>
       </div>
     )
   }

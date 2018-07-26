@@ -46,7 +46,20 @@
     }
   }
 
-  &-masonryGrid {
-    margin: auto;
+  &-masonryGridLoaderContainer {
+    position: relative;
+    width: 100%;
+
+    &-masonryGridLoader {
+      left: 50%;
+      position: absolute;
+      top: 0;
+      transform: translateX(-50%);
+
+      &-loader {
+        padding: 30px 0;
+        text-align: center;
+      }
+    }
   }
 }
