@@ -21844,7 +21844,7 @@ exports[`Storyshots Requires MetaMask needs unlock 1`] = `
               className="RequiresMetaMask-content"
             >
               <h1>
-                You need to unlock your Web3 browser wallet to run this dapp.
+                You need to unlock your Web3 browser wallet and refresh the page to run this dapp.
               </h1>
               <small>
                 This also serves as your login so you won't need to keep track of another account and password.

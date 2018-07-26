@@ -16,7 +16,7 @@ const RequiresMetaMask = ({ needsUnlock }) => (
     <div className="RequiresMetaMask-content">
       <h1>
         {needsUnlock
-          ? 'You need to unlock your Web3 browser wallet to run this dapp.'
+          ? 'You need to unlock your Web3 browser wallet and refresh the page to run this dapp.'
           : 'You need a Web3 enabled browser to run this dapp.'}
       </h1>
       <small>
