@@ -20819,7 +20819,7 @@ exports[`Storyshots Nav Bar default 1`] = `
                         </a>
                       </div>
                       <div
-                        className="bm-item NavBar-extra NavBar-extra--first"
+                        className="bm-item NavBar-extra is-mobile NavBar-extra--first"
                         style={
                           Object {
                             "display": "block",
@@ -20839,7 +20839,7 @@ exports[`Storyshots Nav Bar default 1`] = `
                         </div>
                       </div>
                       <div
-                        className="bm-item NavBar-extra "
+                        className="bm-item NavBar-extra is-mobile "
                         style={
                           Object {
                             "display": "block",

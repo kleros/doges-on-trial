@@ -165,7 +165,7 @@ class Doges extends PureComponent {
                 arbitrablePermissionListData.data &&
                 Object.keys(arbitrablePermissionListData.data.itemsCounts).map(
                   label => (
-                    <div>
+                    <div key={label}>
                       <span className="Doges-settingsBar-counts-label">
                         {label}:
                       </span>{' '}
