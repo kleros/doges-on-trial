@@ -6,7 +6,6 @@
   position: relative;
   user-select: none;
   width: 230px;
-  z-index: 1;
 
   &--checkbox {
     width: initial;
@@ -53,6 +52,7 @@
     position: absolute;
     top: 56px;
     width: 232px;
+    z-index: 1;
 
     &-option {
       padding: 15px 29px;

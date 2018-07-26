@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import reactClickOutside from 'react-click-outside'
 
 import './dropdown.css'
 
-export default class Dropdown extends PureComponent {
+class Dropdown extends PureComponent {
   static propTypes = {
     // State
     type: PropTypes.oneOf(['radio', 'checkbox']).isRequired,
@@ -42,6 +43,11 @@ export default class Dropdown extends PureComponent {
   }
 
   state = { isOpen: false }
+
+  handleClickOutside = () => {
+    const { isOpen } = this.state
+    isOpen && this.setState({ isOpen: false })
+  }
 
   handleBoxClick = () => this.setState(state => ({ isOpen: !state.isOpen }))
 
@@ -141,3 +147,5 @@ export default class Dropdown extends PureComponent {
     )
   }
 }
+
+export default reactClickOutside(Dropdown)
