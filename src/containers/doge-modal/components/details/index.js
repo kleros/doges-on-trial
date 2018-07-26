@@ -22,8 +22,7 @@ const renderDogeDetails = (
   doge,
   onExecuteRequestClick,
   onSubmitChallengeClick,
-  onAppealClick,
-  onExecuteRulingClick
+  onAppealClick
 ) => {
   let status = doge.status
   let infoCardMessage
@@ -161,10 +160,6 @@ const renderDogeDetails = (
                 'This is the total amount of ETH submitted by both parties. It will be used to pay arbitration fees and the remaining amount will go to the winner.'
             }
           ]
-          button = {
-            children: 'Execute Ruling',
-            onClick: onExecuteRulingClick
-          }
           break
         default:
           throw new Error('Invalid doge challenged state.')
