@@ -3714,7 +3714,20 @@ exports[`Storyshots Doge Card accepted 1`] = `
             id="0x"
             onClick={[Function]}
           >
-            Loading image...
+            <div
+              className="DogeCard-image-loader"
+            >
+              <div
+                className="css-1q0tqd"
+              >
+                <div
+                  className="css-j7ezvr"
+                />
+                <div
+                  className="css-1hikajg"
+                />
+              </div>
+            </div>
             <div
               className="DogeCard-tag"
               data-tip="This image has been accepted into the list and can no longer be challenged."
@@ -3994,7 +4007,20 @@ exports[`Storyshots Doge Card challenged 1`] = `
             id="0x"
             onClick={[Function]}
           >
-            Loading image...
+            <div
+              className="DogeCard-image-loader"
+            >
+              <div
+                className="css-1q0tqd"
+              >
+                <div
+                  className="css-j7ezvr"
+                />
+                <div
+                  className="css-1hikajg"
+                />
+              </div>
+            </div>
             <div
               className="DogeCard-tag"
               data-tip="This image is currently being challenged. Stay tuned for the ruling!"
@@ -4274,7 +4300,20 @@ exports[`Storyshots Doge Card pending 1`] = `
             id="0x"
             onClick={[Function]}
           >
-            Loading image...
+            <div
+              className="DogeCard-image-loader"
+            >
+              <div
+                className="css-1q0tqd"
+              >
+                <div
+                  className="css-j7ezvr"
+                />
+                <div
+                  className="css-1hikajg"
+                />
+              </div>
+            </div>
             <div
               className="DogeCard-tag"
               data-tip="This image can still be challenged. If you think it's not a doge, challenge it!"
@@ -4554,7 +4593,20 @@ exports[`Storyshots Doge Card rejected 1`] = `
             id="0x"
             onClick={[Function]}
           >
-            Loading image...
+            <div
+              className="DogeCard-image-loader"
+            >
+              <div
+                className="css-1q0tqd"
+              >
+                <div
+                  className="css-j7ezvr"
+                />
+                <div
+                  className="css-1hikajg"
+                />
+              </div>
+            </div>
             <div
               className="DogeCard-tag"
               data-tip="This image has been rejected from the list."

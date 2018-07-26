@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import Img from 'react-image'
+import { DotLoader } from 'react-spinners'
 
 import * as dogeConstants from '../../constants/doge'
 
@@ -8,18 +9,40 @@ import './doge-card.css'
 
 class DogeCardImageLoader extends PureComponent {
   static propTypes = {
+    // State
+    failed: PropTypes.bool,
+
     // Callbacks
-    debouncedUpdatePacking: PropTypes.func.isRequired
+    debouncedUpdatePacking: PropTypes.func
+  }
+
+  static defaultProps = {
+    // State
+    failed: false,
+
+    // Callbacks
+    debouncedUpdatePacking: null
   }
 
   componentWillUnmount() {
     const { debouncedUpdatePacking } = this.props
-    debouncedUpdatePacking()
-    console.info('debouncedUpdatePacking called.')
+    if (debouncedUpdatePacking) {
+      debouncedUpdatePacking()
+      console.info('debouncedUpdatePacking called.')
+    }
   }
 
   render() {
-    return 'Loading image...'
+    const { failed } = this.props
+    return (
+      <div className="DogeCard-image-loader">
+        {failed ? (
+          'There was an error fetching the image or it has not been uploaded properly. Try submitting it again.'
+        ) : (
+          <DotLoader color="#3d464d" />
+        )}
+      </div>
+    )
   }
 }
 const DogeCard = ({
@@ -38,20 +61,9 @@ const DogeCard = ({
       src={imageSrc}
       alt={`Doge List Submission`}
       loader={
-        debouncedUpdatePacking ? (
-          <DogeCardImageLoader
-            debouncedUpdatePacking={debouncedUpdatePacking}
-          />
-        ) : (
-          'Loading image...'
-        )
+        <DogeCardImageLoader debouncedUpdatePacking={debouncedUpdatePacking} />
       }
-      unloader={
-        <div className="DogeCard-failedImage">
-          There was an error fetching the image or it has not been uploaded
-          properly. Try submitting it again.
-        </div>
-      }
+      unloader={<DogeCardImageLoader failed />}
       className="DogeCard-image"
     />
     <div

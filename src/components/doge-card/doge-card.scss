@@ -12,11 +12,15 @@
   &-image {
     display: block;
     width: 100%;
-  }
 
-  &-failedImage {
-    line-height: 22px;
-    padding: 40px;
+    &-loader {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      line-height: 22px;
+      min-height: 250px;
+      padding: 40px;
+    }
   }
 
   &-tag {

@@ -27,7 +27,7 @@ const Submit = ({
     {imageFileInfoMessage && <InfoCard message={imageFileInfoMessage} />}
     <h1>Submit your Doge</h1>
     {doge.creating ? (
-      'Submitting doge...'
+      <BeatLoader color="#3d464d" />
     ) : (
       <FilePicker
         multiple={false}
