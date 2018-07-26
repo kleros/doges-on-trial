@@ -156,15 +156,26 @@ class Doges extends PureComponent {
     const { filterValue, filter, sortValue, sort } = this.state
     return (
       <div className="Doges">
-        <div className="Doges-settingsBar">
-          <h3 className="Doges-settingsBar-counts">
-            <RenderIf
-              resource={arbitrablePermissionListData}
-              loading={<BeatLoader color="#3d464d" />}
-              done={
-                arbitrablePermissionListData.data &&
-                Object.keys(arbitrablePermissionListData.data.itemsCounts).map(
-                  label => (
+        <ReactInfiniteScroller
+          hasMore={!doges.loading && doges.data ? doges.data.hasMore : false}
+          loadMore={this.fetchDoges}
+          loader={
+            <div key={0} className="Doges-masonryGridLoader">
+              <BeatLoader color="#3d464d" />
+            </div>
+          }
+          useWindow={false}
+        >
+          <div className="Doges-settingsBar">
+            <h3 className="Doges-settingsBar-counts">
+              <RenderIf
+                resource={arbitrablePermissionListData}
+                loading={<BeatLoader color="#3d464d" />}
+                done={
+                  arbitrablePermissionListData.data &&
+                  Object.keys(
+                    arbitrablePermissionListData.data.itemsCounts
+                  ).map(label => (
                     <div key={label}>
                       <span className="Doges-settingsBar-counts-label">
                         {label}:
@@ -173,63 +184,50 @@ class Doges extends PureComponent {
                         {arbitrablePermissionListData.data.itemsCounts[label]}
                       </span>
                     </div>
-                  )
-                )
-              }
-              failedLoading={null}
-            />
-          </h3>
-          <div className="Doges-settingsBar-dropdowns">
-            <Dropdown
-              value={filterValue}
-              type="checkbox"
-              label="Filter"
-              options={this.getFilterOptionsWithCountsAndColors(
-                accounts.data,
-                doges.data || undefined
-              )}
-              onChange={this.handleFilterChange}
-              inverted
-              className="Doges-settingsBar-dropdowns-dropdown"
-            />
-            <Dropdown
-              value={sortValue}
-              type="radio"
-              options={dogeConstants.SORT_OPTIONS_ENUM.values}
-              onChange={this.handleSortChange}
-              className="Doges-settingsBar-dropdowns-dropdown"
-            />
+                  ))
+                }
+                failedLoading={null}
+              />
+            </h3>
+            <div className="Doges-settingsBar-dropdowns">
+              <Dropdown
+                value={filterValue}
+                type="checkbox"
+                label="Filter"
+                options={this.getFilterOptionsWithCountsAndColors(
+                  accounts.data,
+                  doges.data || undefined
+                )}
+                onChange={this.handleFilterChange}
+                inverted
+                className="Doges-settingsBar-dropdowns-dropdown"
+              />
+              <Dropdown
+                value={sortValue}
+                type="radio"
+                options={dogeConstants.SORT_OPTIONS_ENUM.values}
+                onChange={this.handleSortChange}
+                className="Doges-settingsBar-dropdowns-dropdown"
+              />
+            </div>
           </div>
-        </div>
-        <div className="Doges-masonryGridLoaderContainer">
-          <ReactInfiniteScroller
-            hasMore={!doges.loading && doges.data ? doges.data.hasMore : false}
-            loadMore={this.fetchDoges}
-            loader={
-              <div
-                key={0}
-                className="Doges-masonryGridLoaderContainer-masonryGridLoader-loader"
-              >
-                <BeatLoader color="#3d464d" />
+          <RenderIf
+            resource={doges}
+            loading={
+              <div className="Doges-masonryGridLoader">
+                <ClimbingBoxLoader color="#3d464d" />
               </div>
             }
-            useWindow={false}
-            className="Doges-masonryGridLoaderContainer-masonryGridLoader"
-          >
-            <RenderIf
-              resource={doges}
-              loading={<ClimbingBoxLoader color="#3d464d" />}
-              done={
-                doges.data && (
-                  <MasonryGrid filter={filter} sort={sort}>
-                    {this.mapDoges(accounts.data, doges.data)}
-                  </MasonryGrid>
-                )
-              }
-              failedLoading="There was an error fetching the doges."
-            />
-          </ReactInfiniteScroller>
-        </div>
+            done={
+              doges.data && (
+                <MasonryGrid filter={filter} sort={sort}>
+                  {this.mapDoges(accounts.data, doges.data)}
+                </MasonryGrid>
+              )
+            }
+            failedLoading="There was an error fetching the doges."
+          />
+        </ReactInfiniteScroller>
       </div>
     )
   }
