@@ -201,7 +201,11 @@ class Doges extends PureComponent {
         <ReactInfiniteScroller
           hasMore={!doges.loading && doges.data ? doges.data.hasMore : false}
           loadMore={this.fetchDoges}
-          loader={<div key={0}>Loading more doges...</div>}
+          loader={
+            <div key={0}>
+              <BeatLoader color="#3d464d" />
+            </div>
+          }
           useWindow={false}
         >
           <RenderIf

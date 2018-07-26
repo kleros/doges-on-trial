@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 import './value-list.css'
 
 const ValueList = ({ items, className }) => (
   <div className={`ValueList ${className}`}>
     {items.map((item, i) => (
-      <div key={i} className="ValueList-item" data-tip={item.tooltip}>
+      <div key={i} className="ValueList-item">
         <h3 className="ValueList-item-label">
           {item.icon && (
             <img
@@ -18,6 +19,7 @@ const ValueList = ({ items, className }) => (
           {item.label}:
         </h3>
         <h3 className="ValueList-item-value">{item.value}</h3>
+        <FontAwesomeIcon icon="info-circle" data-tip={item.tooltip} />
       </div>
     ))}
   </div>

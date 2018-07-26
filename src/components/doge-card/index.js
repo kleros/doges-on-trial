@@ -67,7 +67,9 @@ const DogeCard = ({
           Rejected: 'This image has been rejected from the list.'
         }[status]
       }
-    />
+    >
+      ?
+    </div>
     <div className="DogeCard-label">{status.toUpperCase()}</div>
   </div>
 )

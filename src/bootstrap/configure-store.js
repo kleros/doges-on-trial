@@ -59,7 +59,8 @@ export default function configureStore(
   middleware.push(store => next => action => {
     const prevState = store.getState()
     const result = next(action)
-    if (prevState !== store.getState()) ReactTooltip.rebuild()
+    if (prevState !== store.getState())
+      setTimeout(() => ReactTooltip.rebuild(), 500)
     return result
   })
 

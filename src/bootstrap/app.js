@@ -62,6 +62,11 @@ class _ConnectedNavBar extends PureComponent {
             title: 'Twitterverse',
             to: 'https://twitter.com/hashtag/DogesOnTrial?src=hash',
             isExternal: true
+          },
+          {
+            title: 'Kleros',
+            to: 'https://kleros.io',
+            isExternal: true
           }
         ]}
         extras={[
