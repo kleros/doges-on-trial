@@ -46,10 +46,28 @@
   }
 
   &-extra {
+    align-items: center;
+    display: flex;
+    height: 70px;
+    line-height: 70px;
     margin-left: 40px;
 
     &--first {
       margin-left: auto;
+      text-align: center;
+    }
+  }
+
+  &-burgerMenu {
+    left: 0;
+    top: 0;
+
+    &-itemList {
+      background: $white;
+    }
+
+    &-overlay {
+      top: 0;
     }
   }
 }
