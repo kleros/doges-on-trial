@@ -11,18 +11,20 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 40px 13%;
+    padding: 2vw 13%;
     width: 100%;
 
     @media only screen and (max-width: 1100px) {
-      padding: 40px 8%;
+      padding: 2vw 8%;
     }
 
     @media only screen and (max-width: 950px) {
-      padding: 40px 3%;
+      padding: 2vw 3%;
     }
 
     &-count {
+      margin: 2vw 0;
+
       &-label {
         color: $lightText;
       }
