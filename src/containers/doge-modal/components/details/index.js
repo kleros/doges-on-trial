@@ -72,7 +72,7 @@ const renderDogeDetails = (
     case dogeConstants.STATUS_ENUM.Challenged: // The doge has an ongoing challenge
       switch (doge.disputeStatus) {
         case dogeConstants.DISPUTE_STATUS_ENUM.Waiting: // The dispute is waiting for a ruling
-          title = 'This Doge is Being Judged'
+          title = 'This Doge Is Being Judged'
           valueListItems = [
             {
               label: 'Total Deposited',
