@@ -1,5 +1,8 @@
 /* @define RequiresMetaMaskPage */
 .RequiresMetaMaskPage {
+  height: 100%;
+  overflow-y: scroll;
+
   // stylelint-disable-next-line plugin/selector-bem-pattern
   &-FAQ {
     padding: 40px 20%;
