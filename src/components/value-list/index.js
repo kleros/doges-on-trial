@@ -18,8 +18,14 @@ const ValueList = ({ items, className }) => (
           )}
           {item.label}:
         </h3>
-        <h3 className="ValueList-item-value">{item.value}</h3>
-        <FontAwesomeIcon icon="info-circle" data-tip={item.tooltip} />
+        <h3 className="ValueList-item-value">
+          {item.value}{' '}
+          <FontAwesomeIcon
+            icon="info-circle"
+            className="ValueList-item-value-tooltipIcon"
+            data-tip={item.tooltip}
+          />
+        </h3>
       </div>
     ))}
   </div>

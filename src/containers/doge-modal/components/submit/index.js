@@ -76,7 +76,6 @@ const Submit = ({
               ]}
             />
             <br />
-            <br />
             <Button
               onClick={handleSubmitDogeClick}
               disabled={!imageFileDataURL || doge.creating}
