@@ -11,6 +11,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-left: -16px;
     padding: 2vw 13% 4vw;
     width: 100%;
 
@@ -22,8 +23,8 @@
       padding: 2vw 3% 4vw;
     }
 
-    &-count {
-      margin: 2vw 0;
+    &-counts {
+      margin: 2vw 0 2vw 16px;
 
       &-label {
         color: $lightText;

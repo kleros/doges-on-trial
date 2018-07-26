@@ -157,20 +157,23 @@ class Doges extends PureComponent {
     return (
       <div className="Doges">
         <div className="Doges-settingsBar">
-          <h3 className="Doges-settingsBar-count">
+          <h3 className="Doges-settingsBar-counts">
             <RenderIf
               resource={arbitrablePermissionListData}
               loading={<BeatLoader color="#3d464d" />}
               done={
-                arbitrablePermissionListData.data && (
-                  <div>
-                    <span className="Doges-settingsBar-count-label">
-                      Doges submitted:
-                    </span>{' '}
-                    <span className="Doges-settingsBar-count-number">
-                      {arbitrablePermissionListData.data.itemsCount}
-                    </span>
-                  </div>
+                arbitrablePermissionListData.data &&
+                Object.keys(arbitrablePermissionListData.data.itemsCounts).map(
+                  label => (
+                    <div>
+                      <span className="Doges-settingsBar-counts-label">
+                        {label}:
+                      </span>{' '}
+                      <span className="Doges-settingsBar-counts-number">
+                        {arbitrablePermissionListData.data.itemsCounts[label]}
+                      </span>
+                    </div>
+                  )
                 )
               }
               failedLoading={null}

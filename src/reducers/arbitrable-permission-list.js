@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import createReducer, { createResource } from 'lessdux'
 
 import { web3 } from '../bootstrap/dapp-api'
+import * as dogeConstants from '../constants/doge'
 
 // Shapes
 const {
@@ -12,7 +13,12 @@ const {
     arbitrator: PropTypes.string.isRequired,
     stake: PropTypes.string.isRequired,
     timeToChallenge: PropTypes.number.isRequired,
-    itemsCount: PropTypes.number.isRequired,
+    itemsCounts: PropTypes.shape(
+      dogeConstants.STATUS_ENUM.values.reduce((acc, value) => {
+        acc[value] = PropTypes.number.isRequired
+        return acc
+      }, {})
+    ).isRequired,
     arbitrationCost: PropTypes.string.isRequired
   })
 )

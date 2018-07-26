@@ -3,6 +3,7 @@ import { takeLatest, call, all } from 'redux-saga/effects'
 import * as arbitrablePermissionListActions from '../actions/arbitrable-permission-list'
 import { lessduxSaga } from '../utils/saga'
 import { arbitrablePermissionList, arbitrator } from '../bootstrap/dapp-api'
+import * as dogeConstants from '../constants/doge'
 
 /**
  * Fetches the arbitrable permission list's data.
@@ -16,7 +17,7 @@ export function* fetchArbitrablePermissionListData() {
     timeToChallenge: call(
       arbitrablePermissionList.methods.timeToChallenge().call
     ),
-    itemsCount: call(arbitrablePermissionList.methods.itemsCount().call)
+    itemsCounts: call(arbitrablePermissionList.methods.itemsCounts().call)
   })
 
   arbitrator.options.address = d.arbitrator
@@ -28,7 +29,10 @@ export function* fetchArbitrablePermissionListData() {
     arbitrator: d.arbitrator,
     stake: String(d.stake),
     timeToChallenge: Number(d.timeToChallenge) * 1000,
-    itemsCount: Number(d.itemsCount),
+    itemsCounts: dogeConstants.STATUS_ENUM.values.reduce((acc, value) => {
+      acc[value] = Number(d.itemsCounts[value.toLowerCase()])
+      return acc
+    }, {}),
     arbitrationCost: String(arbitrationCost)
   }
 }
