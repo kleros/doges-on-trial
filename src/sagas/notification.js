@@ -1,13 +1,22 @@
 import { eventChannel } from 'redux-saga'
 import memoizeOne from 'memoize-one'
 
-import { fork, takeLatest, take, select, race, put } from 'redux-saga/effects'
+import {
+  fork,
+  takeLatest,
+  take,
+  select,
+  race,
+  call,
+  put
+} from 'redux-saga/effects'
 
 import * as notificationActions from '../actions/notification'
 import * as walletSelectors from '../reducers/wallet'
 import * as walletActions from '../actions/wallet'
 import * as arbitrablePermissionListSelectors from '../reducers/arbitrable-permission-list'
 import * as arbitrablePermissionListActions from '../actions/arbitrable-permission-list'
+import * as dogeActions from '../actions/doge'
 import { lessduxSaga } from '../utils/saga'
 import { action } from '../utils/action'
 import {
@@ -16,6 +25,8 @@ import {
   IMAGES_BASE_URL
 } from '../bootstrap/dapp-api'
 import * as dogeConstants from '../constants/doge'
+
+import { fetchDoge } from './doge'
 
 // Helpers
 const getBlockDate = memoizeOne(blockHash =>
@@ -122,11 +133,10 @@ function* pushNotificationsListener() {
         .then(events =>
           emitNotifications(account, timeToChallenge, emitter, events)
         )
-      arbitrablePermissionList.events
-        .ItemStatusChange()
-        .on('data', event =>
-          emitNotifications(account, timeToChallenge, emitter, [event])
-        )
+      arbitrablePermissionList.events.ItemStatusChange().on('data', event => {
+        emitNotifications(account, timeToChallenge, emitter, [event])
+        emitter(event.returnValues.value)
+      })
       return () => {} // Unsubscribe function
     })
 
@@ -149,12 +159,23 @@ function* pushNotificationsListener() {
 
       // Put new notification
       yield put(
-        action(notificationActions.notification.RECEIVE_CREATED, {
-          collectionMod: {
-            collection: notificationActions.notifications.self,
-            resource: notification
-          }
-        })
+        typeof notification === 'string'
+          ? action(dogeActions.doge.RECEIVE_UPDATED, {
+              collectionMod: {
+                collection: dogeActions.doges.self,
+                resource: yield call(fetchDoge, {
+                  payload: { ID: notification, withDisputeData: true }
+                }),
+                updating: notification,
+                find: d => d.ID === notification
+              }
+            })
+          : action(notificationActions.notification.RECEIVE, {
+              collectionMod: {
+                collection: notificationActions.notifications.self,
+                resource: notification
+              }
+            })
       )
     }
 

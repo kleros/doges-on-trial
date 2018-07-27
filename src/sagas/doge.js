@@ -83,7 +83,7 @@ function* createDoge({ payload: { imageFileDataURL } }) {
  * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
  * @returns {object} - The fetched doge.
  */
-function* fetchDoge({ payload: { ID, withDisputeData } }) {
+export function* fetchDoge({ payload: { ID, withDisputeData } }) {
   const doge = yield call(arbitrablePermissionList.methods.items(ID).call)
 
   let status
