@@ -214,9 +214,15 @@ class Doges extends PureComponent {
           <RenderIf
             resource={doges}
             loading={
-              <div className="Doges-masonryGridLoader">
-                <ClimbingBoxLoader color="#3d464d" />
-              </div>
+              doges.data ? (
+                <MasonryGrid filter={filter} sort={sort}>
+                  {this.mapDoges(accounts.data, doges.data)}
+                </MasonryGrid>
+              ) : (
+                <div className="Doges-masonryGridLoader">
+                  <ClimbingBoxLoader color="#3d464d" />
+                </div>
+              )
             }
             done={
               doges.data && (
