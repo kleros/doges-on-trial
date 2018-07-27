@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { RenderIf } from 'lessdux'
 import { Link } from 'react-router-dom'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { BeatLoader } from 'react-spinners'
 
 import { web3, IMAGES_BASE_URL } from '../../../../bootstrap/dapp-api'
@@ -27,6 +28,7 @@ const renderDogeDetails = (
   let status = doge.status
   let infoCardMessage
   let title
+  let titleTooltip
   let valueListItems
   let button
   switch (doge.status) {
@@ -35,13 +37,17 @@ const renderDogeDetails = (
         Date.now() - doge.lastAction >=
         arbitrablePermissionListData.timeToChallenge
       ) {
-        title = 'This Doge Has Been Judged'
+        title = 'Ready to Execute'
+        titleTooltip =
+          'Press the button and the image will be added to the list.'
         button = {
           children: 'Finalize Registration',
           onClick: onExecuteRequestClick
         }
       } else {
-        title = 'Send Image to Trial?'
+        title = 'Should This Image Go to Trial?'
+        titleTooltip =
+          'Think this image is not a Doge? Send the suspect to court!'
         valueListItems = [
           {
             label: 'Deposit',
@@ -72,7 +78,9 @@ const renderDogeDetails = (
     case dogeConstants.STATUS_ENUM.Challenged: // The doge has an ongoing challenge
       switch (doge.disputeStatus) {
         case dogeConstants.DISPUTE_STATUS_ENUM.Waiting: // The dispute is waiting for a ruling
-          title = 'This Doge Is Being Judged'
+          title = 'This Image Is Under Trial!'
+          titleTooltip =
+            'Kleros jurors are deciding whether this is a Doge or not.'
           valueListItems = [
             {
               label: 'Total Deposited',
@@ -101,7 +109,9 @@ const renderDogeDetails = (
             dogeConstants.STATUS_ENUM[
               dogeConstants.RULING_ENUM[doge.currentRuling]
             ]
-          title = 'This Doge Has Been Judged'
+          title = 'Appeal?'
+          titleTooltip =
+            'You think the verdict was unfair? Every image has the right to a new trial!'
           valueListItems = [
             {
               label: 'Total Deposited',
@@ -137,7 +147,9 @@ const renderDogeDetails = (
             dogeConstants.STATUS_ENUM[
               dogeConstants.RULING_ENUM[doge.currentRuling]
             ]
-          title = 'This Doge Has Been Judged'
+          title = 'Pending Ruling Execution'
+          titleTooltip =
+            'The dispute brought against this image has been resolved and is pending execution.'
           valueListItems = [
             {
               label: 'Total Deposited',
@@ -165,9 +177,14 @@ const renderDogeDetails = (
           throw new Error('Invalid doge challenged state.')
       }
       break
-    case dogeConstants.STATUS_ENUM.Accepted:
-    case dogeConstants.STATUS_ENUM.Rejected: // The doge has been accepted or rejected
-      title = 'This Doge Has Been Judged'
+    case dogeConstants.STATUS_ENUM.Accepted: // The doge has been accepted
+      title = 'Innocent, Your Honor!'
+      titleTooltip = 'The jury decided this image is a Doge. It was accepted.'
+      break
+    case dogeConstants.STATUS_ENUM.Rejected: // The doge has been rejected
+      title = 'Guilty, Your Honor!'
+      titleTooltip =
+        'The jury decided this image is not a Doge. It was rejected.'
       break
     default:
       throw new Error('Invalid doge state.')
@@ -175,7 +192,18 @@ const renderDogeDetails = (
   return (
     <div className="Details">
       {infoCardMessage && <InfoCard message={infoCardMessage} />}
-      {title && <h1>{title}</h1>}
+      {title && (
+        <h1>
+          {title}
+          {titleTooltip && (
+            <FontAwesomeIcon
+              icon="info-circle"
+              className="Details-titleTooltip"
+              data-tip={titleTooltip}
+            />
+          )}
+        </h1>
+      )}
       <DogeImage status={status} imageSrc={IMAGES_BASE_URL + doge.ID} />
       {valueListItems && (
         <ValueList items={valueListItems} className="Details-valueList" />
