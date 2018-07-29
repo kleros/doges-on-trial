@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import memoizeOne from 'memoize-one'
 import { RenderIf } from 'lessdux'
 import ReactInfiniteScroller from 'react-infinite-scroller'
+import PieChart from 'react-minimal-pie-chart'
 import { BeatLoader, ClimbingBoxLoader } from 'react-spinners'
 
 import { IMAGES_BASE_URL } from '../../bootstrap/dapp-api'
@@ -167,28 +168,77 @@ class Doges extends PureComponent {
           useWindow={false}
         >
           <div className="Doges-settingsBar">
-            <h3 className="Doges-settingsBar-counts">
-              <RenderIf
-                resource={arbitrablePermissionListData}
-                loading={<BeatLoader color="#3d464d" />}
-                done={
-                  arbitrablePermissionListData.data &&
-                  Object.keys(
-                    arbitrablePermissionListData.data.itemsCounts
-                  ).map(label => (
-                    <div key={label}>
-                      <span className="Doges-settingsBar-counts-label">
-                        {label}:
-                      </span>{' '}
-                      <span className="Doges-settingsBar-counts-number">
-                        {arbitrablePermissionListData.data.itemsCounts[label]}
-                      </span>
+            <RenderIf
+              resource={arbitrablePermissionListData}
+              loading={
+                <div className="Doges-settingsBar-countsLoader">
+                  <BeatLoader color="#3d464d" />
+                </div>
+              }
+              done={
+                arbitrablePermissionListData.data && (
+                  <div className="Doges-settingsBar-counts">
+                    <div className="Doges-settingsBar-counts-counters">
+                      {Object.keys(
+                        arbitrablePermissionListData.data.itemsCounts
+                      ).map(label => (
+                        <div
+                          key={label}
+                          className="Doges-settingsBar-counts-counters-counter"
+                        >
+                          <span className="Doges-settingsBar-counts-counters-counter-label">
+                            {label}:
+                          </span>{' '}
+                          <span className="Doges-settingsBar-counts-counters-counter-number">
+                            {
+                              arbitrablePermissionListData.data.itemsCounts[
+                                label
+                              ]
+                            }
+                            <div
+                              className={`Doges-settingsBar-counts-counters-counter-number-tag Doges-settingsBar-counts-counters-counter-number-tag--${label.toLowerCase()}`}
+                            />
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                  ))
-                }
-                failedLoading={null}
-              />
-            </h3>
+                    <PieChart
+                      data={[
+                        {
+                          value:
+                            arbitrablePermissionListData.data.itemsCounts
+                              .Pending,
+                          color: '#0059ab'
+                        },
+                        {
+                          value:
+                            arbitrablePermissionListData.data.itemsCounts
+                              .Challenged,
+                          color: '#ffbe61'
+                        },
+                        {
+                          value:
+                            arbitrablePermissionListData.data.itemsCounts
+                              .Accepted,
+                          color: '#47cf73'
+                        },
+                        {
+                          value:
+                            arbitrablePermissionListData.data.itemsCounts
+                              .Rejected,
+                          color: '#ff364f'
+                        }
+                      ]}
+                      lineWidth={25}
+                      rounded
+                      animate
+                      className="Doges-settingsBar-counts-pie"
+                    />
+                  </div>
+                )
+              }
+              failedLoading={null}
+            />
             <div className="Doges-settingsBar-dropdowns">
               <Dropdown
                 value={filterValue}
