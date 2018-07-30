@@ -19,6 +19,7 @@ import PageNotFound from '../components/page-not-found'
 import Button from '../components/button'
 import NotificationBadge from '../components/notification-badge'
 import Identicon from '../components/identicon'
+import klerosLogo from '../assets/images/kleros-logo.png'
 import * as modalConstants from '../constants/modal'
 
 import Initializer from './initializer'
@@ -64,7 +65,16 @@ class _ConnectedNavBar extends PureComponent {
             isExternal: true
           },
           {
-            title: 'Jurors',
+            title: (
+              <span>
+                Jurors{' '}
+                <img
+                  src={klerosLogo}
+                  alt="Kleros Logo"
+                  className="klerosLogo"
+                />
+              </span>
+            ),
             to: 'https://juror.kleros.io',
             isExternal: true
           }

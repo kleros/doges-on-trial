@@ -13,7 +13,7 @@ export default class NavBar extends PureComponent {
     // State
     routes: PropTypes.arrayOf(
       PropTypes.shape({
-        title: PropTypes.string.isRequired,
+        title: PropTypes.node.isRequired,
         to: PropTypes.string.isRequired,
         isExternal: PropTypes.bool
       }).isRequired
