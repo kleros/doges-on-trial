@@ -64,8 +64,8 @@ class _ConnectedNavBar extends PureComponent {
             isExternal: true
           },
           {
-            title: 'Kleros',
-            to: 'https://kleros.io',
+            title: 'Jurors',
+            to: 'https://juror.kleros.io',
             isExternal: true
           }
         ]}
