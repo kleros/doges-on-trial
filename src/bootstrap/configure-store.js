@@ -3,6 +3,7 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
+import ReactTooltip from 'react-tooltip'
 
 import rootReducer from '../reducers'
 import rootSaga from '../sagas'
@@ -48,12 +49,20 @@ export default function configureStore(
   }
 
   // Testing Tools
-  if (dispatchSpy) {
+  if (dispatchSpy)
     middleware.push(_store => next => action => {
       dispatchSpy(action)
       return next(action)
     })
-  }
+
+  // Reattach tooltips if necessary
+  middleware.push(store => next => action => {
+    const prevState = store.getState()
+    const result = next(action)
+    if (prevState !== store.getState())
+      setTimeout(() => ReactTooltip.rebuild(), 500)
+    return result
+  })
 
   middleware.push(sagaMiddleware, routerMiddleware(history))
   enhancers.unshift(applyMiddleware(...middleware))

@@ -1,0 +1,114 @@
+@import '../../styles/_colors.scss';
+
+/* @define Dropdown */
+.Dropdown {
+  color: $grey;
+  position: relative;
+  user-select: none;
+  width: 230px;
+
+  &--checkbox {
+    width: initial;
+  }
+
+  &-box {
+    background: $background;
+    border: 1px solid $mint;
+    border-radius: 4px;
+    box-shadow: 0 -1px 0 0 $mint;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 29px;
+
+    .Dropdown--checkbox & {
+      padding-right: 39px;
+    }
+
+    .Dropdown--inverted & {
+      background: $disabled;
+      color: $invertedText;
+    }
+
+    &-caret {
+      position: absolute;
+      right: 23px;
+      top: 20px;
+      transition: transform 0.25s;
+
+      .Dropdown.is-open & {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &-options {
+    background: $background;
+    border: 1px solid $mint;
+    border-radius: 4px;
+    box-shadow: 0 -1px 0 0 $mint;
+    color: $lightText;
+    font-size: 14px;
+    left: 1px;
+    position: absolute;
+    top: 56px;
+    width: 232px;
+    z-index: 1;
+
+    &-option {
+      padding: 15px 29px;
+      position: relative;
+
+      &:hover,
+      &.is-active {
+        background: $mint;
+        color: $grey;
+      }
+
+      &--selectAll {
+        border-bottom: 1px solid $mint;
+      }
+
+      &-checkbox {
+        border: 1px solid $lightGrey;
+        border-radius: 4px;
+        display: inline-block;
+        height: 12px;
+        left: 10px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+
+        .Dropdown-options-option.is-active & {
+          background: $lightGrey;
+          border-color: $darkGrey;
+        }
+
+        &-check {
+          height: 8px;
+          left: 1px;
+          position: absolute;
+          top: 1px;
+          width: 8px !important;
+        }
+      }
+
+      &-count {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &-color {
+          border-radius: 2.5px;
+          height: 5px;
+          left: -13px;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 5px;
+        }
+      }
+    }
+  }
+}

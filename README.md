@@ -1,5 +1,5 @@
 <p align="center">
-  <b style="font-size: 32px;">doges-on-trial</b>
+  <b style="font-size: 32px;">Doges on Trial</b>
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
   <a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="Styled with Prettier"></a>
 </p>
 
-A boilerplate for Ethereum dapps.
+Kleros' first curated list experiment.
 
 ## Get Started
 

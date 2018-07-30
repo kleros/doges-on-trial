@@ -2,10 +2,11 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { RenderIf } from 'lessdux'
+import { ClimbingBoxLoader } from 'react-spinners'
 
 import * as walletSelectors from '../reducers/wallet'
 import * as walletActions from '../actions/wallet'
-import RequiresMetaMask from '../components/requires-meta-mask'
+import RequiresMetaMaskPage from '../containers/requires-meta-mask-page'
 
 import { web3 } from './dapp-api'
 
@@ -24,25 +25,21 @@ class Initializer extends PureComponent {
     ]).isRequired
   }
 
-  state = { isWeb3Loaded: web3.eth.getAccounts !== undefined }
-
   componentDidMount() {
     const { fetchAccounts } = this.props
     fetchAccounts()
   }
 
   render() {
-    const { isWeb3Loaded } = this.state
     const { accounts, children } = this.props
-
     return (
       <RenderIf
         resource={accounts}
-        loading="Loading..."
+        loading={<ClimbingBoxLoader color="#3d464d" />}
         done={children}
-        failedLoading={<RequiresMetaMask needsUnlock={isWeb3Loaded} />}
+        failedLoading={<RequiresMetaMaskPage needsUnlock={Boolean(web3.eth)} />}
         extraValues={[accounts.data && accounts.data[0]]}
-        extraFailedValues={[!isWeb3Loaded]}
+        extraFailedValues={[!web3.eth]}
       />
     )
   }

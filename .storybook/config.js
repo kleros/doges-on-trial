@@ -1,33 +1,32 @@
 import React from 'react'
 import { configure, addDecorator } from '@storybook/react'
 import { host } from 'storybook-host'
-import { combineReducers, applyMiddleware, createStore } from 'redux'
+import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom'
+
+import modal from '../src/reducers/modal'
+import GlobalComponents from '../src/bootstrap/global-components'
+
+import '../src/bootstrap/fontawesome'
 
 import '../src/bootstrap/app.css'
 
 // Storybook Host
 addDecorator(
   host({
-    title: 'Dapp Front Boilerplate UI-Kit',
+    title: 'Doges on Trial UI-Kit',
     align: 'center middle'
   })
 )
 
 // Integration Wrapper
-const store = createStore(
-  combineReducers({}),
-  applyMiddleware(store => next => action => {
-    console.log(action)
-    return next(action)
-  })
-)
+const store = createStore(state => state)
 addDecorator(story => (
   <Provider store={store}>
     <div>
-      {console.log(store.getState())}
       <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
+      <GlobalComponents />
     </div>
   </Provider>
 ))

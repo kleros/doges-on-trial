@@ -3,6 +3,9 @@ import { delay } from 'redux-saga'
 import { spawn, call, all } from 'redux-saga/effects'
 
 import walletSaga from './wallet'
+import notificationSaga from './notification'
+import arbitrablePermissionListSaga from './arbitrable-permission-list'
+import dogeSaga from './doge'
 
 /**
  * Makes a saga restart after an uncaught error.
@@ -12,7 +15,7 @@ import walletSaga from './wallet'
 export function makeRestartable(saga) {
   return function*() {
     // eslint-disable-next-line no-constant-condition
-    while (true) {
+    while (true)
       try {
         yield call(saga)
         throw new Error(
@@ -27,11 +30,15 @@ export function makeRestartable(saga) {
           )
         yield call(delay, 3000)
       }
-    }
   }
 }
 
-const rootSagas = [walletSaga].map(makeRestartable)
+const rootSagas = [
+  walletSaga,
+  notificationSaga,
+  arbitrablePermissionListSaga,
+  dogeSaga
+].map(makeRestartable)
 
 /**
  * The root saga.

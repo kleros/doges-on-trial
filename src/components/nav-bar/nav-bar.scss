@@ -1,0 +1,80 @@
+@import '../../styles/colors';
+
+/* @define NavBar */
+.NavBar {
+  align-items: center;
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  left: 0;
+  padding: 0 13%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+
+  @media only screen and (max-width: 1100px) {
+    padding: 0 8%;
+  }
+
+  @media only screen and (max-width: 950px) {
+    padding: 0 3%;
+  }
+
+  &-logo {
+    height: 40px;
+    width: 40px;
+  }
+
+  &-route {
+    flex: 0 1;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 40px;
+
+    &-link {
+      color: $heading;
+      display: block;
+      height: 70px;
+      line-height: 70px;
+      text-decoration: none;
+      white-space: nowrap;
+
+      &.is-active {
+        border-bottom: 4px solid $info;
+      }
+    }
+  }
+
+  &-extra {
+    align-items: center;
+    display: flex !important;
+    height: 70px;
+    line-height: 70px;
+    margin-left: 40px;
+
+    &.is-mobile {
+      justify-content: flex-end;
+      margin-right: 40px;
+    }
+
+    &--first {
+      margin-left: auto;
+      text-align: center;
+    }
+  }
+
+  &-burgerMenu {
+    left: 0;
+    top: 0;
+
+    &-itemList {
+      background: $white;
+    }
+
+    &-overlay {
+      left: 300px;
+      top: 0;
+    }
+  }
+}

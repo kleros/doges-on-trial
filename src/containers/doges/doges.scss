@@ -1,0 +1,104 @@
+@import '../../styles/_colors.scss';
+
+/* @define Doges */
+.Doges {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: scroll;
+
+  &-settingsBar {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: -16px;
+    padding: 2vw 9% 4vw;
+    width: 100%;
+
+    @media only screen and (max-width: 1100px) {
+      padding: 2vw 6% 4vw;
+    }
+
+    @media only screen and (max-width: 950px) {
+      padding: 2vw 3% 4vw;
+    }
+
+    &-countsLoader {
+      flex: 1;
+      text-align: center;
+    }
+
+    &-counts {
+      align-items: center;
+      display: flex;
+      flex: 1;
+      justify-content: space-evenly;
+      margin: 2vw 0 3vw 16px;
+
+      &-counters {
+        margin-right: 15px;
+
+        &-counter {
+          margin-bottom: 5px;
+
+          &-label {
+            color: $lightText;
+          }
+
+          &-number {
+            font-weight: 500;
+            position: relative;
+
+            &-tag {
+              border-radius: 4px;
+              height: 8px;
+              position: absolute;
+              right: -10px;
+              top: 0;
+              width: 8px;
+
+              &--pending {
+                background: $info;
+              }
+
+              &--challenged {
+                background: $warning;
+              }
+
+              &--accepted {
+                background: $success;
+              }
+
+              &--rejected {
+                background: $error;
+              }
+            }
+          }
+        }
+      }
+
+      &-pie {
+        height: 100px;
+        width: 100px;
+      }
+    }
+
+    &-dropdowns {
+      display: flex;
+      flex-wrap: wrap;
+      margin: -16px 0 0 auto;
+
+      &-dropdown {
+        margin: 16px 0 0 16px;
+      }
+    }
+  }
+
+  &-masonryGridLoader {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+  }
+}

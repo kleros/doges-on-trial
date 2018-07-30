@@ -5,37 +5,66 @@ import './button.css'
 
 const Button = ({
   children,
+  to,
   onClick,
+  type,
+  size,
   disabled,
   className,
   labelClassName,
   ...rest
-}) => (
-  <div
-    className={`Button ${disabled ? 'is-disabled' : ''} ${className}`}
-    onClick={onClick}
-    {...rest}
-  >
-    <h5 className={`Button-label ${labelClassName}`}>{children}</h5>
-  </div>
-)
+}) => {
+  const button = (
+    <div
+      onClick={disabled ? null : onClick}
+      className={`Button Button--${type} Button--${size} ${
+        disabled ? 'is-disabled' : ''
+      } ${className}`}
+      {...rest}
+    >
+      <h2 className={`Button-label ${labelClassName}`}>{children}</h2>
+    </div>
+  )
+  return to ? (
+    <a
+      href={to}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="Button--link"
+    >
+      {button}
+    </a>
+  ) : (
+    button
+  )
+}
 
 Button.propTypes = {
   // State
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-    .isRequired,
+  children: PropTypes.node.isRequired,
+  to: PropTypes.string,
 
   // Handlers
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 
   // Modifiers
+  type: PropTypes.oneOf(['primary', 'secondary', 'ternary']),
+  size: PropTypes.oneOf(['small', 'normal', 'large']),
   disabled: PropTypes.bool,
   className: PropTypes.string,
   labelClassName: PropTypes.string
 }
 
 Button.defaultProps = {
+  // State
+  to: null,
+
+  // Handlers
+  onClick: null,
+
   // Modifiers
+  type: 'primary',
+  size: 'normal',
   disabled: false,
   className: '',
   labelClassName: ''

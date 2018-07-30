@@ -1,0 +1,29 @@
+/* @define Tooltip */
+.Tooltip {
+  background: $invertedText !important;
+  border: 1px solid $mint !important;
+  box-shadow: 0 0 6px 0 $mint, 0 0 1px 0 $mint, 0 -2px 0 0 $mint !important;
+  color: $text !important;
+  max-width: 250px;
+  z-index: 1001;
+
+  // stylelint-disable-next-line plugin/selector-bem-pattern
+  &.place-top::after {
+    border-top-color: $invertedText !important;
+  }
+
+  // stylelint-disable-next-line plugin/selector-bem-pattern
+  &.place-right::after {
+    border-right-color: $invertedText !important;
+  }
+
+  // stylelint-disable-next-line plugin/selector-bem-pattern
+  &.place-bottom::after {
+    border-bottom-color: $invertedText !important;
+  }
+
+  // stylelint-disable-next-line plugin/selector-bem-pattern
+  &.place-left::after {
+    border-left-color: $invertedText !important;
+  }
+}

@@ -4,42 +4,48 @@ import Blockies from 'react-blockies'
 
 import './identicon.css'
 
-const Identicon = ({ seed, size, scale, className, ...rest }) => {
-  const length = `${size * scale}px`
+const Identicon = ({ size, scale, address, tooltip, round, ...rest }) => {
+  const length = size * scale
+  const lengthStr = `${length}px`
   return (
     <div
-      className={`Identicon ${className}`}
-      style={{ height: length, width: length }}
+      style={{
+        borderRadius: round ? `${length / 2}px` : 0,
+        height: lengthStr,
+        width: lengthStr
+      }}
+      className="Identicon"
+      data-tip={tooltip}
     >
-      <a
-        href={`https://etherscan.io/address/${seed}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Blockies {...rest} seed={seed} size={size} scale={scale} />
-      </a>
+      <Blockies seed={address} size={size} scale={scale} {...rest} />
     </div>
   )
 }
 
 Identicon.propTypes = {
   // React Blockies
-  seed: PropTypes.number.isRequired,
+  ...{ ...Blockies.propTypes, seed: PropTypes.string },
   size: PropTypes.number,
   scale: PropTypes.number,
-  ...Blockies.propTypes,
+
+  // State
+  address: PropTypes.string.isRequired,
+  tooltip: PropTypes.string,
 
   // Modifiers
-  className: PropTypes.string
+  round: PropTypes.bool
 }
 
 Identicon.defaultProps = {
   // React Blockies
-  size: 15,
-  scale: 4,
+  size: 8,
+  scale: 5,
+
+  // State
+  tooltip: null,
 
   // Modifiers
-  className: ''
+  round: false
 }
 
 export default Identicon

@@ -1,0 +1,12 @@
+@import '../../styles/_colors.scss';
+
+/* @define MasonryGrid */
+.MasonryGrid {
+  background: $mint;
+  margin: auto;
+
+  // stylelint-disable-next-line plugin/selector-bem-pattern
+  & > div:not([data-packed]) {
+    visibility: hidden;
+  }
+}

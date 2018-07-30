@@ -1,6 +1,8 @@
+@import '../../styles/_colors.scss';
+
 /* @define PageNotFound */
 .PageNotFound {
-  background: #273142;
+  background: $background;
   height: 100%;
 
   &-message {

@@ -4,11 +4,11 @@ import ReactDOM from 'react-dom'
 import configureStore from './bootstrap/configure-store'
 import App from './bootstrap/app'
 import registerServiceWorker from './bootstrap/register-service-worker'
+import { arbitrablePermissionList } from './bootstrap/dapp-api'
 
 const { store, history } = configureStore()
 export default store
 
-// Random number is used so hot reloading works with `react-loadable`
 const render = Component => {
   ReactDOM.render(
     <Component
@@ -19,13 +19,17 @@ const render = Component => {
     document.getElementById('root')
   )
 }
-
 render(App)
+registerServiceWorker()
 
-if (module.hot) {
+window.addEventListener('unload', () =>
+  localStorage.setItem(
+    arbitrablePermissionList.options.address + 'notifications',
+    JSON.stringify(store.getState().notification.notifications.data)
+  )
+)
+
+if (module.hot)
   module.hot.accept('./bootstrap/app', () => {
     render(App)
   })
-}
-
-registerServiceWorker()

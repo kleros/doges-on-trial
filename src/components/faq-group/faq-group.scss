@@ -1,0 +1,39 @@
+@import '../../styles/_colors.scss';
+
+/* @define FAQGroup */
+.FAQGroup {
+  &-questionGroup {
+    border-bottom: 1px solid $mint;
+    padding: 28px 100px 28px 0;
+    position: relative;
+
+    &-question {
+      font-weight: 500;
+    }
+
+    &-answer {
+      color: $lightText;
+      height: 0;
+      line-height: 26px;
+      visibility: hidden;
+
+      .FAQGroup-questionGroup.is-open & {
+        height: initial;
+        margin-top: 25px;
+        visibility: initial;
+      }
+    }
+
+    &-caret {
+      color: $lightText;
+      position: absolute;
+      right: 8px;
+      top: 25px;
+
+      .FAQGroup-questionGroup.is-open & {
+        color: $text;
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

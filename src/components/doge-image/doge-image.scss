@@ -1,0 +1,38 @@
+@import '../../styles/_colors.scss';
+
+/* @define DogeImage */
+.DogeImage {
+  border: 1px solid $lightGrey;
+  border-radius: 4px;
+  box-shadow: 0 0 6px 0 $lightGrey, 0 0 1px 0 $lightGrey, 0 1px 0 0 $lightGrey;
+  overflow: hidden;
+  position: relative;
+  width: 300px;
+
+  &-image {
+    display: block;
+    width: 100%;
+  }
+
+  &-icon {
+    height: 90px;
+    left: 50%;
+    opacity: 0.8;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90px !important;
+
+    .DogeImage--challenged & {
+      color: $disabled;
+    }
+
+    .DogeImage--accepted & {
+      color: $success;
+    }
+
+    .DogeImage--rejected & {
+      color: $error;
+    }
+  }
+}

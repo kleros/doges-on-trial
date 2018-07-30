@@ -1,0 +1,82 @@
+@import '../../styles/_colors.scss';
+
+/* @define NotificationBadge */
+.NotificationBadge {
+  position: relative;
+
+  &-badge {
+    background: $error;
+    border-radius: 9px;
+    color: $invertedText;
+    font-size: 11px;
+    height: 18px;
+    left: 0;
+    line-height: 18px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    transition: background-color 1s;
+    user-select: none;
+    width: 18px;
+
+    &:hover {
+      background: darken($error, 20%);
+    }
+  }
+
+  &-notifications {
+    background: $background;
+    border: 1px solid $mint;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px 0 $mint;
+    position: absolute;
+    right: calc(100% - 21px);
+    top: 26px;
+    width: 250px;
+
+    &::after {
+      border-bottom: 5px solid $mint;
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      content: '';
+      position: absolute;
+      right: 3px;
+      top: -5px;
+    }
+
+    &-notification {
+      align-items: center;
+      border-bottom: 1px solid $mint;
+      display: flex;
+      height: 50px;
+      padding: 0 15px;
+
+      &:hover {
+        background: $mint;
+      }
+
+      &-thumbnail {
+        border-radius: 15px;
+        height: 30px;
+        margin-right: 10px;
+        width: 30px;
+      }
+
+      &-content {
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+
+    &-showAll {
+      height: 32.5px;
+      line-height: 32.5px;
+      text-align: center;
+      user-select: none;
+
+      &:hover {
+        background: $mint;
+      }
+    }
+  }
+}

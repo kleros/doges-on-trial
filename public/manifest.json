@@ -1,6 +1,6 @@
 {
-  "short_name": "Dapp Front Boilerplate",
-  "name": "Dapp Front Boilerplate",
+  "short_name": "Doges on Trial",
+  "name": "Doges on Trial",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#f5f8fa",
+  "background_color": "#f5f8fa"
 }

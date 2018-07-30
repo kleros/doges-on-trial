@@ -1,0 +1,31 @@
+@import '../../styles/_colors.scss';
+
+/* @define FilePicker */
+.FilePicker {
+  align-items: center;
+  border: 1px solid $lightGrey;
+  border-radius: 4px;
+  border-style: dashed;
+  box-shadow: 0 2px 0 0 $mint;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-around;
+  position: relative;
+  width: 250px;
+
+  &-icon {
+    height: 90px;
+    width: 90px !important;
+  }
+
+  &-filePreview {
+    background-position: center center;
+    background-size: cover;
+    height: 100%;
+    opacity: 0.2;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+}
