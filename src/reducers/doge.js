@@ -39,3 +39,6 @@ export const getDoges = state => state.doge.doges.data
 export const getDogeDisputeID = (state, ID) =>
   state.doge.doges.data &&
   state.doge.doges.data.find(d => d.ID === ID).disputeID
+export const getDogeAppealCost = (state, ID) =>
+  state.doge.doges.data &&
+  state.doge.doges.data.find(d => d.ID === ID).appealCost

@@ -202,7 +202,7 @@ function* submitDogeChallenge({ payload: { ID } }) {
 function* appealDogeRuling({ payload: { ID } }) {
   yield call(arbitrablePermissionList.methods.appeal(ID).send, {
     from: yield select(walletSelectors.getAccount),
-    value: yield select(arbitrablePermissionListSelectors.getAppealCost)
+    value: yield select(dogeSelectors.getDogeAppealCost, ID)
   })
 
   return yield call(fetchDoge, {
