@@ -42,9 +42,9 @@ class HowItWorks extends PureComponent {
           gallery by clicking on the "Submit Doge" button on the top right.
           <br />
           <br />
-          Anyone can challenge an image (say it's not a doge) during an X week
-          period following its submission. Challenging it will create a Kleros
-          dispute with the image as evidence for jurors to decide who is right.
+          Anyone can challenge an image (say it's not a doge) for a period of
+          time. Challenging it will create a Kleros dispute with the image as
+          evidence for jurors to decide who is right.
           <br />
           <br />
           Both submitting and challenging images require an ETH deposit. This
@@ -60,7 +60,12 @@ class HowItWorks extends PureComponent {
           <br />
           The Kleros Team
         </p>
-        <Button onClick={this.handleSubmitDogeClick}>Submit Doge</Button>
+        <Button onClick={this.handleSubmitDogeClick} type="ternary">
+          Submit Doge
+        </Button>{' '}
+        <Button to="https://medium.com/kleros/doges-on-trial-pilot-explainer-911492c3a7d8">
+          Guide
+        </Button>
       </div>
     )
   }

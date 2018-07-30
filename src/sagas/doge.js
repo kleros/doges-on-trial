@@ -120,21 +120,30 @@ export function* fetchDoge({ payload: { ID, withDisputeData } }) {
 
     // Fetch dispute data
     arbitrator.options.address = arbitrablePermissionListData.arbitrator
-    const d = yield all({
-      disputeStatus: call(
-        arbitrator.methods.disputeStatus(doge.disputeID).call
-      ),
-      currentRuling: call(
-        arbitrator.methods.currentRuling(doge.disputeID).call
-      ),
-      appealCost: call(
-        arbitrator.methods.appealCost(doge.disputeID, '0x00').call
-      )
-    })
-    disputeData = {
-      disputeStatus: Number(d.disputeStatus),
-      currentRuling: Number(d.currentRuling),
-      appealCost: String(d.appealCost)
+    try {
+      const d = yield all({
+        disputeStatus: call(
+          arbitrator.methods.disputeStatus(doge.disputeID).call
+        ),
+        currentRuling: call(
+          arbitrator.methods.currentRuling(doge.disputeID).call
+        ),
+        appealCost: call(
+          arbitrator.methods.appealCost(doge.disputeID, '0x00').call
+        )
+      })
+      disputeData = {
+        disputeStatus: Number(d.disputeStatus),
+        currentRuling: Number(d.currentRuling),
+        appealCost: String(d.appealCost)
+      }
+    } catch (err) {
+      console.error(err)
+      disputeData = {
+        disputeStatus: 0,
+        currentRuling: 0,
+        appealCost: '0'
+      }
     }
   }
 
