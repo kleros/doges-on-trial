@@ -72,6 +72,7 @@ class _ConnectedNavBar extends PureComponent {
                   src={klerosLogo}
                   alt="Kleros Logo"
                   className="klerosLogo"
+                  data-tip="Powered by Kleros"
                 />
               </span>
             ),
