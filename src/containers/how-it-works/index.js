@@ -62,7 +62,7 @@ class HowItWorks extends PureComponent {
           <br />
           <br />
           <h2>Payout Policy</h2>
-          The Doges on Trial experiment runs on the Ethereum main net with real
+          The Doges on Trial experiment runs on the Ethereum mainnet with real
           ETH in order to test how agents respond to economic incentives.
           <br />
           <br />
