@@ -280,7 +280,7 @@ class Doges extends PureComponent {
                 </MasonryGrid>
               )
             }
-            failedLoading="There was an error fetching the doges."
+            failedLoading="There was an error fetching the doges. Make sure you are connected to the right Ethereum network."
           />
         </ReactInfiniteScroller>
       </div>
