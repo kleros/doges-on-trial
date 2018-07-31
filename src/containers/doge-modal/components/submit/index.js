@@ -102,7 +102,7 @@ Submit.propTypes = {
       .isRequired,
   doge: dogeSelectors.dogeShape.isRequired,
   imageFileDataURL: PropTypes.string,
-  imageFileInfoMessage: PropTypes.string,
+  imageFileInfoMessage: PropTypes.node,
 
   // Handlers
   handleOnFileDropAccepted: PropTypes.func.isRequired,
