@@ -56,7 +56,7 @@ const Submit = ({
               items={[
                 {
                   label: 'Deposit',
-                  value: String(
+                  value: `${String(
                     web3.utils.fromWei(
                       String(
                         web3.utils
@@ -68,7 +68,7 @@ const Submit = ({
                           )
                       )
                     )
-                  ),
+                  )} ETH`,
                   icon: deposit,
                   tooltip:
                     'This is the amount of ETH that you need to submit to cover arbitration fees and reward the counter party if they win a challenge against your submission.'

@@ -59,6 +59,67 @@ class HowItWorks extends PureComponent {
           Enough reading now, go have some fun,
           <br />
           The Kleros Team
+          <br />
+          <br />
+          <h2>Payout Policy</h2>
+          The Doges on Trial experiment runs on the Ethereum mainnet with real
+          ETH in order to test how agents respond to economic incentives.
+          <br />
+          <br />
+          The payout policy of the experiment is defined as follows:
+          <ul>
+            <li>
+              A total of 1,000,000 Doge Coins (DOGE) will be split among
+              submitters in proportion to the amount of unique doge pictures
+              they get accepted into the list.
+            </li>
+            <br />
+            <li>
+              One cryptokitty and 2 ETH will be paid for each of the first 10
+              cat pictures accepted into the list.
+            </li>
+            <br />
+            <li>
+              To be considered valid, a picture must clearly display a doge or a
+              cat. Pictures with hidden doges or cats will not be considered as
+              valid if a normal observer would not be able to see it without
+              help (e.g., an image with a doge only a few px large would not be
+              considered valid, because an observer would be unable to see it
+              with plain sight).
+            </li>
+            <br />
+            <li>
+              If a picture is submitted multiple times, only the first one will
+              be considered valid.
+            </li>
+            <br />
+            <li>
+              Pictures which are only a slight modification of a previously
+              submitted picture will not be considered valid.
+            </li>
+            <br />
+            <li>
+              Pictures which contain both a doge and a cat will not be
+              considered valid.
+            </li>
+            <br />
+            <li>
+              Coopérative Kleros' team will have the final decision on wether a
+              picture is valid or not for the purpose of the payout.
+            </li>
+            <br />
+            <li>
+              Coopérative Kleros' team can decide, at its sole discretion, to
+              change any parameter of the experiment to fulfill its research
+              goals.
+            </li>
+            <br />
+            <li>
+              By participating in the Doges on Trial experiment, you agree to
+              all these conditions.
+            </li>
+            <br />
+          </ul>
         </p>
         <Button onClick={this.handleSubmitDogeClick} type="ternary">
           Submit Doge
