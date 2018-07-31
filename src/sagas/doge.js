@@ -218,7 +218,7 @@ function* appealDogeRuling({ payload: { ID } }) {
 function* executeDogeRuling({ payload: { ID } }) {
   yield call(
     arbitrator.methods.executeRuling(
-      yield select(dogeSelectors.getDogeDisputeID)
+      yield select(dogeSelectors.getDogeDisputeID, ID)
     ).send,
     {
       from: yield select(walletSelectors.getAccount)
