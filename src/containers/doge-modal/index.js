@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import browserImageCompression from 'browser-image-compression'
 
+import { IMAGES_BASE_URL } from '../../bootstrap/dapp-api'
 import * as arbitrablePermissionListSelectors from '../../reducers/arbitrable-permission-list'
 import * as arbitrablePermissionListActions from '../../actions/arbitrable-permission-list'
 import * as dogeSelectors from '../../reducers/doge'
@@ -10,6 +11,7 @@ import * as dogeActions from '../../actions/doge'
 import * as modalSelectors from '../../reducers/modal'
 import * as modalActions from '../../actions/modal'
 import Modal from '../../components/modal'
+import Button from '../../components/button'
 import * as modalConstants from '../../constants/modal'
 
 import Submit from './components/submit'
@@ -54,9 +56,22 @@ class DogeModal extends PureComponent {
     if (prevDoge.creating && !doge.creating)
       this.setState({
         imageFileDataURL: null,
-        imageFileInfoMessage: doge.failedCreating
-          ? 'Failed to submit Doge.'
-          : 'Doge submitted successfully.'
+        imageFileInfoMessage: doge.failedCreating ? (
+          'Failed to submit Doge.'
+        ) : (
+          <span>
+            Doge submitted successfully.{' '}
+            <Button
+              to={`https://twitter.com/intent/tweet?text=I%20just%20submitted%20this%20doge%20to%20Kleros%27%20Doges%20on%20Trial%20curated%20list%20experiment.%20Try%20it%20out%20at%20https%3A%2F%2Fdogesontrial.dog&url=${encodeURIComponent(
+                IMAGES_BASE_URL + doge.data.ID
+              )}&hashtags=DogesOnTrial,Kleros,Ethereum,Blockchain`}
+              type="ternary"
+              size="small"
+            >
+              Share on Twitter
+            </Button>
+          </span>
+        )
       })
   }
 

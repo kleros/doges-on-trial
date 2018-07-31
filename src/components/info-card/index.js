@@ -13,7 +13,7 @@ const InfoCard = ({ message }) => (
 
 InfoCard.propTypes = {
   // State
-  message: PropTypes.string.isRequired
+  message: PropTypes.node.isRequired
 }
 
 export default InfoCard
