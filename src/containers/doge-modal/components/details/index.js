@@ -51,7 +51,7 @@ const renderDogeDetails = (
         valueListItems = [
           {
             label: 'Deposit',
-            value: String(
+            value: `${String(
               web3.utils.fromWei(
                 String(
                   web3.utils
@@ -63,7 +63,7 @@ const renderDogeDetails = (
                     )
                 )
               )
-            ),
+            )} ETH`,
             icon: deposit,
             tooltip:
               'This is the amount of ETH that you need to submit to cover arbitration fees and reward the counter party if they win.'
@@ -84,7 +84,7 @@ const renderDogeDetails = (
           valueListItems = [
             {
               label: 'Total Deposited',
-              value: String(
+              value: `${String(
                 web3.utils.fromWei(
                   String(
                     web3.utils
@@ -97,7 +97,7 @@ const renderDogeDetails = (
                       .muln(2)
                   )
                 )
-              ),
+              )} ETH`,
               icon: deposit,
               tooltip:
                 'This is the total amount of ETH submitted by both parties. It will be used to pay arbitration fees and the remaining amount will go to the winner.'
@@ -115,7 +115,7 @@ const renderDogeDetails = (
           valueListItems = [
             {
               label: 'Total Deposited',
-              value: String(
+              value: `${String(
                 web3.utils.fromWei(
                   String(
                     web3.utils
@@ -128,14 +128,14 @@ const renderDogeDetails = (
                       .muln(2)
                   )
                 )
-              ),
+              )} ETH`,
               icon: deposit,
               tooltip:
                 'This is the total amount of ETH submitted by both parties. It will be used to pay arbitration fees and the remaining amount will go to the winner.'
             },
             {
               label: 'Appeal Fees',
-              value: String(web3.utils.fromWei(doge.appealCost)),
+              value: `${String(web3.utils.fromWei(doge.appealCost))} ETH`,
               icon: appealFees,
               tooltip: 'This is the cost of appealing the ruling, in ETH.'
             }
@@ -153,7 +153,7 @@ const renderDogeDetails = (
           valueListItems = [
             {
               label: 'Total Deposited',
-              value: String(
+              value: `${String(
                 web3.utils.fromWei(
                   String(
                     web3.utils
@@ -166,7 +166,7 @@ const renderDogeDetails = (
                       .muln(2)
                   )
                 )
-              ),
+              )} ETH`,
               icon: deposit,
               tooltip:
                 'This is the total amount of ETH submitted by both parties. It will be used to pay arbitration fees and the remaining amount will go to the winner.'
