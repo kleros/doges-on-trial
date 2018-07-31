@@ -31,7 +31,8 @@ function* fetchDoges({ payload: { cursor, count, filterValue, sortValue } }) {
         filterValue.includes(i)
       ),
       sortValue
-    ).call
+    ).call,
+    { from: yield select(walletSelectors.getAccount) }
   )
 
   const doges = [
