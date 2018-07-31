@@ -202,7 +202,7 @@ function* submitDogeChallenge({ payload: { ID } }) {
 function* appealDogeRuling({ payload: { ID } }) {
   yield call(arbitrablePermissionList.methods.appeal(ID).send, {
     from: yield select(walletSelectors.getAccount),
-    value: yield select(dogeSelectors.getDogeAppealCost, ID)
+    value: yield select(dogeSelectors.getDogeAppealCost)
   })
 
   return yield call(fetchDoge, {
@@ -218,7 +218,7 @@ function* appealDogeRuling({ payload: { ID } }) {
 function* executeDogeRuling({ payload: { ID } }) {
   yield call(
     arbitrator.methods.executeRuling(
-      yield select(dogeSelectors.getDogeDisputeID, ID)
+      yield select(dogeSelectors.getDogeDisputeID)
     ).send,
     {
       from: yield select(walletSelectors.getAccount)
