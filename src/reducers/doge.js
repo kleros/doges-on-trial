@@ -36,9 +36,7 @@ export default createReducer({
 
 // Selectors
 export const getDoges = state => state.doge.doges.data
-export const getDogeDisputeID = (state, ID) =>
-  state.doge.doges.data &&
-  state.doge.doges.data.find(d => d.ID === ID).disputeID
-export const getDogeAppealCost = (state, ID) =>
-  state.doge.doges.data &&
-  state.doge.doges.data.find(d => d.ID === ID).appealCost
+export const getDogeDisputeID = state =>
+  state.doge.doge.data && state.doge.doge.data.disputeID
+export const getDogeAppealCost = state =>
+  state.doge.doge.data && state.doge.doge.data.appealCost
