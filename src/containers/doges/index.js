@@ -230,7 +230,6 @@ class Doges extends PureComponent {
                         }
                       ]}
                       lineWidth={25}
-                      rounded
                       animate
                       className="Doges-settingsBar-counts-pie"
                     />
