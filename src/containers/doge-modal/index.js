@@ -13,6 +13,7 @@ import * as modalActions from '../../actions/modal'
 import Modal from '../../components/modal'
 import Button from '../../components/button'
 import * as modalConstants from '../../constants/modal'
+import * as errorConstants from '../../constants/error'
 
 import Submit from './components/submit'
 import Details from './components/details'
@@ -57,7 +58,11 @@ class DogeModal extends PureComponent {
       this.setState({
         imageFileDataURL: null,
         imageFileInfoMessage: doge.failedCreating ? (
-          'Failed to submit Doge.'
+          doge.error.message === errorConstants.DOGE_ALREADY_SUBMITTED ? (
+            doge.error.message
+          ) : (
+            'Failed to submit Doge.'
+          )
         ) : (
           <span>
             Doge submitted successfully.{' '}

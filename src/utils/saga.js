@@ -71,7 +71,6 @@ export function* lessduxSaga(
       })
     )
   } catch (err) {
-    console.error(err)
     err.message &&
       console.info(
         'Your connection is unstable, please check your network and refresh the page.'
