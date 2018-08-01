@@ -84,9 +84,9 @@ export function* lessduxSaga(
                 collection: flowOrCollectionModFlow.collection,
                 updating:
                   flowOrCollectionModFlow.updating &&
-                  flowOrCollectionModFlow.updating(action)
-              },
-              error: err
+                  flowOrCollectionModFlow.updating(action),
+                error: err
+              }
             }
           : err
       )

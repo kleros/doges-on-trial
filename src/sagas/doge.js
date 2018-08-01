@@ -75,10 +75,7 @@ function* createDoge({ payload: { imageFileDataURL } }) {
     })
   else throw new Error(errorConstants.DOGE_ALREADY_SUBMITTED)
 
-  return {
-    collection: dogeActions.doges.self,
-    resource: yield call(fetchDoge, { payload: { ID } })
-  }
+  return yield call(fetchDoge, { payload: { ID } })
 }
 
 /**
@@ -233,7 +230,7 @@ function* executeDogeRuling({ payload: { ID } }) {
   })
 }
 
-// Update collection mods
+// Update collection mod flows
 const updateDogesCollectionModFlow = {
   flow: 'update',
   collection: dogeActions.doges.self,
@@ -258,7 +255,10 @@ export default function* dogeSaga() {
   yield takeLatest(
     dogeActions.doge.CREATE,
     lessduxSaga,
-    'create',
+    {
+      flow: 'create',
+      collection: dogeActions.doges.self
+    },
     dogeActions.doge,
     createDoge
   )
