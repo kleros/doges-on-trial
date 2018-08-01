@@ -14,6 +14,7 @@ import {
   IMAGE_UPLOAD_URL
 } from '../bootstrap/dapp-api'
 import * as dogeConstants from '../constants/doge'
+import * as errorConstants from '../constants/error'
 
 import { fetchArbitrablePermissionListData } from './arbitrable-permission-list'
 
@@ -59,13 +60,6 @@ function* fetchDoges({ payload: { cursor, count, filterValue, sortValue } }) {
 function* createDoge({ payload: { imageFileDataURL } }) {
   const ID = web3.utils.keccak256(imageFileDataURL)
 
-  // Add to contract if absent
-  if (Number((yield call(fetchDoge, { payload: { ID } }))._status) === 0)
-    yield call(arbitrablePermissionList.methods.requestRegistration(ID).send, {
-      from: yield select(walletSelectors.getAccount),
-      value: yield select(arbitrablePermissionListSelectors.getSubmitCost)
-    })
-
   // Upload image
   yield call(fetch, IMAGE_UPLOAD_URL, {
     method: 'POST',
@@ -73,10 +67,15 @@ function* createDoge({ payload: { imageFileDataURL } }) {
     body: JSON.stringify({ payload: { imageFileDataURL } })
   })
 
-  return {
-    collection: dogeActions.doges.self,
-    resource: yield call(fetchDoge, { payload: { ID } })
-  }
+  // Add to contract if absent
+  if (Number((yield call(fetchDoge, { payload: { ID } }))._status) === 0)
+    yield call(arbitrablePermissionList.methods.requestRegistration(ID).send, {
+      from: yield select(walletSelectors.getAccount),
+      value: yield select(arbitrablePermissionListSelectors.getSubmitCost)
+    })
+  else throw new Error(errorConstants.DOGE_ALREADY_SUBMITTED)
+
+  return yield call(fetchDoge, { payload: { ID } })
 }
 
 /**
@@ -231,7 +230,7 @@ function* executeDogeRuling({ payload: { ID } }) {
   })
 }
 
-// Update collection mods
+// Update collection mod flows
 const updateDogesCollectionModFlow = {
   flow: 'update',
   collection: dogeActions.doges.self,
@@ -256,7 +255,10 @@ export default function* dogeSaga() {
   yield takeLatest(
     dogeActions.doge.CREATE,
     lessduxSaga,
-    'create',
+    {
+      flow: 'create',
+      collection: dogeActions.doges.self
+    },
     dogeActions.doge,
     createDoge
   )

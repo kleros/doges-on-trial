@@ -71,7 +71,6 @@ export function* lessduxSaga(
       })
     )
   } catch (err) {
-    console.error(err)
     err.message &&
       console.info(
         'Your connection is unstable, please check your network and refresh the page.'
@@ -85,9 +84,9 @@ export function* lessduxSaga(
                 collection: flowOrCollectionModFlow.collection,
                 updating:
                   flowOrCollectionModFlow.updating &&
-                  flowOrCollectionModFlow.updating(action)
-              },
-              error: err
+                  flowOrCollectionModFlow.updating(action),
+                error: err
+              }
             }
           : err
       )
