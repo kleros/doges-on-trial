@@ -84,6 +84,11 @@ const Submit = ({
             </Button>
             <br />
             <small>
+              Note this is a <b>security deposit, not a fee,</b> and will be
+              refunded if your image is accepted.
+            </small>
+            <br />
+            <small>
               Set an email in <Link to="/settings">settings</Link> to receive
               email notifications.
             </small>
