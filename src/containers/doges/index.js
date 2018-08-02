@@ -39,8 +39,22 @@ class Doges extends PureComponent {
   }
 
   state = {
-    filterValue: dogeConstants.FILTER_OPTIONS_ENUM.indexes,
-    filter: dogeConstants.FILTER_OPTIONS_ENUM.values,
+    filterValue: dogeConstants.FILTER_OPTIONS_ENUM.indexes.filter(
+      i =>
+        i !== dogeConstants.FILTER_OPTIONS_ENUM.Challenged &&
+        i !== dogeConstants.FILTER_OPTIONS_ENUM.Rejected
+    ),
+    filter: dogeConstants.FILTER_OPTIONS_ENUM.values.filter(
+      v =>
+        v !==
+          dogeConstants.FILTER_OPTIONS_ENUM[
+            dogeConstants.FILTER_OPTIONS_ENUM.Challenged
+          ] &&
+        v !==
+          dogeConstants.FILTER_OPTIONS_ENUM[
+            dogeConstants.FILTER_OPTIONS_ENUM.Rejected
+          ]
+    ),
     sortValue: 0,
     sort: { [dogeConstants.SORT_OPTIONS_ENUM[0]]: 'ascending' }
   }
@@ -53,12 +67,20 @@ class Doges extends PureComponent {
 
   getFilterOptionsWithCountsAndColors = memoizeOne((accounts, doges = []) =>
     dogeConstants.FILTER_OPTIONS_ENUM.values.map(value => {
+      let label = value
       let count
       switch (dogeConstants.FILTER_OPTIONS_ENUM[value]) {
         case dogeConstants.FILTER_OPTIONS_ENUM.Pending:
         case dogeConstants.FILTER_OPTIONS_ENUM.Challenged:
         case dogeConstants.FILTER_OPTIONS_ENUM.Accepted:
         case dogeConstants.FILTER_OPTIONS_ENUM.Rejected:
+          label =
+            dogeConstants.FILTER_OPTIONS_ENUM[value] ===
+              dogeConstants.FILTER_OPTIONS_ENUM.Challenged ||
+            dogeConstants.FILTER_OPTIONS_ENUM[value] ===
+              dogeConstants.FILTER_OPTIONS_ENUM.Rejected
+              ? `${label} (NSFW)`
+              : label
           count = doges.filter(
             doge => doge.status === dogeConstants.FILTER_OPTIONS_ENUM[value]
           ).length
@@ -75,7 +97,7 @@ class Doges extends PureComponent {
       }
 
       return {
-        label: value,
+        label,
         count,
         color: dogeConstants.STATUS_COLOR_ENUM[dogeConstants.STATUS_ENUM[value]]
       }
