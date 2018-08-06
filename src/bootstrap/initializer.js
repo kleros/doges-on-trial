@@ -38,7 +38,7 @@ class Initializer extends PureComponent {
         loading={<ClimbingBoxLoader color="#3d464d" />}
         done={children}
         failedLoading={<RequiresMetaMaskPage needsUnlock={Boolean(web3.eth)} />}
-        extraValues={[accounts.data && accounts.data[0]]}
+        extraValues={[accounts.data]}
         extraFailedValues={[!web3.eth]}
       />
     )

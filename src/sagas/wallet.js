@@ -4,17 +4,13 @@ import * as walletSelectors from '../reducers/wallet'
 import * as walletActions from '../actions/wallet'
 import { lessduxSaga } from '../utils/saga'
 import { web3, PATCH_USER_SETTINGS_URL } from '../bootstrap/dapp-api'
-import * as errorConstants from '../constants/error'
 
 /**
  * Fetches the current wallet's accounts.
  * @returns {string[]} - The accounts.
  */
 function* fetchAccounts() {
-  const accounts = yield call(web3.eth.getAccounts)
-  if (!accounts[0]) throw new Error(errorConstants.ETH_NO_ACCOUNTS)
-
-  return accounts
+  return yield call(web3.eth.getAccounts)
 }
 
 /**
