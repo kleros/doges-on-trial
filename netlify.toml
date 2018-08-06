@@ -1,14 +1,14 @@
 [build.environment]
   NODE_VERSION='9.4.0'
   YARN_FLAGS='--pure-lockfile'
-  REACT_APP_PROD_ETHEREUM_PROVIDER="http://localhost:8545"
+  REACT_APP_PROD_ETHEREUM_PROVIDER="https://kovan.infura.io/v3/9c26dd38fd2e44e6bcff6a133eb67930"
   REACT_APP_PROD_ARBITRABLE_PERMISSION_LIST_ADDRESS="0xbefd40cd43072694555b5ec77120ce4a3a65a5d6"
   REACT_APP_PROD_IMAGES_BASE_URL="https://staging-doges-on-trial-doge-images.s3.us-east-2.amazonaws.com/"
   REACT_APP_PROD_IMAGE_UPLOAD_URL="https://8aoprv935h.execute-api.us-east-2.amazonaws.com/staging/doges-on-trial/doge-images"
   REACT_APP_PROD_PATCH_USER_SETTINGS_URL="https://8aoprv935h.execute-api.us-east-2.amazonaws.com/staging/user-settings"
 
 [context.production.environment]
-  REACT_APP_PROD_ETHEREUM_PROVIDER="http://localhost:8545"
+  REACT_APP_PROD_ETHEREUM_PROVIDER="https://mainnet.infura.io/v3/9c26dd38fd2e44e6bcff6a133eb67930"
   REACT_APP_PROD_ARBITRABLE_PERMISSION_LIST_ADDRESS="0xb7faddf3ecd2402a7e48cea6d2637d90eeb5a7e6"
   REACT_APP_PROD_IMAGES_BASE_URL="https://production-doges-on-trial-doge-images.s3.us-east-2.amazonaws.com/"
   REACT_APP_PROD_IMAGE_UPLOAD_URL="https://hgyxlve79a.execute-api.us-east-2.amazonaws.com/production/doges-on-trial/doge-images"
