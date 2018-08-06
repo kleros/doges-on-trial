@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { BeatLoader } from 'react-spinners'
 
-import { web3, IMAGES_BASE_URL } from '../../../../bootstrap/dapp-api'
+import { web3, isInfura, IMAGES_BASE_URL } from '../../../../bootstrap/dapp-api'
 import * as arbitrablePermissionListSelectors from '../../../../reducers/arbitrable-permission-list'
 import * as dogeSelectors from '../../../../reducers/doge'
 import * as dogeConstants from '../../../../constants/doge'
@@ -208,7 +208,15 @@ const renderDogeDetails = (
       {valueListItems && (
         <ValueList items={valueListItems} className="Details-valueList" />
       )}
-      {button && <Button id={doge.ID} className="Details-button" {...button} />}
+      {button && (
+        <Button
+          id={doge.ID}
+          tooltip={isInfura ? 'Please install MetaMask.' : null}
+          disabled={isInfura}
+          className="Details-button"
+          {...button}
+        />
+      )}
       <br />
       <small>
         Set an email in <Link to="/settings">settings</Link> to receive email

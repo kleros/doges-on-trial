@@ -86,6 +86,7 @@ exports[`Storyshots Button disabled 1`] = `
         >
           <div
             className="Button Button--primary Button--normal is-disabled "
+            data-tip={null}
             onClick={null}
           >
             <h2
@@ -361,6 +362,7 @@ exports[`Storyshots Button primary 1`] = `
           >
             <div
               className="Button Button--primary Button--small  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -372,6 +374,7 @@ exports[`Storyshots Button primary 1`] = `
                
             <div
               className="Button Button--primary Button--normal  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -383,6 +386,7 @@ exports[`Storyshots Button primary 1`] = `
                
             <div
               className="Button Button--primary Button--large  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -659,6 +663,7 @@ exports[`Storyshots Button secondary 1`] = `
           >
             <div
               className="Button Button--secondary Button--small  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -670,6 +675,7 @@ exports[`Storyshots Button secondary 1`] = `
                
             <div
               className="Button Button--secondary Button--normal  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -681,6 +687,7 @@ exports[`Storyshots Button secondary 1`] = `
                
             <div
               className="Button Button--secondary Button--large  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -957,6 +964,7 @@ exports[`Storyshots Button ternary 1`] = `
           >
             <div
               className="Button Button--ternary Button--small  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -968,6 +976,7 @@ exports[`Storyshots Button ternary 1`] = `
                
             <div
               className="Button Button--ternary Button--normal  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -979,6 +988,7 @@ exports[`Storyshots Button ternary 1`] = `
                
             <div
               className="Button Button--ternary Button--large  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -1252,6 +1262,7 @@ exports[`Storyshots Button with lots of text 1`] = `
         >
           <div
             className="Button Button--primary Button--normal  "
+            data-tip={null}
             onClick={[Function]}
           >
             <h2
@@ -7037,6 +7048,7 @@ exports[`Storyshots File Picker default 1`] = `
             </small>
             <div
               className="Button Button--ternary Button--small  "
+              data-tip={null}
               onClick={null}
             >
               <h2
@@ -20445,6 +20457,7 @@ exports[`Storyshots Modal default 1`] = `
             </div>
             <div
               className="Button Button--primary Button--normal  "
+              data-tip={null}
               onClick={[Function]}
             >
               <h2
@@ -20881,6 +20894,7 @@ exports[`Storyshots Nav Bar default 1`] = `
                       >
                         <div
                           className="Button Button--ternary Button--small  "
+                          data-tip={null}
                           onClick={null}
                         >
                           <h2
@@ -22392,6 +22406,7 @@ exports[`Storyshots Requires MetaMask not found 1`] = `
                 >
                   <div
                     className="Button Button--primary Button--normal  "
+                    data-tip={null}
                     onClick={null}
                   >
                     <h2

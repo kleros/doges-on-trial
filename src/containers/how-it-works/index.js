@@ -2,9 +2,11 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
+import { isInfura } from '../../bootstrap/dapp-api'
 import * as modalActions from '../../actions/modal'
 import Button from '../../components/button'
 import howItWorks from '../../assets/images/how-it-works.png'
+import infographic from '../../assets/images/infographic.png'
 import * as modalConstants from '../../constants/modal'
 
 import './how-it-works.css'
@@ -54,6 +56,14 @@ class HowItWorks extends PureComponent {
           <br />
           Both the submitter and the challenger can appeal the decision made by
           the jurors by paying the appeal fees.
+          <br />
+          <br />
+          This infographic might make things clearer:
+          <img
+            src={infographic}
+            alt="Flow Infographic"
+            className="HowItWorks-text-infographic"
+          />
           <br />
           <br />
           Enough reading now, go have some fun,
@@ -121,7 +131,12 @@ class HowItWorks extends PureComponent {
             <br />
           </ul>
         </p>
-        <Button onClick={this.handleSubmitDogeClick} type="ternary">
+        <Button
+          tooltip={isInfura ? 'Please install MetaMask.' : null}
+          onClick={this.handleSubmitDogeClick}
+          type="ternary"
+          disabled={isInfura}
+        >
           Submit Doge
         </Button>{' '}
         <Button to="https://medium.com/kleros/doges-on-trial-pilot-explainer-911492c3a7d8">

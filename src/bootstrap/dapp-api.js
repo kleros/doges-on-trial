@@ -13,11 +13,15 @@ const PATCH_USER_SETTINGS_URL =
   process.env[`REACT_APP_${env}_PATCH_USER_SETTINGS_URL`]
 
 let web3
+let isInfura = false
 if (process.env.NODE_ENV === 'test')
   web3 = new Web3(require('ganache-cli').provider())
 else if (window.web3 && window.web3.currentProvider)
   web3 = new Web3(window.web3.currentProvider)
-else web3 = new Web3(new Web3.providers.HttpProvider(ETHEREUM_PROVIDER))
+else {
+  web3 = new Web3(new Web3.providers.HttpProvider(ETHEREUM_PROVIDER))
+  isInfura = true
+}
 
 const network =
   web3.eth &&
@@ -51,6 +55,7 @@ const arbitrator = new web3.eth.Contract(Arbitrator.abi)
 
 export {
   web3,
+  isInfura,
   network,
   ETHAddressRegExpCaptureGroup,
   ETHAddressRegExp,
