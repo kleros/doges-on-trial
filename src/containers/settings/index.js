@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { RenderIf } from 'lessdux'
 import { BeatLoader } from 'react-spinners'
 
+import { isInfura } from '../../bootstrap/dapp-api'
 import * as walletSelectors from '../../reducers/wallet'
 import * as walletActions from '../../actions/wallet'
 import Button from '../../components/button'
@@ -39,7 +40,11 @@ const Settings = ({
               onSubmit={updateEmail}
               initialValues={{ email: settings.data.email }}
             />
-            <Button onClick={submitEmailForm} disabled={emailFormIsInvalid}>
+            <Button
+              tooltip={isInfura ? 'Please install MetaMask.' : null}
+              onClick={submitEmailForm}
+              disabled={emailFormIsInvalid || isInfura}
+            >
               Save
             </Button>
           </div>

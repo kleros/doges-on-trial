@@ -6,6 +6,7 @@ import './button.css'
 const Button = ({
   children,
   to,
+  tooltip,
   onClick,
   type,
   size,
@@ -20,6 +21,7 @@ const Button = ({
       className={`Button Button--${type} Button--${size} ${
         disabled ? 'is-disabled' : ''
       } ${className}`}
+      data-tip={tooltip}
       {...rest}
     >
       <h2 className={`Button-label ${labelClassName}`}>{children}</h2>
@@ -43,6 +45,7 @@ Button.propTypes = {
   // State
   children: PropTypes.node.isRequired,
   to: PropTypes.string,
+  tooltip: PropTypes.string,
 
   // Handlers
   onClick: PropTypes.func,
@@ -58,6 +61,7 @@ Button.propTypes = {
 Button.defaultProps = {
   // State
   to: null,
+  tooltip: null,
 
   // Handlers
   onClick: null,
