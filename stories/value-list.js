@@ -9,7 +9,7 @@ storiesOf('Value List', module)
     <div style={{ width: '600px' }}>
       <ValueList
         items={[
-          { label: 'Total Deposited', value: 0.00123, icon: doge },
+          { label: 'At Stake', value: 0.00123, icon: doge },
           { label: 'Number of Challenges', value: 2, icon: doge },
           { label: 'Number of Appeals', value: 1, icon: doge }
         ]}

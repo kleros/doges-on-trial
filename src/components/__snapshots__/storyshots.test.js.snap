@@ -24990,7 +24990,7 @@ exports[`Storyshots Value List with icons 1`] = `
                     className="ValueList-item-label-icon"
                     src="doge.jpg"
                   />
-                  Total Deposited
+                  At Stake
                   :
                 </h3>
                 <h3
