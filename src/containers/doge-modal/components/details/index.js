@@ -83,7 +83,7 @@ const renderDogeDetails = (
             'Kleros jurors are deciding whether this is a Doge or not.'
           valueListItems = [
             {
-              label: 'Total Deposited',
+              label: 'At Stake',
               value: `${String(
                 web3.utils.fromWei(
                   String(
@@ -114,7 +114,7 @@ const renderDogeDetails = (
             'You think the verdict was unfair? Every image has the right to a new trial!'
           valueListItems = [
             {
-              label: 'Total Deposited',
+              label: 'At Stake',
               value: `${String(
                 web3.utils.fromWei(
                   String(
@@ -152,7 +152,7 @@ const renderDogeDetails = (
             'The dispute brought against this image has been resolved and is pending execution.'
           valueListItems = [
             {
-              label: 'Total Deposited',
+              label: 'At Stake',
               value: `${String(
                 web3.utils.fromWei(
                   String(
