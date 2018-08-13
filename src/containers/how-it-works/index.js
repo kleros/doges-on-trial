@@ -73,7 +73,9 @@ class HowItWorks extends PureComponent {
           <br />
           <h2>Payout Policy</h2>
           The Doges on Trial experiment runs on the Ethereum mainnet with real
-          ETH in order to test how agents respond to economic incentives.
+          ETH in order to test how agents respond to economic incentives. Note
+          these are policies that the Kleros Coop team uses for rewards, not
+          subcourt policies.
           <br />
           <br />
           The payout policy of the experiment is defined as follows:
