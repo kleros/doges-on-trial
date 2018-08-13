@@ -25,7 +25,7 @@ const RequiresMetaMaskPage = ({ needsUnlock }) => (
       <Card className="RequiresMetaMaskPage-card">
         <h1>Still have questions? Don't worry, we're here to help!</h1>
         <Button
-          to="mailto:someone@example.com?Subject=Doges%20on%20Trial%20Support"
+          to="mailto:stuart@kleros.io?Subject=Doges%20on%20Trial%20Support"
           type="ternary"
           className="RequiresMetaMaskPage-card-button"
         >
