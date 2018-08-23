@@ -59,10 +59,29 @@ class Doges extends PureComponent {
     sort: { [dogeConstants.SORT_OPTIONS_ENUM[0]]: 'ascending' }
   }
 
+  ref = React.createRef()
+  fillPageTimeout = null
+
   componentDidMount() {
     const { fetchArbitrablePermissionListData } = this.props
     fetchArbitrablePermissionListData()
     this.fetchDoges(true)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { doges: prevDoges } = prevProps
+    const { doges } = this.props
+    clearTimeout(this.fillPageTimeout)
+    this.fillPageTimeout = setTimeout(() => {
+      if (
+        prevDoges !== doges &&
+        !doges.loading &&
+        doges.data &&
+        doges.data.hasMore &&
+        this.ref.current.clientHeight === this.ref.current.scrollHeight
+      )
+        this.fetchDoges()
+    }, 500)
   }
 
   getFilterOptionsWithCountsAndColors = memoizeOne((accounts, doges = []) =>
@@ -164,23 +183,24 @@ class Doges extends PureComponent {
   fetchDoges = clear => {
     const { doges, fetchDoges } = this.props
     const { filterValue, sortValue } = this.state
-    fetchDoges(
-      doges.data && clear !== true
-        ? doges.data[doges.data.length - 1].ID
-        : '0x00',
-      10,
-      filterValue,
-      sortValue
-    )
+    if (!doges.loading)
+      fetchDoges(
+        doges.data && clear !== true
+          ? doges.data[doges.data.length - 1].ID
+          : '0x00',
+        10,
+        filterValue,
+        sortValue
+      )
   }
 
   render() {
     const { accounts, arbitrablePermissionListData, doges } = this.props
     const { filterValue, filter, sortValue, sort } = this.state
     return (
-      <div className="Doges">
+      <div ref={this.ref} className="Doges">
         <ReactInfiniteScroller
-          hasMore={!doges.loading && doges.data ? doges.data.hasMore : false}
+          hasMore={doges.data ? doges.data.hasMore : false}
           loadMore={this.fetchDoges}
           loader={
             <div key={0} className="Doges-masonryGridLoader">
