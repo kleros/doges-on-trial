@@ -92,6 +92,17 @@ class HowItWorks extends PureComponent {
             </li>
             <br />
             <li>
+              The first submitter to get a cat accepted into the list will be
+              paid an additional 8 ETH.
+            </li>
+            <br />
+            <li>
+              If there are no cats in the list at the end of the experiment, the
+              submitters of the 10 cats that won the most voting rounds will be
+              paid 2 ETH each.
+            </li>
+            <br />
+            <li>
               To be considered valid, a picture must clearly display a doge or a
               cat. Pictures with hidden doges or cats will not be considered as
               valid if a normal observer would not be able to see it without
