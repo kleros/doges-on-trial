@@ -87,19 +87,21 @@ class HowItWorks extends PureComponent {
             </li>
             <br />
             <li>
-              One cryptokitty and 2 ETH will be paid for each of the first 10
-              cat pictures accepted into the list.
+              The first submitter to get a cat accepted into the list will be
+              paid 10 ETH.
             </li>
             <br />
             <li>
-              The first submitter to get a cat accepted into the list will be
-              paid an additional 8 ETH.
+              One cryptokitty and 2 ETH will be paid for each of the 2-10th cats
+              accepted into the list.
             </li>
             <br />
             <li>
               If there are no cats in the list at the end of the experiment, the
-              submitters of the 10 cats that won the most voting rounds will be
-              paid 2 ETH each.
+              submitters of the 10 cats that won the most dispute rounds will be
+              paid 2 ETH each (a picture can win a dispute while not being
+              accepted into the list if it is rechallenged within 1 day and
+              loses). If the 10th spot is a tie, the 2 ETH will be split evenly.
             </li>
             <br />
             <li>
