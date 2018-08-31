@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet'
 import { Provider, connect } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
 import { Switch, Route, Link } from 'react-router-dom'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 
 import * as walletSelectors from '../reducers/wallet'
 import * as notificationSelectors from '../reducers/notification'
@@ -15,6 +16,7 @@ import HowItWorks from '../containers/how-it-works'
 import Settings from '../containers/settings'
 import DogeModal from '../containers/doge-modal'
 import NavBar from '../components/nav-bar'
+import Banner from '../components/banner'
 import PageNotFound from '../components/page-not-found'
 import Button from '../components/button'
 import NotificationBadge from '../components/notification-badge'
@@ -56,61 +58,71 @@ class _ConnectedNavBar extends PureComponent {
   render() {
     const { accounts, notifications } = this.props
     return (
-      <NavBar
-        routes={[
-          { title: 'Doges', to: '/' },
-          { title: 'How it Works', to: '/how-it-works' },
-          {
-            title: 'Twitterverse',
-            to: 'https://twitter.com/hashtag/DogesOnTrial?src=hash',
-            isExternal: true
-          },
-          {
-            title: (
-              <span>
-                Jurors{' '}
-                <img
-                  src={klerosLogo}
-                  alt="Kleros Logo"
-                  className="klerosLogo"
-                  data-tip="Powered by Kleros"
-                />
-              </span>
-            ),
-            to: 'https://juror.kleros.io',
-            isExternal: true
-          }
-        ]}
-        extras={[
-          <Button
-            key="0"
-            tooltip={isInfura ? 'Please install MetaMask.' : null}
-            onClick={this.handleSubmitDogeClick}
-            type="ternary"
-            size="small"
-            disabled={isInfura}
-          >
-            Submit Doge
-          </Button>,
-          ...(isInfura
-            ? []
-            : [
-                <NotificationBadge
-                  key="1"
-                  notifications={notifications}
-                  onNotificationClick={this.handleNotificationClick}
-                >
-                  <Link to="/settings">
-                    <Identicon
-                      address={accounts.data[0]}
-                      tooltip="Settings"
-                      round
-                    />
-                  </Link>
-                </NotificationBadge>
-              ])
-        ]}
-      />
+      <div>
+        <Banner>
+          <div>
+            <FontAwesomeIcon icon="bullhorn" />
+            <Link to="/how-it-works" className="Banner-link">
+              Payout Policy Updated! Click here to read more!
+            </Link>
+          </div>
+        </Banner>
+        <NavBar
+          routes={[
+            { title: 'Doges', to: '/' },
+            { title: 'How it Works', to: '/how-it-works' },
+            {
+              title: 'Twitterverse',
+              to: 'https://twitter.com/hashtag/DogesOnTrial?src=hash',
+              isExternal: true
+            },
+            {
+              title: (
+                <span>
+                  Jurors{' '}
+                  <img
+                    src={klerosLogo}
+                    alt="Kleros Logo"
+                    className="klerosLogo"
+                    data-tip="Powered by Kleros"
+                  />
+                </span>
+              ),
+              to: 'https://juror.kleros.io',
+              isExternal: true
+            }
+          ]}
+          extras={[
+            <Button
+              key="0"
+              tooltip={isInfura ? 'Please install MetaMask.' : null}
+              onClick={this.handleSubmitDogeClick}
+              type="ternary"
+              size="small"
+              disabled={isInfura}
+            >
+              Submit Doge
+            </Button>,
+            ...(isInfura
+              ? []
+              : [
+                  <NotificationBadge
+                    key="1"
+                    notifications={notifications}
+                    onNotificationClick={this.handleNotificationClick}
+                  >
+                    <Link to="/settings">
+                      <Identicon
+                        address={accounts.data[0]}
+                        tooltip="Settings"
+                        round
+                      />
+                    </Link>
+                  </NotificationBadge>
+                ])
+          ]}
+        />
+      </div>
     )
   }
 }

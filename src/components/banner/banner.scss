@@ -1,0 +1,18 @@
+@import '../../styles/_colors.scss';
+
+/* @define Banner */
+.Banner {
+  background: $mint;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 13% 18px 13%;
+  width: 100%;
+  font-weight: bold;
+  color: $darkGrey;
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: $darkGrey;
+  }
+}
