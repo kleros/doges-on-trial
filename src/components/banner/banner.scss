@@ -3,16 +3,16 @@
 /* @define Banner */
 .Banner {
   background: $mint;
+  color: $darkGrey;
   display: flex;
   flex-wrap: wrap;
+  font-weight: bold;
   padding: 20px 13% 18px 13%;
   width: 100%;
-  font-weight: bold;
-  color: $darkGrey;
 
-  a {
-    text-decoration: none;
-    cursor: pointer;
+  &-link {
     color: $darkGrey;
+    cursor: pointer;
+    text-decoration: none;
   }
 }
