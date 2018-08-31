@@ -114,7 +114,7 @@ export default class MasonryGrid extends PureComponent {
 
   updatePacking = memoizeOne(children => {
     console.info('MasonryGrid updatePacking cache miss.')
-    this.bricks && setTimeout(() => this.bricks.pack(), 1)
+    this.bricks && setTimeout(() => this.bricks.pack(), 500)
     return children
   })
 
