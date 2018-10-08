@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { RenderIf } from 'lessdux'
+import { Link } from 'react-router-dom'
 import { BeatLoader } from 'react-spinners'
 
 import { isInfura } from '../../bootstrap/dapp-api'
@@ -14,14 +15,22 @@ import {
   getEmailFormIsInvalid,
   submitEmailForm
 } from './components/email-form'
+import {
+  DogecoinAddressForm,
+  getDogecoinAddressFormIsInvalid,
+  submitDogecoinAddressForm
+} from './components/dogecoin-address-form'
 
 import './settings.css'
 
 const Settings = ({
   settings,
   updateEmail,
+  updateDogecoinAddress,
   emailFormIsInvalid,
-  submitEmailForm
+  submitEmailForm,
+  dogecoinAddressFormIsInvalid,
+  submitDogecoinAddressForm
 }) => (
   <div className="Settings">
     <RenderIf
@@ -30,8 +39,8 @@ const Settings = ({
       updating={<BeatLoader color="#3d464d" />}
       done={
         settings.data && (
-          <div className="Settings-emailForm">
-            <small className="Settings-emailForm-message">
+          <div className="Settings-form">
+            <small className="Settings-form-message">
               Save an email to be notified whenever your submissions or
               submissions you challenged get challenged, accepted, rejected, or
               are pending finalization.
@@ -44,6 +53,21 @@ const Settings = ({
               tooltip={isInfura ? 'Please install MetaMask.' : null}
               onClick={submitEmailForm}
               disabled={emailFormIsInvalid || isInfura}
+            >
+              Save
+            </Button>
+            <small className="Settings-form-message">
+              Save your Dogecoin address for the{' '}
+              <Link to="/how-it-works">payout policy</Link>.
+            </small>
+            <DogecoinAddressForm
+              onSubmit={updateDogecoinAddress}
+              initialValues={{ dogecoinAddress: settings.data.dogecoinAddress }}
+            />
+            <Button
+              tooltip={isInfura ? 'Please install MetaMask.' : null}
+              onClick={submitDogecoinAddressForm}
+              disabled={dogecoinAddressFormIsInvalid || isInfura}
             >
               Save
             </Button>
@@ -62,19 +86,27 @@ Settings.propTypes = {
 
   // Action Dispatchers
   updateEmail: PropTypes.func.isRequired,
+  updateDogecoinAddress: PropTypes.func.isRequired,
 
   // emailForm
   emailFormIsInvalid: PropTypes.bool.isRequired,
-  submitEmailForm: PropTypes.func.isRequired
+  submitEmailForm: PropTypes.func.isRequired,
+
+  // dogecoinAddressForm
+  dogecoinAddressFormIsInvalid: PropTypes.bool.isRequired,
+  submitDogecoinAddressForm: PropTypes.func.isRequired
 }
 
 export default connect(
   state => ({
     settings: state.wallet.settings,
-    emailFormIsInvalid: getEmailFormIsInvalid(state)
+    emailFormIsInvalid: getEmailFormIsInvalid(state),
+    dogecoinAddressFormIsInvalid: getDogecoinAddressFormIsInvalid(state)
   }),
   {
     updateEmail: walletActions.updateEmail,
-    submitEmailForm
+    updateDogecoinAddress: walletActions.updateDogecoinAddress,
+    submitEmailForm,
+    submitDogecoinAddressForm
   }
 )(Settings)

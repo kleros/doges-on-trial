@@ -2,13 +2,14 @@
 .Settings {
   padding: 40px;
 
-  &-emailForm {
+  &-form {
     align-items: center;
     display: flex;
     flex-direction: column;
 
     &-message {
       line-height: 16px;
+      margin-top: 30px;
       max-width: 600px;
     }
   }
