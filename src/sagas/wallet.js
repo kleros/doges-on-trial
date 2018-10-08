@@ -49,9 +49,42 @@ function* updateEmail({ payload: { email } }) {
   })
 
   // Return new settings
+  const attributes = (yield call(() => newSettings.json())).payload.settings
+    .Attributes
   return {
-    email: (yield call(() => newSettings.json())).payload.settings.Attributes
-      .email.S
+    email: attributes.email.S,
+    dogecoinAddress: attributes.dogecoinAddress.S
+  }
+}
+
+/**
+ * Updates the current wallet settings' Dogecoin address.
+ * @param {{ type: string, payload: ?object, meta: ?object }} action - The action object.
+ * @returns {object} - The updated settings object.
+ */
+function* updateDogecoinAddress({ payload: { dogecoinAddress } }) {
+  // Prepare and sign update
+  const address = yield select(walletSelectors.getAccount)
+  const settings = { dogecoinAddress: { S: dogecoinAddress } }
+  const signature = yield call(
+    web3.eth.personal.sign,
+    JSON.stringify(settings),
+    address
+  )
+
+  // Send update
+  const newSettings = yield call(fetch, PATCH_USER_SETTINGS_URL, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ payload: { address, settings, signature } })
+  })
+
+  // Return new settings
+  const attributes = (yield call(() => newSettings.json())).payload.settings
+    .Attributes
+  return {
+    email: attributes.email.S,
+    dogecoinAddress: attributes.dogecoinAddress.S
   }
 }
 
@@ -84,5 +117,12 @@ export default function* walletSaga() {
     'update',
     walletActions.settings,
     updateEmail
+  )
+  yield takeLatest(
+    walletActions.settings.UPDATE_DOGECOIN_ADDRESS,
+    lessduxSaga,
+    'update',
+    walletActions.settings,
+    updateDogecoinAddress
   )
 }
