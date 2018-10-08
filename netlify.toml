@@ -13,3 +13,8 @@
   REACT_APP_PROD_IMAGES_BASE_URL="https://production-doges-on-trial-doge-images.s3.us-east-2.amazonaws.com/"
   REACT_APP_PROD_IMAGE_UPLOAD_URL="https://hgyxlve79a.execute-api.us-east-2.amazonaws.com/production/doges-on-trial/doge-images"
   REACT_APP_PROD_PATCH_USER_SETTINGS_URL="https://hgyxlve79a.execute-api.us-east-2.amazonaws.com/production/user-settings"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
