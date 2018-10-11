@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { RenderIf } from 'lessdux'
-import { Link } from 'react-router-dom'
 import { BeatLoader } from 'react-spinners'
 
 import { isInfura } from '../../bootstrap/dapp-api'
@@ -57,8 +56,10 @@ const Settings = ({
               Save
             </Button>
             <small className="Settings-form-message">
-              Save your Dogecoin address for the{' '}
-              <Link to="/how-it-works">payout policy</Link>.
+              We need your Dogecoin address in order to identify and correctly
+              pay the Dogecoin awards for all successfully accepted images in
+              the final list. If you submitted some doges and they're on the
+              list, that means you!
             </small>
             <DogecoinAddressForm
               onSubmit={updateDogecoinAddress}
