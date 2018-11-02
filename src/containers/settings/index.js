@@ -75,8 +75,8 @@ const Settings = ({
           </div>
         )
       }
-      failedLoading="There was an error fetching your email."
-      failedUpdating="There was an error updating your email."
+      failedLoading="There was an error fetching your settings."
+      failedUpdating="There was an error updating your settings."
     />
   </div>
 )
