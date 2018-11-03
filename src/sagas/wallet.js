@@ -10,6 +10,7 @@ import { web3, PATCH_USER_SETTINGS_URL } from '../bootstrap/dapp-api'
  * @returns {string[]} - The accounts.
  */
 function* fetchAccounts() {
+  if (window.ethereum) yield call(window.ethereum.enable)
   return yield call(web3.eth.getAccounts)
 }
 

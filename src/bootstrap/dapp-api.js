@@ -16,6 +16,7 @@ let web3
 let isInfura = false
 if (process.env.NODE_ENV === 'test')
   web3 = new Web3(require('ganache-cli').provider())
+else if (window.ethereum) web3 = new Web3(window.ethereum)
 else if (window.web3 && window.web3.currentProvider)
   web3 = new Web3(window.web3.currentProvider)
 else {
