@@ -21,7 +21,7 @@ import { lessduxSaga } from '../utils/saga'
 import { action } from '../utils/action'
 import {
   web3,
-  arbitrablePermissionList,
+  infuraArbitrablePermissionList,
   IMAGES_BASE_URL
 } from '../bootstrap/dapp-api'
 import * as dogeConstants from '../constants/doge'
@@ -98,7 +98,7 @@ const emitNotifications = async (account, timeToChallenge, emitter, events) => {
 
   if (events[0])
     localStorage.setItem(
-      arbitrablePermissionList.options.address + 'nextEventsBlockNumber',
+      infuraArbitrablePermissionList.options.address + 'nextEventsBlockNumber',
       events[0].blockNumber + 1
     )
 }
@@ -123,20 +123,23 @@ function* pushNotificationsListener() {
 
     // Set up event channel with subscriber
     const channel = eventChannel(emitter => {
-      arbitrablePermissionList
+      infuraArbitrablePermissionList
         .getPastEvents('ItemStatusChange', {
           fromBlock:
             localStorage.getItem(
-              arbitrablePermissionList.options.address + 'nextEventsBlockNumber'
+              infuraArbitrablePermissionList.options.address +
+                'nextEventsBlockNumber'
             ) || 0
         })
         .then(events =>
           emitNotifications(account, timeToChallenge, emitter, events)
         )
-      arbitrablePermissionList.events.ItemStatusChange().on('data', event => {
-        emitNotifications(account, timeToChallenge, emitter, [event])
-        emitter(event.returnValues.value)
-      })
+      infuraArbitrablePermissionList.events
+        .ItemStatusChange()
+        .on('data', event => {
+          emitNotifications(account, timeToChallenge, emitter, [event])
+          emitter(event.returnValues.value)
+        })
       return () => {} // Unsubscribe function
     })
 

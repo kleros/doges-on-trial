@@ -13,7 +13,8 @@ const PATCH_USER_SETTINGS_URL =
   process.env[`REACT_APP_${env}_PATCH_USER_SETTINGS_URL`]
 
 let web3
-let isInfura = false
+const infuraWeb3 = new Web3(new Web3.providers.HttpProvider(ETHEREUM_PROVIDER))
+let onlyInfura = false
 if (process.env.NODE_ENV === 'test')
   web3 = new Web3(require('ganache-cli').provider())
 else if (window.ethereum) web3 = new Web3(window.ethereum)
@@ -21,7 +22,7 @@ else if (window.web3 && window.web3.currentProvider)
   web3 = new Web3(window.web3.currentProvider)
 else {
   web3 = new Web3(new Web3.providers.HttpProvider(ETHEREUM_PROVIDER))
-  isInfura = true
+  onlyInfura = true
 }
 
 const network =
@@ -53,16 +54,24 @@ const arbitrablePermissionList = new web3.eth.Contract(
   ARBITRABLE_PERMISSION_LIST_ADDRESS
 )
 const arbitrator = new web3.eth.Contract(Arbitrator.abi)
+const infuraArbitrablePermissionList = new infuraWeb3.eth.Contract(
+  ArbitrablePermissionList.abi,
+  ARBITRABLE_PERMISSION_LIST_ADDRESS
+)
+const infuraArbitrator = new infuraWeb3.eth.Contract(Arbitrator.abi)
 
 export {
   web3,
-  isInfura,
+  infuraWeb3,
+  onlyInfura,
   network,
   ETHAddressRegExpCaptureGroup,
   ETHAddressRegExp,
   strictETHAddressRegExp,
   arbitrablePermissionList,
   arbitrator,
+  infuraArbitrablePermissionList,
+  infuraArbitrator,
   IMAGES_BASE_URL,
   IMAGE_UPLOAD_URL,
   PATCH_USER_SETTINGS_URL

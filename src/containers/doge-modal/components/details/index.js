@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import { BeatLoader } from 'react-spinners'
 
-import { web3, isInfura, IMAGES_BASE_URL } from '../../../../bootstrap/dapp-api'
+import {
+  web3,
+  onlyInfura,
+  IMAGES_BASE_URL
+} from '../../../../bootstrap/dapp-api'
 import * as arbitrablePermissionListSelectors from '../../../../reducers/arbitrable-permission-list'
 import * as dogeSelectors from '../../../../reducers/doge'
 import * as dogeConstants from '../../../../constants/doge'
@@ -211,8 +215,8 @@ const renderDogeDetails = (
       {button && (
         <Button
           id={doge.ID}
-          tooltip={isInfura ? 'Please install MetaMask.' : null}
-          disabled={isInfura}
+          tooltip={onlyInfura ? 'Please install MetaMask.' : null}
+          disabled={onlyInfura}
           className="Details-button"
           {...button}
         />
