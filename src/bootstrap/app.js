@@ -22,7 +22,7 @@ import Identicon from '../components/identicon'
 import klerosLogo from '../assets/images/kleros-logo.png'
 import * as modalConstants from '../constants/modal'
 
-import { isInfura } from './dapp-api'
+import { onlyInfura } from './dapp-api'
 import Initializer from './initializer'
 import GlobalComponents from './global-components'
 import './fontawesome'
@@ -84,15 +84,15 @@ class _ConnectedNavBar extends PureComponent {
         extras={[
           <Button
             key="0"
-            tooltip={isInfura ? 'Please install MetaMask.' : null}
+            tooltip={onlyInfura ? 'Please install MetaMask.' : null}
             onClick={this.handleSubmitDogeClick}
             type="ternary"
             size="small"
-            disabled={isInfura}
+            disabled={onlyInfura}
           >
             Submit Doge
           </Button>,
-          ...(isInfura
+          ...(onlyInfura
             ? []
             : [
                 <NotificationBadge

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { isInfura } from '../../bootstrap/dapp-api'
+import { onlyInfura } from '../../bootstrap/dapp-api'
 import * as modalActions from '../../actions/modal'
 import Button from '../../components/button'
 import howItWorks from '../../assets/images/how-it-works.png'
@@ -147,10 +147,10 @@ class HowItWorks extends PureComponent {
           </ul>
         </p>
         <Button
-          tooltip={isInfura ? 'Please install MetaMask.' : null}
+          tooltip={onlyInfura ? 'Please install MetaMask.' : null}
           onClick={this.handleSubmitDogeClick}
           type="ternary"
-          disabled={isInfura}
+          disabled={onlyInfura}
         >
           Submit Doge
         </Button>{' '}

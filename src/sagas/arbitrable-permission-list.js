@@ -2,7 +2,10 @@ import { takeLatest, call, all } from 'redux-saga/effects'
 
 import * as arbitrablePermissionListActions from '../actions/arbitrable-permission-list'
 import { lessduxSaga } from '../utils/saga'
-import { arbitrablePermissionList, arbitrator } from '../bootstrap/dapp-api'
+import {
+  infuraArbitrablePermissionList,
+  infuraArbitrator
+} from '../bootstrap/dapp-api'
 import * as dogeConstants from '../constants/doge'
 
 /**
@@ -12,17 +15,17 @@ import * as dogeConstants from '../constants/doge'
  */
 export function* fetchArbitrablePermissionListData() {
   const d = yield all({
-    arbitrator: call(arbitrablePermissionList.methods.arbitrator().call),
-    stake: call(arbitrablePermissionList.methods.stake().call),
+    arbitrator: call(infuraArbitrablePermissionList.methods.arbitrator().call),
+    stake: call(infuraArbitrablePermissionList.methods.stake().call),
     timeToChallenge: call(
-      arbitrablePermissionList.methods.timeToChallenge().call
+      infuraArbitrablePermissionList.methods.timeToChallenge().call
     ),
-    itemsCounts: call(arbitrablePermissionList.methods.itemsCounts().call)
+    itemsCounts: call(infuraArbitrablePermissionList.methods.itemsCounts().call)
   })
 
-  arbitrator.options.address = d.arbitrator
+  infuraArbitrator.options.address = d.arbitrator
   const arbitrationCost = yield call(
-    arbitrator.methods.arbitrationCost('0x00').call
+    infuraArbitrator.methods.arbitrationCost('0x00').call
   )
 
   return {

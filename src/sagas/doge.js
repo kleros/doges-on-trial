@@ -11,6 +11,8 @@ import {
   web3,
   arbitrablePermissionList,
   arbitrator,
+  infuraArbitrablePermissionList,
+  infuraArbitrator,
   IMAGE_UPLOAD_URL
 } from '../bootstrap/dapp-api'
 import * as dogeConstants from '../constants/doge'
@@ -25,7 +27,7 @@ import { fetchArbitrablePermissionListData } from './arbitrable-permission-list'
  */
 function* fetchDoges({ payload: { cursor, count, filterValue, sortValue } }) {
   const data = yield call(
-    arbitrablePermissionList.methods.queryItems(
+    infuraArbitrablePermissionList.methods.queryItems(
       cursor,
       count,
       dogeConstants.FILTER_OPTIONS_ENUM.values.map((_, i) =>
@@ -84,7 +86,7 @@ function* createDoge({ payload: { imageFileDataURL } }) {
  * @returns {object} - The fetched doge.
  */
 export function* fetchDoge({ payload: { ID, withDisputeData } }) {
-  const doge = yield call(arbitrablePermissionList.methods.items(ID).call)
+  const doge = yield call(infuraArbitrablePermissionList.methods.items(ID).call)
 
   let status
   if (doge.disputed) status = dogeConstants.STATUS_ENUM.Challenged
@@ -123,13 +125,13 @@ export function* fetchDoge({ payload: { ID, withDisputeData } }) {
     try {
       const d = yield all({
         disputeStatus: call(
-          arbitrator.methods.disputeStatus(doge.disputeID).call
+          infuraArbitrator.methods.disputeStatus(doge.disputeID).call
         ),
         currentRuling: call(
-          arbitrator.methods.currentRuling(doge.disputeID).call
+          infuraArbitrator.methods.currentRuling(doge.disputeID).call
         ),
         appealCost: call(
-          arbitrator.methods.appealCost(doge.disputeID, '0x00').call
+          infuraArbitrator.methods.appealCost(doge.disputeID, '0x00').call
         )
       })
       disputeData = {
