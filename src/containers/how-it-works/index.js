@@ -88,7 +88,7 @@ class HowItWorks extends PureComponent {
             <br />
             <li>
               The first submitter to get a cat accepted into the list will be
-              paid 10 ETH.
+              paid 50 ETH.
             </li>
             <br />
             <li>
