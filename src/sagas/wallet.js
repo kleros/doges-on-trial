@@ -54,7 +54,7 @@ function* updateEmail({ payload: { email } }) {
     .Attributes
   return {
     email: attributes.email.S,
-    dogecoinAddress: attributes.dogecoinAddress.S
+    dogecoinAddress: attributes.dogecoinAddress && attributes.dogecoinAddress.S
   }
 }
 
@@ -84,7 +84,7 @@ function* updateDogecoinAddress({ payload: { dogecoinAddress } }) {
   const attributes = (yield call(() => newSettings.json())).payload.settings
     .Attributes
   return {
-    email: attributes.email.S,
+    email: attributes.email && attributes.email.S,
     dogecoinAddress: attributes.dogecoinAddress.S
   }
 }
